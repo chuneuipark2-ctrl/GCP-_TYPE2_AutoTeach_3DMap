@@ -1,0 +1,55 @@
+<Window x:Class="gcp_Wpf.License.WindowLicenseGenerator"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="라이선스 생성기" Height="500" Width="600"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="라이선스 생성기" FontSize="20" FontWeight="Bold" Margin="0,0,0,20"/>
+
+        <TextBlock Grid.Row="1" Text="하드웨어 ID:" Margin="0,5"/>
+        <TextBox Grid.Row="2" x:Name="txtHardwareId" Margin="0,5" IsReadOnly="True" Background="#F0F0F0"/>
+
+        <Button Grid.Row="2" Content="현재 PC 하드웨어 ID 가져오기" 
+                HorizontalAlignment="Right" Width="200" Margin="0,5"
+                Click="BtnGetCurrentHardwareId_Click"/>
+
+        <TextBlock Grid.Row="3" Text="고객명:" Margin="0,10,0,5"/>
+        <TextBox Grid.Row="4" x:Name="txtCustomerName" Margin="0,5"/>
+
+        <TextBlock Grid.Row="5" Text="만료일 (선택사항):" Margin="0,10,0,5"/>
+        <Grid Grid.Row="6" Margin="0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <DatePicker Grid.Column="0" x:Name="dpExpiryDate" Margin="0,0,10,0"/>
+            <CheckBox Grid.Column="1" x:Name="chkUnlimited" Content="무제한" 
+                      VerticalAlignment="Center" Checked="ChkUnlimited_Checked" Unchecked="ChkUnlimited_Unchecked"/>
+        </Grid>
+
+        <CheckBox Grid.Row="7" x:Name="chkDeletePrivateKey" Content="라이선스 생성 후 개인키 파일 자동 삭제 (보안 권장)" 
+                  IsChecked="True" Margin="0,10,0,5"/>
+
+        <Button Grid.Row="8" Content="라이선스 파일 생성" 
+                Height="40" FontSize="14" FontWeight="Bold"
+                Click="BtnGenerateLicense_Click" Margin="0,20,0,10"/>
+
+        <TextBlock Grid.Row="8" x:Name="txtStatus" Text="" 
+                   Foreground="Green" TextWrapping="Wrap" Margin="0,10,0,0"/>
+    </Grid>
+</Window>
+

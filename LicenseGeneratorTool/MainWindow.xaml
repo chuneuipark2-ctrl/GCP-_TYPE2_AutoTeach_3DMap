@@ -1,0 +1,79 @@
+<Window x:Class="LicenseGeneratorTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="라이선스 생성기 (관리자용)" Height="750" Width="700"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="라이선스 생성기 (관리자 전용)" FontSize="20" FontWeight="Bold" Margin="0,0,0,20"/>
+
+        <GroupBox Grid.Row="1" Header="1. RSA 키 생성" Margin="0,0,0,10">
+            <StackPanel Margin="10">
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10" Foreground="Gray">
+                    최초 1회만 실행하세요. 기존 키가 있으면 경고가 표시됩니다.
+                </TextBlock>
+                <Button Content="RSA 키 쌍 생성" Height="35" FontSize="12" 
+                        Click="BtnGenerateKeys_Click" Margin="0,5"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2" Header="2. 하드웨어 ID 확인" Margin="0,0,0,10">
+            <StackPanel Margin="10">
+                <TextBox x:Name="txtHardwareId" Margin="0,0,0,10" IsReadOnly="True" Background="#F0F0F0" Height="30"/>
+                <Button Content="현재 PC 하드웨어 ID 가져오기" 
+                        Click="BtnGetCurrentHardwareId_Click" Margin="0,5"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="3" Header="3. 라이선스 정보 입력" Margin="0,0,0,10">
+            <StackPanel Margin="10">
+                <TextBlock Text="고객명:" Margin="0,5,0,5"/>
+                <TextBox x:Name="txtCustomerName" Margin="0,0,0,10" Height="30"/>
+
+                <TextBlock Text="만료일 (선택사항):" Margin="0,5,0,5"/>
+                <Grid Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <DatePicker Grid.Column="0" x:Name="dpExpiryDate" Margin="0,0,10,0" Height="30"/>
+                    <CheckBox Grid.Column="1" x:Name="chkUnlimited" Content="무제한" 
+                              VerticalAlignment="Center" 
+                              Checked="ChkUnlimited_Checked" Unchecked="ChkUnlimited_Unchecked"/>
+                </Grid>
+
+                <CheckBox x:Name="chkDeletePrivateKey" 
+                          Content="라이선스 생성 후 개인키 파일 자동 삭제 (보안 권장)" 
+                          IsChecked="True" Margin="0,5"/>
+            </StackPanel>
+        </GroupBox>
+
+        <Button Grid.Row="4" Content="라이선스 파일 생성" 
+                Height="45" FontSize="16" FontWeight="Bold"
+                Click="BtnGenerateLicense_Click" Margin="0,10,0,10"/>
+
+        <TextBlock Grid.Row="5" x:Name="txtStatus" Text="" 
+                   Foreground="Green" TextWrapping="Wrap" Margin="0,10,0,0"/>
+
+        <Separator Grid.Row="6" Margin="0,20,0,10"/>
+
+        <TextBlock Grid.Row="7" TextWrapping="Wrap" Foreground="Gray" FontSize="10" Margin="0,0,0,10">
+            ⚠️ 주의: 이 프로그램은 관리자 전용입니다. 배포하지 마세요.
+        </TextBlock>
+    </Grid>
+</Window>
+

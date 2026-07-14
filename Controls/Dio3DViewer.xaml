@@ -1,0 +1,111 @@
+<UserControl x:Class="gcp_Wpf.Controls.Dio3DViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+             Background="#FF1F1F1F">
+  <UserControl.Resources>
+    <Style x:Key="Dio3DBackButtonStyle" TargetType="{x:Type Button}">
+      <Setter Property="Foreground" Value="#FFB8D8FC"/>
+      <Setter Property="FontWeight" Value="Bold"/>
+      <Setter Property="Background" Value="#02000000"/>
+      <Setter Property="BorderBrush" Value="#FFB8D8FC"/>
+      <Setter Property="Padding" Value="12,4"/>
+      <Setter Property="Margin" Value="0,0,8,0"/>
+      <Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type Button}">
+            <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="1" CornerRadius="12"
+                    Padding="{TemplateBinding Padding}">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+      <Style.Triggers>
+        <Trigger Property="IsMouseOver" Value="True">
+          <Setter Property="Background" Value="#33B8D8FC"/>
+        </Trigger>
+        <Trigger Property="IsPressed" Value="True">
+          <Setter Property="Background" Value="#FFB6D8FB"/>
+          <Setter Property="Foreground" Value="Black"/>
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+    <Style x:Key="Dio3DAssyButtonStyle" TargetType="{x:Type Button}">
+      <Setter Property="Foreground" Value="#FFB8D8FC"/>
+      <Setter Property="FontWeight" Value="Bold"/>
+      <Setter Property="FontSize" Value="12"/>
+      <Setter Property="Background" Value="#02000000"/>
+      <Setter Property="BorderBrush" Value="#FFB8D8FC"/>
+      <Setter Property="Padding" Value="10,4"/>
+      <Setter Property="Margin" Value="0,0,6,6"/>
+      <Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type Button}">
+            <Border x:Name="border" Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="1" CornerRadius="10"
+                    Padding="{TemplateBinding Padding}">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background" Value="#33B8D8FC"/>
+              </Trigger>
+              <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="border" Property="Background" Value="#FFB6D8FB"/>
+                <Setter Property="Foreground" Value="Black"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </UserControl.Resources>
+  <Grid Margin="4,0,4,4">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Border Grid.Row="0" BorderBrush="#FFB8D8FC" BorderThickness="0,0,0,1" Padding="0,6,0,8" Margin="0,0,0,4">
+      <StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <Button x:Name="BtnBack" Content="&lt; BACK" Style="{StaticResource Dio3DBackButtonStyle}"
+                  Click="BtnBack_Click" Visibility="Collapsed"/>
+          <TextBlock x:Name="TxtBreadcrumb" Foreground="White" VerticalAlignment="Center"
+                     FontWeight="Bold" FontSize="14" Text="3D MAP"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+          <TextBlock x:Name="TxtStatus" Foreground="#FFAAAAAA" FontSize="11" TextWrapping="Wrap" VerticalAlignment="Center"/>
+          <Button x:Name="BtnOpenExternal" Content="PDF (Acrobat)" Style="{StaticResource Dio3DBackButtonStyle}"
+                  Margin="12,0,0,0" Padding="10,3" Visibility="Collapsed" Click="BtnOpenExternal_Click"/>
+        </StackPanel>
+      </StackPanel>
+    </Border>
+    <WrapPanel x:Name="PanelAssy" Grid.Row="1" Margin="0,0,0,6"/>
+    <Border Grid.Row="2" BorderBrush="#55333333" BorderThickness="1" CornerRadius="2">
+      <Grid>
+        <wv2:WebView2 x:Name="WebView" DefaultBackgroundColor="#FF1F1F1F"/>
+        <TextBlock x:Name="TxtPlaceholder" Foreground="#FF888888" FontSize="14" FontWeight="Bold"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"
+                   Text="3D_Drawing 폴더에&#x0a;PDF 파일을 넣으세요" Visibility="Collapsed"/>
+        <Border x:Name="Panel3dPdfNotice" Background="#CC1F1F1F" Visibility="Collapsed"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+          <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="420" Margin="16">
+            <TextBlock Foreground="#FFFFCC66" FontSize="15" FontWeight="Bold" TextAlignment="Center"
+                       Text="3D PDF — 내장 뷰어 미지원"/>
+            <TextBlock x:Name="Txt3dPdfNotice" Foreground="#FFCCCCCC" FontSize="12" TextWrapping="Wrap"
+                       Margin="0,10,0,12" TextAlignment="Center"/>
+            <Button Content="Acrobat / 기본 뷰어로 열기" Style="{StaticResource Dio3DBackButtonStyle}"
+                    HorizontalAlignment="Center" Padding="14,6" Click="BtnOpenExternal_Click"/>
+          </StackPanel>
+        </Border>
+      </Grid>
+    </Border>
+  </Grid>
+</UserControl>

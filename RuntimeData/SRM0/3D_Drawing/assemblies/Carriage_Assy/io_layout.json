@@ -1,0 +1,586 @@
+{
+  "assyId": "Carriage_Assy",
+  "_note": "키 = I/O 이름. GLB export 시 센서 구 part/occurrence 이름을 키와 동일하게 (예: Fork_Center_Left). x,y,z 선택",
+  "points": {
+    "Double_Storage_L_Ex1": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Double_Storage_L_Ex2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Double_Storage_L_R1": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Double_Storage_L_R2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Double_Storage_Left1": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Double_Storage_Left2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Double_Storage_R_Ex1": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Double_Storage_R_Ex2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Double_Storage_R_R1": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Double_Storage_R_R2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Double_Storage_Right1": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Double_Storage_Right2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_Center_Left": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_Center_Left2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_Center_Right": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_Center_Right2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_End_Left": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_End_Left2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_End_Right": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_End_Right2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_Half_Left": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_Half_Left2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_Half_Right": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_Half_Right2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_Out_Left": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_Out_Left2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_Out_Right": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_Out_Right2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_Staion_Left": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_Staion_Left2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_Staion_Right": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork_Staion_Right2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork1_Alarm": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork1_Alarm_Reset": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork1_Brake_MMS_FLT": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork1_JOG_Mode": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork1_Rotate_Left": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork1_Rotate_Right": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork1_STO_1": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork1_STO_2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork1_Stop": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork2_Alarm": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork2_Alarm_Reset": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork2_Brake_MMS_FLT": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork2_JOG_Mode": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork2_Rotate_Left": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork2_Rotate_Right": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork2_STO_1": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork2_STO_2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Fork2_Stop": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Depth_Front_L": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Depth_Front_L2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Depth_Front_R": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Depth_Front_R2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Depth_Rear_L": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Depth_Rear_L2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Depth_Rear_R": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Depth_Rear_R2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Height_Left": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Height_Left2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Height_Right": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Height_Right2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_High_OX2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Middle_OX2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_OX": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_OX2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Small_OX2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Width_Left": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Width_Left2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Width_Right": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Width_Right2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR1_Alarm_Signal": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR1_Alert_Signal": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR1_Observe_Signal": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR1_System_Alarm": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR1_Zone01_Select": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR1_Zone02_Select": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR1_Zone03_Select": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR1_Zone04_Select": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR2_Alarm_Signal": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR2_Alert_Signal": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR2_Observe_Signal": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR2_System_Alarm": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR2_Zone01_Select": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR2_Zone02_Select": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR2_Zone03_Select": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR2_Zone04_Select": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR3_Alarm_Signal": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR3_Alert_Signal": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR3_Observe_Signal": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR3_System_Alarm": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR3_Zone01_Select": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR3_Zone02_Select": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR3_Zone03_Select": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR3_Zone04_Select": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR4_Alarm_Signal": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR4_Alert_Signal": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR4_Observe_Signal": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR4_System_Alarm": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR4_Zone01_Select": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR4_Zone02_Select": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR4_Zone03_Select": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "LiDAR4_Zone04_Select": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "O_DoubleStorage_Left1": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "O_DoubleStorage_Left2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "O_DoubleStorage_Right1": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "O_DoubleStorage_Right2": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Lift_Home_Position": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Rope_Tension_Front": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Rope_Tension_Rear": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Lift_In_Limit_Sensor_H": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Lift_In_Limit_Sensor_E": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_High_OX": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Middle_OX": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Goods_Small_OX": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Lift_DEC": {
+      "x": null,
+      "y": null,
+      "z": null
+    }
+  }
+}

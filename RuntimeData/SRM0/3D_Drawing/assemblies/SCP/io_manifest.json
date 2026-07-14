@@ -1,0 +1,159 @@
+{
+  "assyId": "SCP",
+  "assyIoProfile": "SCP",
+  "stpFile": "SCP.stp",
+  "glbFile": "SCP.glb",
+  "stpSource": {
+    "file": "SCP.stp",
+    "mtimeMs": 1783579663850.774,
+    "sizeBytes": 57635,
+    "checkedAt": "2026-07-09T06:49:54.054Z"
+  },
+  "generatedAt": "2026-07-09T06:49:54.055Z",
+  "linearDeflection": null,
+  "coordsOnly": true,
+  "source": "stp",
+  "coordinateSystem": "solid_edge_z_up_mm",
+  "_note": "형체=GLB. 센서=STP 배치이름(occurrence)+배치좌표 우선, part파일명은 보조.",
+  "occurrenceCount": 17,
+  "sensorOccurrenceCount": 10,
+  "cadReference": {
+    "center": [
+      -304.53216511327327,
+      103.02260356817206,
+      1669.390058054912
+    ],
+    "zUp": true,
+    "unit": "mm"
+  },
+  "assemblyBBox": {
+    "center": [
+      -203.4952947839022,
+      139.2920327818134,
+      1649.67923871547
+    ],
+    "min": [
+      -383.687167283625,
+      -41.9033669306962,
+      1110.32018978077
+    ],
+    "max": [
+      -23.3034222841794,
+      320.487432494323,
+      2189.03828765017
+    ],
+    "zUp": true,
+    "unit": "mm"
+  },
+  "assemblyOrigin": [
+    0,
+    0,
+    0
+  ],
+  "points": {
+    "Panel_EMO_SW": {
+      "x": -23.3034222841794,
+      "y": 319.443859396967,
+      "z": 1120.02995207764,
+      "occurrenceName": "Panel_EMO_SW",
+      "partName": "SCP",
+      "sourceMesh": "Panel_EMO_SW",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Auto_Key_SW": {
+      "x": -227.086772783151,
+      "y": 319.443859396967,
+      "z": 1115.38944055542,
+      "occurrenceName": "Auto_Key_SW",
+      "partName": "SCP",
+      "sourceMesh": "Auto_Key_SW",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Maint_Key_SW": {
+      "x": -143.268504096556,
+      "y": 319.443859396967,
+      "z": 1115.38944055542,
+      "occurrenceName": "Maint_Key_SW",
+      "partName": "SCP",
+      "sourceMesh": "Maint_Key_SW",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Panel_Reset_SW": {
+      "x": -349.539948267096,
+      "y": 320.487432494323,
+      "z": 1110.32018978077,
+      "occurrenceName": "Panel_Reset_SW",
+      "partName": "SCP",
+      "sourceMesh": "Panel_Reset_SW",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Tower_Lamp_RED": {
+      "x": -383.687167283625,
+      "y": -41.9033669306962,
+      "z": 2069.02386658988,
+      "occurrenceName": "Tower_Lamp_RED",
+      "partName": "SCP",
+      "sourceMesh": "Tower_Lamp_RED",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Tower_Lamp_Yellow": {
+      "x": -383.687167283625,
+      "y": -41.9033669306962,
+      "z": 1946.86330416287,
+      "occurrenceName": "Tower_Lamp_Yellow",
+      "partName": "SCP",
+      "sourceMesh": "Tower_Lamp_Yellow",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Tower_Lamp_Green": {
+      "x": -383.687167283625,
+      "y": -40.4897536403593,
+      "z": 2128.74868114196,
+      "occurrenceName": "Tower_Lamp_Green",
+      "partName": "SCP",
+      "sourceMesh": "Tower_Lamp_Green",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Tower_Lamp_White": {
+      "x": -383.687167283625,
+      "y": -41.9033669306962,
+      "z": 2007.44309702141,
+      "occurrenceName": "Tower_Lamp_White",
+      "partName": "SCP",
+      "sourceMesh": "Tower_Lamp_White",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Tower_Lamp_Blue": {
+      "x": -383.687167283625,
+      "y": -40.4897536403593,
+      "z": 2189.03828765017,
+      "occurrenceName": "Tower_Lamp_Blue",
+      "partName": "SCP",
+      "sourceMesh": "Tower_Lamp_Blue",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Tower_Lamp_Buzzer": {
+      "x": -383.687167283625,
+      "y": -41.9033669306962,
+      "z": 1891.65432101358,
+      "occurrenceName": "Tower_Lamp_Buzzer",
+      "partName": "SCP",
+      "sourceMesh": "Tower_Lamp_Buzzer",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    }
+  },
+  "matchCount": 10,
+  "signalCount": 24,
+  "meshCount": 0,
+  "_meshNameSample": []
+}

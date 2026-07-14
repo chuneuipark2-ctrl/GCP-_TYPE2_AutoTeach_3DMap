@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>LicenseGeneratorTool</AssemblyName>
+    <RootNamespace>LicenseGeneratorTool</RootNamespace>
+    <BaseOutputPath>$(MSBuildProjectDirectory)\bin\</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(MSBuildProjectDirectory)\obj\</BaseIntermediateOutputPath>
+    <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+    <!-- 경고 억제 설정 -->
+    <NoWarn>$(NoWarn);NETSDK1138;NU1701</NoWarn>
+    <!-- NuGet 패키지 복원 보장 -->
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="8.0.0" />
+  </ItemGroup>
+
+  <!-- License 클래스들을 링크로 추가 (gcp_Wpf와 동일한 코드 공유) -->
+  <ItemGroup>
+    <Compile Include="..\License\HardwareIdGenerator.cs" Link="License\HardwareIdGenerator.cs" />
+    <Compile Include="..\License\KeyGenerator.cs" Link="License\KeyGenerator.cs" />
+    <Compile Include="..\License\LicenseData.cs" Link="License\LicenseData.cs" />
+    <Compile Include="..\License\LicenseGenerator.cs" Link="License\LicenseGenerator.cs" />
+  </ItemGroup>
+
+  <!-- 빌드 전 NuGet 패키지 복원 보장 -->
+  <Target Name="RestoreNuGetPackages" BeforeTargets="Build">
+    <Exec Command="dotnet restore &quot;$(MSBuildProjectFile)&quot;" ContinueOnError="false" />
+  </Target>
+
+</Project>
+

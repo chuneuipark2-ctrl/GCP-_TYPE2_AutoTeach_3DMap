@@ -1,0 +1,1523 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="영어" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="저장" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="저장문구" xml:space="preserve">
+    <value>Do you want to save config?</value>
+  </data>
+  <data name="저장완료재시작" xml:space="preserve">
+    <value>Saving is complete.
+Changes take effect after restart.</value>
+  </data>
+  <data name="중국어" xml:space="preserve">
+    <value>Chinese</value>
+  </data>
+  <data name="지상반 키 Online 상태가 아닙니다" xml:space="preserve">
+    <value>GCP key is not online</value>
+  </data>
+  <data name="지상반 키 모드확인" xml:space="preserve">
+    <value>GCP key mode check</value>
+  </data>
+  <data name="한국어" xml:space="preserve">
+    <value>Korean</value>
+  </data>
+  <data name="SRM 통신상태 확인" xml:space="preserve">
+    <value>SRM Communication Status Check</value>
+  </data>
+  <data name="기상반 키 수동 상태입니다" xml:space="preserve">
+    <value>SCP key is in manual mode</value>
+  </data>
+  <data name="기상반 셋업/강제모드 입니다" xml:space="preserve">
+    <value>SCP is in setup/force mode</value>
+  </data>
+  <data name="기상반 수동모드 입니다" xml:space="preserve">
+    <value>SCP is in manual mode</value>
+  </data>
+  <data name="기상반 자동모드 입니다" xml:space="preserve">
+    <value>SCP is in auto mode</value>
+  </data>
+  <data name="지상반 키 반자동 상태입니다" xml:space="preserve">
+    <value>GCP key is in semi-auto mode</value>
+  </data>
+  <data name="SRM I/O" xml:space="preserve">
+    <value>SRM
+I/O</value>
+  </data>
+  <data name="지상반 키 수동 상태입니다" xml:space="preserve">
+    <value>GCP key is in manual mode</value>
+  </data>
+  <data name="지상반 키 자동 상태입니다" xml:space="preserve">
+    <value>GCP key is in auto mode</value>
+  </data>
+  <data name="지상반 보수모드 상태입니다" xml:space="preserve">
+    <value>The ground panel is in maintenance mode.</value>
+  </data>
+  <data name="BAY는 1-50, LEV는 1-20 범위 내에서 입력해주세요." xml:space="preserve">
+    <value>Please enter BAY between 1-50
+and LEV between 1-20.</value>
+  </data>
+  <data name="올바른 숫자를 입력해주세요." xml:space="preserve">
+    <value>Please enter a valid number.</value>
+  </data>
+  <data name="장치가 수동 상태입니다." xml:space="preserve">
+    <value>The device is in manual mode.</value>
+  </data>
+  <data name="장치가 현재 홈 위치에 있습니다." xml:space="preserve">
+    <value>The device is currently at the home position.</value>
+  </data>
+  <data name="장치가 현재 동작 중 입니다." xml:space="preserve">
+    <value>The device is currently operating.</value>
+  </data>
+  <data name="크레인 자동모드가 아닙니다." xml:space="preserve">
+    <value>The crane is not in automatic mode.</value>
+  </data>
+  <data name="장치 이상을 해제해 주십시오." xml:space="preserve">
+    <value>Please clear the device error.</value>
+  </data>
+  <data name="장치 시작가능 상태가 아닙니다." xml:space="preserve">
+    <value>The device is not in a startable state.</value>
+  </data>
+  <data name="비상상황 발생" xml:space="preserve">
+    <value>Emergency situation
+detected
+</value>
+  </data>
+  <data name="정비모드 진입" xml:space="preserve">
+    <value>Entering
+maintenance mode</value>
+  </data>
+  <data name="모드 / 시작 상태를 확인해주세요1" xml:space="preserve">
+    <value>Please check the mode/start status 1</value>
+  </data>
+  <data name="모드 / 시작 상태를 확인해주세요2" xml:space="preserve">
+    <value>Please check the mode/start status 2</value>
+  </data>
+  <data name="모드 / 시작 상태를 확인해주세요3" xml:space="preserve">
+    <value>Please check the mode/start status 3</value>
+  </data>
+  <data name="프로그램을 종료하시겠습니까?" xml:space="preserve">
+    <value>Do you want to exit the program?</value>
+  </data>
+  <data name="작업없음" xml:space="preserve">
+    <value>No Job</value>
+  </data>
+  <data name="설정" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="모니터" xml:space="preserve">
+    <value>Monitor</value>
+  </data>
+  <data name="로그" xml:space="preserve">
+    <value>Log</value>
+  </data>
+  <data name="종료" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="메인" xml:space="preserve">
+    <value>Main</value>
+  </data>
+  <data name="자동" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="수동" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="반자동" xml:space="preserve">
+    <value>Semi-Auto</value>
+  </data>
+  <data name="테스트" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="이상내역" xml:space="preserve">
+    <value>Alarm History</value>
+  </data>
+  <data name="발생일시" xml:space="preserve">
+    <value>Occurrence Time</value>
+  </data>
+  <data name="에러코드" xml:space="preserve">
+    <value>Error Code</value>
+  </data>
+  <data name="서브코드" xml:space="preserve">
+    <value>Sub Code</value>
+  </data>
+  <data name="메인코드" xml:space="preserve">
+    <value>Main Code</value>
+  </data>
+  <data name="에러내용" xml:space="preserve">
+    <value>Error Content</value>
+  </data>
+  <data name="에러리스트" xml:space="preserve">
+    <value>Error List</value>
+  </data>
+  <data name="경고리스트" xml:space="preserve">
+    <value>Warning List</value>
+  </data>
+  <data name="경고내용" xml:space="preserve">
+    <value>Warning Content</value>
+  </data>
+  <data name="알람 테스트" xml:space="preserve">
+    <value>Alarm Test</value>
+  </data>
+  <data name="기상반 통신 설정" xml:space="preserve">
+    <value>SCP Communication Settings</value>
+  </data>
+  <data name="상위 통신 설정" xml:space="preserve">
+    <value>Upper Communication Settings</value>
+  </data>
+  <data name="DIO 통신 설정" xml:space="preserve">
+    <value>DIO Communication Settings</value>
+  </data>
+  <data name="DIO 사용" xml:space="preserve">
+    <value>DIO Usage</value>
+  </data>
+  <data name="DIO 타입" xml:space="preserve">
+    <value>DIO Type</value>
+  </data>
+  <data name="SAFETY PLUG 사용" xml:space="preserve">
+    <value>SAFETY PLUG Usage</value>
+  </data>
+  <data name="프로그램 정보" xml:space="preserve">
+    <value>Program Information</value>
+  </data>
+  <data name="언어설정" xml:space="preserve">
+    <value>Language Settings</value>
+  </data>
+  <data name="사용대수" xml:space="preserve">
+    <value>Number of Units</value>
+  </data>
+  <data name="레이아웃 업데이트" xml:space="preserve">
+    <value>Update Layout</value>
+  </data>
+  <data name="크레인 위치 - BAY:" xml:space="preserve">
+    <value>Crane Position - BAY:</value>
+  </data>
+  <data name="크레인 이동" xml:space="preserve">
+    <value>Move Crane</value>
+  </data>
+  <data name="크레인 정보" xml:space="preserve">
+    <value>Crane Information</value>
+  </data>
+  <data name="불러오기" xml:space="preserve">
+    <value>Load</value>
+  </data>
+  <data name="크레인 타입" xml:space="preserve">
+    <value>Crane Type</value>
+  </data>
+  <data name="포크개수" xml:space="preserve">
+    <value>Number of Forks</value>
+  </data>
+  <data name="포크타입" xml:space="preserve">
+    <value>Fork Type</value>
+  </data>
+  <data name="크레인 No" xml:space="preserve">
+    <value>Crane No</value>
+  </data>
+  <data name="열 (ROW)" xml:space="preserve">
+    <value>Column (ROW)</value>
+  </data>
+  <data name="행 (BAY)" xml:space="preserve">
+    <value>Row (BAY)</value>
+  </data>
+  <data name="단 (Level)" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="수신안됨" xml:space="preserve">
+    <value>No Reception</value>
+  </data>
+  <data name="싱글" xml:space="preserve">
+    <value>Single</value>
+  </data>
+  <data name="트윈" xml:space="preserve">
+    <value>Twin</value>
+  </data>
+  <data name="더블 2POS" xml:space="preserve">
+    <value>Double 2POS</value>
+  </data>
+  <data name="더블 3POS" xml:space="preserve">
+    <value>Double 3POS</value>
+  </data>
+  <data name="더블 2POS 베리언트" xml:space="preserve">
+    <value>Double 2POS Variant</value>
+  </data>
+  <data name="더블 3POS 베리언트" xml:space="preserve">
+    <value>Double 3POS Variant</value>
+  </data>
+  <data name="프로젝트 No" xml:space="preserve">
+    <value>Project No</value>
+  </data>
+  <data name="그룹 No" xml:space="preserve">
+    <value>Group No</value>
+  </data>
+  <data name="호기 No" xml:space="preserve">
+    <value>Unit No</value>
+  </data>
+  <data name="펌웨어 버젼" xml:space="preserve">
+    <value>Firmware Version</value>
+  </data>
+  <data name="프로토콜 버전" xml:space="preserve">
+    <value>Protocol Version</value>
+  </data>
+  <data name="장비시간" xml:space="preserve">
+    <value>Device Time</value>
+  </data>
+  <data name="장비시간 동기화" xml:space="preserve">
+    <value>Sync Device Time</value>
+  </data>
+  <data name="장비시간 동기화 문구" xml:space="preserve">
+    <value>Sync device time with GCP time?</value>
+  </data>
+  <data name="PLC인터록무시" xml:space="preserve">
+    <value>PLC Interlock Override</value>
+  </data>
+  <data name="공출고/공입고 무시" xml:space="preserve">
+    <value>Ignore In/Out Processing</value>
+  </data>
+  <data name="기타 설정" xml:space="preserve">
+    <value>Other Settings</value>
+  </data>
+  <data name="지상반 I/O" xml:space="preserve">
+    <value>GCP
+I/O</value>
+  </data>
+  <data name="시작" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="홈복귀" xml:space="preserve">
+    <value>Home Return</value>
+  </data>
+  <data name="이상리셋" xml:space="preserve">
+    <value>Alarm Reset</value>
+  </data>
+  <data name="부저정지" xml:space="preserve">
+    <value>Buzzer Stop</value>
+  </data>
+  <data name="작업완료" xml:space="preserve">
+    <value>Task Complete</value>
+  </data>
+  <data name="작업삭제" xml:space="preserve">
+    <value>Task Delete</value>
+  </data>
+  <data name="포크1" xml:space="preserve">
+    <value>Fork 1</value>
+  </data>
+  <data name="포크2" xml:space="preserve">
+    <value>Fork 2</value>
+  </data>
+  <data name="지상반설정" xml:space="preserve">
+    <value>GCP Settings</value>
+  </data>
+  <data name="크레인정보" xml:space="preserve">
+    <value>Crane Information</value>
+  </data>
+  <data name="오류" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="입력 오류" xml:space="preserve">
+    <value>Input Error</value>
+  </data>
+  <data name="크레인 이동 실패" xml:space="preserve">
+    <value>Crane Move Failed</value>
+  </data>
+  <data name="레이아웃 업데이트 실패" xml:space="preserve">
+    <value>Layout Update Failed</value>
+  </data>
+  <data name="HTML 파일을 찾을 수 없습니다" xml:space="preserve">
+    <value>HTML file not found</value>
+  </data>
+  <data name="HTML 파일 로드 실패" xml:space="preserve">
+    <value>HTML file load failed</value>
+  </data>
+  <data name="WebView 초기화 실패" xml:space="preserve">
+    <value>WebView initialization failed</value>
+  </data>
+  <data name="BAY는 1-50, LEV는 1-20 범위 내에서 입력해주세요" xml:space="preserve">
+    <value>Please enter BAY between 1-50 and LEV between 1-20</value>
+  </data>
+  <data name="올바른 숫자를 입력해주세요" xml:space="preserve">
+    <value>Please enter a valid number</value>
+  </data>
+  <data name="진출가능" xml:space="preserve">
+    <value>Available</value>
+  </data>
+  <data name="진출불가" xml:space="preserve">
+    <value>Not Available</value>
+  </data>
+  <data name="포크진출불가" xml:space="preserve">
+    <value>Fork Extension Not Available</value>
+  </data>
+  <data name="수동작업" xml:space="preserve">
+    <value>Manual Operation</value>
+  </data>
+  <data name="크레인 통신상태 확인" xml:space="preserve">
+    <value>Crane Communication Status Check</value>
+  </data>
+  <data name="통신확인" xml:space="preserve">
+    <value>Communication Check</value>
+  </data>
+  <data name="작업선택" xml:space="preserve">
+    <value>Task Selection</value>
+  </data>
+  <data name="이동" xml:space="preserve">
+    <value>Move</value>
+  </data>
+  <data name="입고" xml:space="preserve">
+    <value>Store</value>
+  </data>
+  <data name="출고" xml:space="preserve">
+    <value>Retrieve</value>
+  </data>
+  <data name="렉간이동" xml:space="preserve">
+    <value>Rack
+to Rack</value>
+  </data>
+  <data name="스테이션간이동" xml:space="preserve">
+    <value>ST
+to ST</value>
+  </data>
+  <data name="자재재위치" xml:space="preserve">
+    <value>Sticky
+Relocation</value>
+  </data>
+  <data name="목적지" xml:space="preserve">
+    <value>Destination</value>
+  </data>
+  <data name="작업 명" xml:space="preserve">
+    <value>Task Name</value>
+  </data>
+  <data name="포크1 작업" xml:space="preserve">
+    <value>Fork 1  
+Selection</value>
+  </data>
+  <data name="전송" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="초기화" xml:space="preserve">
+    <value>Initialize</value>
+  </data>
+  <data name="취소" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="확인" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="예" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="아니오" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="금지랙설정" xml:space="preserve">
+    <value>Prohibited Rack</value>
+  </data>
+  <data name="GCP --&gt; WCS 전송 정보" xml:space="preserve">
+    <value>GCP --&gt; WCS Transmission Info</value>
+  </data>
+  <data name="SRM 상태 정보    TYPE / VALUE" xml:space="preserve">
+    <value>SRM Status Info    TYPE / VALUE</value>
+  </data>
+  <data name="주행/승강" xml:space="preserve">
+    <value>Travel/Lift</value>
+  </data>
+  <data name="포크1/2 작업" xml:space="preserve">
+    <value>Fork 1/2 Task</value>
+  </data>
+  <data name="스테이션 정보" xml:space="preserve">
+    <value>Station Information</value>
+  </data>
+  <data name="스테이션 타입" xml:space="preserve">
+    <value>Station Type</value>
+  </data>
+  <data name="화물타입" xml:space="preserve">
+    <value>Cargo Type</value>
+  </data>
+  <data name="인터록 번호" xml:space="preserve">
+    <value>Interlock Number</value>
+  </data>
+  <data name="정위치기준" xml:space="preserve">
+    <value>Select Direction</value>
+  </data>
+  <data name="좌측" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="우측" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="주행" xml:space="preserve">
+    <value>Travel</value>
+  </data>
+  <data name="후진" xml:space="preserve">
+    <value>Reverse</value>
+  </data>
+  <data name="전진" xml:space="preserve">
+    <value>Forward</value>
+  </data>
+  <data name="승강" xml:space="preserve">
+    <value>Lift</value>
+  </data>
+  <data name="하강" xml:space="preserve">
+    <value>Down</value>
+  </data>
+  <data name="상승" xml:space="preserve">
+    <value>Up</value>
+  </data>
+  <data name="포크" xml:space="preserve">
+    <value>Fork</value>
+  </data>
+  <data name="하프모드" xml:space="preserve">
+    <value>Half Mode</value>
+  </data>
+  <data name="풀모드" xml:space="preserve">
+    <value>Full Mode</value>
+  </data>
+  <data name="폴링제외" xml:space="preserve">
+    <value>Exclude Polling</value>
+  </data>
+  <data name="정지" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="항상위" xml:space="preserve">
+    <value>Always On Top</value>
+  </data>
+  <data name="SRM 상태" xml:space="preserve">
+    <value>SRM Status</value>
+  </data>
+  <data name="목적지 랙 변경" xml:space="preserve">
+    <value>Dest
+Rack Change</value>
+  </data>
+  <data name="목적지 스테이션 변경" xml:space="preserve">
+    <value>Dest
+ST Change</value>
+  </data>
+  <data name="로딩" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="언로딩" xml:space="preserve">
+    <value>Unloading</value>
+  </data>
+  <data name="렉간반송" xml:space="preserve">
+    <value>Rack to Rack</value>
+  </data>
+  <data name="스테이션이동" xml:space="preserve">
+    <value>ST to ST</value>
+  </data>
+  <data name="렉변경" xml:space="preserve">
+    <value>Rack Change</value>
+  </data>
+  <data name="스테이션변경" xml:space="preserve">
+    <value>Station Change</value>
+  </data>
+  <data name="Sticky 명령" xml:space="preserve">
+    <value>Sticky Relocation</value>
+  </data>
+  <data name="수행중" xml:space="preserve">
+    <value>Executing</value>
+  </data>
+  <data name="중지" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="지령수신" xml:space="preserve">
+    <value>Command Received</value>
+  </data>
+  <data name="From 위치로 이동 중" xml:space="preserve">
+    <value>Moving to From Position</value>
+  </data>
+  <data name="From 위치 도착" xml:space="preserve">
+    <value>Arrived at From Position</value>
+  </data>
+  <data name="From 위치에서 포크진입" xml:space="preserve">
+    <value>Fork Entry at From Position</value>
+  </data>
+  <data name="From 위치에서 캐리지상승" xml:space="preserve">
+    <value>Carriage Up at From Position</value>
+  </data>
+  <data name="From 위치에서 포크복귀" xml:space="preserve">
+    <value>Fork Return at From Position</value>
+  </data>
+  <data name="To 위치로 이동 중" xml:space="preserve">
+    <value>Moving to To Position</value>
+  </data>
+  <data name="To 위치 도착" xml:space="preserve">
+    <value>Arrived at To Position</value>
+  </data>
+  <data name="To 위치에서 포크진입" xml:space="preserve">
+    <value>Fork Entry at To Position</value>
+  </data>
+  <data name="To 위치에서 캐리지하강" xml:space="preserve">
+    <value>Carriage Down at To Position</value>
+  </data>
+  <data name="To 위치에서 포크복귀" xml:space="preserve">
+    <value>Fork Return at To Position</value>
+  </data>
+  <data name="화물 적재 완료" xml:space="preserve">
+    <value>Load Complete</value>
+  </data>
+  <data name="화물 이재 완료" xml:space="preserve">
+    <value>Unload Complete</value>
+  </data>
+  <data name="Sticky From 위치로 이동중" xml:space="preserve">
+    <value>Moving to Sticky From Position</value>
+  </data>
+  <data name="Sticky From 위치 도착" xml:space="preserve">
+    <value>Arrived at Sticky From Position</value>
+  </data>
+  <data name="Sticky From 위치에서 포크진입" xml:space="preserve">
+    <value>Fork Entry at Sticky From Position</value>
+  </data>
+  <data name="Sticky From 위치에서 캐리지 상승" xml:space="preserve">
+    <value>Carriage Up at Sticky From Position</value>
+  </data>
+  <data name="Sticky From 위치에서 캐리지 하강" xml:space="preserve">
+    <value>Carriage Down at Sticky From Position</value>
+  </data>
+  <data name="Sticky From 위치에서 포크복귀" xml:space="preserve">
+    <value>Fork Return at Sticky From Position</value>
+  </data>
+  <data name="Sticky 동작 완료" xml:space="preserve">
+    <value>Sticky Operation Complete</value>
+  </data>
+  <data name="위치로 이동중" xml:space="preserve">
+    <value>Moving to Position</value>
+  </data>
+  <data name="위치 도착" xml:space="preserve">
+    <value>Arrived at Position</value>
+  </data>
+  <data name="Loading 포크진입" xml:space="preserve">
+    <value>Loading Fork Entry</value>
+  </data>
+  <data name="Loading 캐리지상승" xml:space="preserve">
+    <value>Loading Carriage Up</value>
+  </data>
+  <data name="Loading 포크복귀" xml:space="preserve">
+    <value>Loading Fork Return</value>
+  </data>
+  <data name="Unloading 포크진입" xml:space="preserve">
+    <value>Unloading Fork Entry</value>
+  </data>
+  <data name="Unloading 캐리지하강" xml:space="preserve">
+    <value>Unloading Carriage Down</value>
+  </data>
+  <data name="Unloading 포크복귀" xml:space="preserve">
+    <value>Unloading Fork Return</value>
+  </data>
+  <data name="시작가능" xml:space="preserve">
+    <value>Ready to Start</value>
+  </data>
+  <data name="주행 원점 미확인" xml:space="preserve">
+    <value>Travel Home Position Not Confirmed</value>
+  </data>
+  <data name="승강 원점 미확인" xml:space="preserve">
+    <value>Lift Home Position Not Confirmed</value>
+  </data>
+  <data name="포크 원점 미확인" xml:space="preserve">
+    <value>Fork Home Position Not Confirmed</value>
+  </data>
+  <data name="크레인 통신 상태 확인" xml:space="preserve">
+    <value>SRM Disconnected</value>
+  </data>
+  <data name="동작 중" xml:space="preserve">
+    <value>Operating</value>
+  </data>
+  <data name="장치가 현재 홈 위치에 있습니다" xml:space="preserve">
+    <value>Device is currently at home position</value>
+  </data>
+  <data name="장치가 현재 동작 중 입니다" xml:space="preserve">
+    <value>Device is currently in operation</value>
+  </data>
+  <data name="홈복귀 동작을 진행하시겠습니까?" xml:space="preserve">
+    <value>Do you want to proceed with home return operation?</value>
+  </data>
+  <data name="크레인 자동모드가 아닙니다" xml:space="preserve">
+    <value>Crane is not in auto mode</value>
+  </data>
+  <data name="실패" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="OFFLINE 으로 변경하시겠습니까?" xml:space="preserve">
+    <value>Do you want to change to OFFLINE?</value>
+  </data>
+  <data name="OFFLINE" xml:space="preserve">
+    <value>OFFLINE</value>
+  </data>
+  <data name="장치 이상을 해제해 주십시오" xml:space="preserve">
+    <value>Please clear the device alarm</value>
+  </data>
+  <data name="장치이상" xml:space="preserve">
+    <value>Device Alarm</value>
+  </data>
+  <data name="장치 시작가능 상태가 아닙니다" xml:space="preserve">
+    <value>Device is not in startable state</value>
+  </data>
+  <data name="시작불가" xml:space="preserve">
+    <value>Cannot Start</value>
+  </data>
+  <data name="수동 작업완료 처리 대기 중 입니다\n취소하고 작업을 시작하시겠습니까?" xml:space="preserve">
+    <value>Manual job completion is waiting for processing.\nDo you want to cancel and start the job?</value>
+  </data>
+  <data name="수동 작업삭제 처리 대기 중 입니다\n취소하고 작업을 시작하시겠습니까?" xml:space="preserve">
+    <value>Manual job deletion is waiting for processing.\nDo you want to cancel and start the job?</value>
+  </data>
+  <data name="미처리 작업(목적지변경)을 전송하시겠습니까? - 작업번호: " xml:space="preserve">
+    <value>Do you want to send unprocessed job (destination change)? - Job No: </value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="미처리 작업을 수행합니다 - 작업번호: " xml:space="preserve">
+    <value>Executing unprocessed job - Job No: </value>
+  </data>
+  <data name="ONLINE 으로 변경하시겠습니까?" xml:space="preserve">
+    <value>Do you want to change to ONLINE?</value>
+  </data>
+  <data name="ONLINE" xml:space="preserve">
+    <value>ONLINE</value>
+  </data>
+  <data name="현재 작업을 완료처리 하시겠습니까?" xml:space="preserve">
+    <value>Do you want to complete the current job?</value>
+  </data>
+  <data name="작업을 삭제하시겠습니까?" xml:space="preserve">
+    <value>Do you want to delete the job?</value>
+  </data>
+  <data name="SRM Left 모니터 컬럼 카운트 오류" xml:space="preserve">
+    <value>SRM Left Monitor Column Count Error</value>
+  </data>
+  <data name="변경확인" xml:space="preserve">
+    <value>Change Confirmation</value>
+  </data>
+  <data name="SRM Center 모니터 컬럼 카운트 오류" xml:space="preserve">
+    <value>SRM Center Monitor Column Count Error</value>
+  </data>
+  <data name="WCS TO 모니터 컬럼 카운트 오류" xml:space="preserve">
+    <value>WCS TO Monitor Column Count Error</value>
+  </data>
+  <data name="작업 포크를 선택해주세요" xml:space="preserve">
+    <value>Please select a job fork</value>
+  </data>
+  <data name="미처리 작업이 존재합니다.\r\n처리 후 진행해주세요." xml:space="preserve">
+    <value>Unprocessed jobs exist.\r\nPlease proceed after processing.</value>
+  </data>
+  <data name="크레인에 작업이 존재합니다.\r\n시작 ON시 해당 명령이 수행됩니다." xml:space="preserve">
+    <value>Jobs exist on the crane.\r\nWhen start is ON, the corresponding command will be executed.</value>
+  </data>
+  <data name="크레인이 동작 중 입니다.\r\n동작 완료 후 시도해주세요." xml:space="preserve">
+    <value>Crane is in operation.\r\nPlease try after operation is complete.</value>
+  </data>
+  <data name="반자동 명령을 전송하시겠습니까?" xml:space="preserve">
+    <value>Do you want to send semi-auto command?</value>
+  </data>
+  <data name="작업을 선택해주세요" xml:space="preserve">
+    <value>Please select a job</value>
+  </data>
+  <data name="실패:데이터 이상(" xml:space="preserve">
+    <value>Failed: Data Error (</value>
+  </data>
+  <data name="입력 데이터를 확인해주세요" xml:space="preserve">
+    <value>Please check the input data</value>
+  </data>
+  <data name="모드 / 시작 상태를 확인해주세요" xml:space="preserve">
+    <value>Please check mode / start status</value>
+  </data>
+  <data name="포크1 우측진출가능" xml:space="preserve">
+    <value>Fork 1 Right Extension Available</value>
+  </data>
+  <data name="포크1 좌측진출가능" xml:space="preserve">
+    <value>Fork 1 Left Extension Available</value>
+  </data>
+  <data name="포크2 우측진출가능" xml:space="preserve">
+    <value>Fork 2 Right Extension Available</value>
+  </data>
+  <data name="포크2 좌측진출가능" xml:space="preserve">
+    <value>Fork 2 Left Extension Available</value>
+  </data>
+  <data name="포크1 현재 STATION" xml:space="preserve">
+    <value>Fork 1 Current STATION</value>
+  </data>
+  <data name="포크1 현재 BAY" xml:space="preserve">
+    <value>Fork 1 Current BAY</value>
+  </data>
+  <data name="포크1 현재 LEVEL" xml:space="preserve">
+    <value>Fork 1 Current LEVEL</value>
+  </data>
+  <data name="포크1 현재 위치번호" xml:space="preserve">
+    <value>Fork 1 Current Position Number</value>
+  </data>
+  <data name="포크1 우 승강하위치" xml:space="preserve">
+    <value>Fork 1 Right Lift Lower Position</value>
+  </data>
+  <data name="포크1 우 승강상위치" xml:space="preserve">
+    <value>Fork 1 Right Lift Upper Position</value>
+  </data>
+  <data name="포크1 우 주행정위치" xml:space="preserve">
+    <value>Fork 1 Right Travel Reference Position</value>
+  </data>
+  <data name="포크1 좌 승강하위치" xml:space="preserve">
+    <value>Fork 1 Left Lift Lower Position</value>
+  </data>
+  <data name="포크1 좌 승강상위치" xml:space="preserve">
+    <value>Fork 1 Left Lift Upper Position</value>
+  </data>
+  <data name="포크1 좌 주행정위치" xml:space="preserve">
+    <value>Fork 1 Left Travel Reference Position</value>
+  </data>
+  <data name="포크1 우 정위치3" xml:space="preserve">
+    <value>Fork 1 Right Reference Position 3</value>
+  </data>
+  <data name="포크1 우 정위치2" xml:space="preserve">
+    <value>Fork 1 Right Reference Position 2</value>
+  </data>
+  <data name="포크1 우 정위치1" xml:space="preserve">
+    <value>Fork 1 Right Reference Position 1</value>
+  </data>
+  <data name="포크1 좌 정위치3" xml:space="preserve">
+    <value>Fork 1 Left Reference Position 3</value>
+  </data>
+  <data name="포크1 좌 정위치2" xml:space="preserve">
+    <value>Fork 1 Left Reference Position 2</value>
+  </data>
+  <data name="포크1 좌 정위치1" xml:space="preserve">
+    <value>Fork 1 Left Reference Position 1</value>
+  </data>
+  <data name="포크1 중심정위치" xml:space="preserve">
+    <value>Fork 1 Center Reference Position</value>
+  </data>
+  <data name="포크1 목적 스테이션" xml:space="preserve">
+    <value>Fork 1 Target Station</value>
+  </data>
+  <data name="포크1 목적 ROW" xml:space="preserve">
+    <value>Fork 1 Target ROW</value>
+  </data>
+  <data name="포크1 목적 BAY" xml:space="preserve">
+    <value>Fork 1 Target BAY</value>
+  </data>
+  <data name="포크1 목적 LEVEL" xml:space="preserve">
+    <value>Fork 1 Target LEVEL</value>
+  </data>
+  <data name="포크1 화물적재" xml:space="preserve">
+    <value>Fork 1 Cargo Loading</value>
+  </data>
+  <data name="포크1 정위치" xml:space="preserve">
+    <value>Fork 1 Reference Position</value>
+  </data>
+  <data name="포크1 이동방향" xml:space="preserve">
+    <value>Fork 1 Movement Direction</value>
+  </data>
+  <data name="포크1 감속중" xml:space="preserve">
+    <value>Fork 1 Decelerating</value>
+  </data>
+  <data name="포크1 가속중" xml:space="preserve">
+    <value>Fork 1 Accelerating</value>
+  </data>
+  <data name="포크1 동작중" xml:space="preserve">
+    <value>Fork 1 In Operation</value>
+  </data>
+  <data name="포크1 부하 튜닝중" xml:space="preserve">
+    <value>Fork 1 Load Tuning</value>
+  </data>
+  <data name="포크1 무부하 튜닝중" xml:space="preserve">
+    <value>Fork 1 No-Load Tuning</value>
+  </data>
+  <data name="포크1 원점확인" xml:space="preserve">
+    <value>Fork 1 Origin Confirmation</value>
+  </data>
+  <data name="포크1 인버터 알람" xml:space="preserve">
+    <value>Fork 1 Inverter Alarm</value>
+  </data>
+  <data name="포크1 인버터 접속" xml:space="preserve">
+    <value>Fork 1 Inverter Connection</value>
+  </data>
+  <data name="포크1 화물타입" xml:space="preserve">
+    <value>Fork 1 Cargo Type</value>
+  </data>
+  <data name="포크1 현재위치" xml:space="preserve">
+    <value>Fork 1 Current Position</value>
+  </data>
+  <data name="포크1 현재속도" xml:space="preserve">
+    <value>Fork 1 Current Speed</value>
+  </data>
+  <data name="포크1 목표위치" xml:space="preserve">
+    <value>Fork 1 Target Position</value>
+  </data>
+  <data name="포크1 목표속도" xml:space="preserve">
+    <value>Fork 1 Target Speed</value>
+  </data>
+  <data name="포크2 현재 STATION" xml:space="preserve">
+    <value>Fork 2 Current STATION</value>
+  </data>
+  <data name="포크2 현재 BAY" xml:space="preserve">
+    <value>Fork 2 Current BAY</value>
+  </data>
+  <data name="포크2 현재 LEVEL" xml:space="preserve">
+    <value>Fork 2 Current LEVEL</value>
+  </data>
+  <data name="포크2 현재 위치번호" xml:space="preserve">
+    <value>Fork 2 Current Position Number</value>
+  </data>
+  <data name="포크2 우 승강하위치" xml:space="preserve">
+    <value>Fork 2 Right Lift Lower Position</value>
+  </data>
+  <data name="포크2 우 승강상위치" xml:space="preserve">
+    <value>Fork 2 Right Lift Upper Position</value>
+  </data>
+  <data name="포크2 우 주행정위치" xml:space="preserve">
+    <value>Fork 2 Right Travel Reference Position</value>
+  </data>
+  <data name="포크2 좌 승강하위치" xml:space="preserve">
+    <value>Fork 2 Left Lift Lower Position</value>
+  </data>
+  <data name="포크2 좌 승강상위치" xml:space="preserve">
+    <value>Fork 2 Left Lift Upper Position</value>
+  </data>
+  <data name="포크2 좌 주행정위치" xml:space="preserve">
+    <value>Fork 2 Left Travel Reference Position</value>
+  </data>
+  <data name="포크2 우 정위치3" xml:space="preserve">
+    <value>Fork 2 Right Reference Position 3</value>
+  </data>
+  <data name="포크2 우 정위치2" xml:space="preserve">
+    <value>Fork 2 Right Reference Position 2</value>
+  </data>
+  <data name="포크2 우 정위치1" xml:space="preserve">
+    <value>Fork 2 Right Reference Position 1</value>
+  </data>
+  <data name="포크2 좌 정위치3" xml:space="preserve">
+    <value>Fork 2 Left Reference Position 3</value>
+  </data>
+  <data name="포크2 좌 정위치2" xml:space="preserve">
+    <value>Fork 2 Left Reference Position 2</value>
+  </data>
+  <data name="포크2 좌 정위치1" xml:space="preserve">
+    <value>Fork 2 Left Reference Position 1</value>
+  </data>
+  <data name="포크2 중심정위치" xml:space="preserve">
+    <value>Fork 2 Center Reference Position</value>
+  </data>
+  <data name="포크2 목적 스테이션" xml:space="preserve">
+    <value>Fork 2 Target Station</value>
+  </data>
+  <data name="포크2 목적 ROW" xml:space="preserve">
+    <value>Fork 2 Target ROW</value>
+  </data>
+  <data name="포크2 목적 BAY" xml:space="preserve">
+    <value>Fork 2 Target BAY</value>
+  </data>
+  <data name="포크2 목적 LEVEL" xml:space="preserve">
+    <value>Fork 2 Target LEVEL</value>
+  </data>
+  <data name="포크2 화물적재" xml:space="preserve">
+    <value>Fork 2 Cargo Loading</value>
+  </data>
+  <data name="포크2 정위치" xml:space="preserve">
+    <value>Fork 2 Reference Position</value>
+  </data>
+  <data name="포크2 이동방향" xml:space="preserve">
+    <value>Fork 2 Movement Direction</value>
+  </data>
+  <data name="포크2 감속중" xml:space="preserve">
+    <value>Fork 2 Decelerating</value>
+  </data>
+  <data name="포크2 가속중" xml:space="preserve">
+    <value>Fork 2 Accelerating</value>
+  </data>
+  <data name="포크2 동작중" xml:space="preserve">
+    <value>Fork 2 In Operation</value>
+  </data>
+  <data name="포크2 부하 튜닝중" xml:space="preserve">
+    <value>Fork 2 Load Tuning</value>
+  </data>
+  <data name="포크2 무부하 튜닝중" xml:space="preserve">
+    <value>Fork 2 No-Load Tuning</value>
+  </data>
+  <data name="포크2 원점확인" xml:space="preserve">
+    <value>Fork 2 Origin Confirmation</value>
+  </data>
+  <data name="포크2 인버터 알람" xml:space="preserve">
+    <value>Fork 2 Inverter Alarm</value>
+  </data>
+  <data name="포크2 인버터 접속" xml:space="preserve">
+    <value>Fork 2 Inverter Connection</value>
+  </data>
+  <data name="포크2 화물타입" xml:space="preserve">
+    <value>Fork 2 Cargo Type</value>
+  </data>
+  <data name="포크2 현재위치" xml:space="preserve">
+    <value>Fork 2 Current Position</value>
+  </data>
+  <data name="포크2 현재속도" xml:space="preserve">
+    <value>Fork 2 Current Speed</value>
+  </data>
+  <data name="포크2 목표위치" xml:space="preserve">
+    <value>Fork 2 Target Position</value>
+  </data>
+  <data name="포크2 목표속도" xml:space="preserve">
+    <value>Fork 2 Target Speed</value>
+  </data>
+  <data name="반송 작업번호" xml:space="preserve">
+    <value>Transfer Job Number</value>
+  </data>
+  <data name="반송 태스크번호" xml:space="preserve">
+    <value>Transfer Task Number</value>
+  </data>
+  <data name="반송 출발 스테이션" xml:space="preserve">
+    <value>Transfer Departure Station</value>
+  </data>
+  <data name="반송 출발 ROW" xml:space="preserve">
+    <value>Transfer Departure ROW</value>
+  </data>
+  <data name="반송 출발 BAY" xml:space="preserve">
+    <value>Transfer Departure BAY</value>
+  </data>
+  <data name="반송 출발 LEVEL" xml:space="preserve">
+    <value>Transfer Departure LEVEL</value>
+  </data>
+  <data name="반송 목적 스테이션" xml:space="preserve">
+    <value>Transfer Destination Station</value>
+  </data>
+  <data name="반송 목적 ROW" xml:space="preserve">
+    <value>Transfer Destination ROW</value>
+  </data>
+  <data name="반송 목적 BAY" xml:space="preserve">
+    <value>Transfer Destination BAY</value>
+  </data>
+  <data name="반송 목적 LEVEL" xml:space="preserve">
+    <value>Transfer Destination LEVEL</value>
+  </data>
+  <data name="반송 지령코드" xml:space="preserve">
+    <value>Transfer Command Code</value>
+  </data>
+  <data name="반송 처리상태" xml:space="preserve">
+    <value>Transfer Processing Status</value>
+  </data>
+  <data name="반송 처리단계" xml:space="preserve">
+    <value>Transfer Processing Stage</value>
+  </data>
+  <data name="이동 작업번호" xml:space="preserve">
+    <value>Movement Job Number</value>
+  </data>
+  <data name="이동 목적 스테이션" xml:space="preserve">
+    <value>Movement Destination Station</value>
+  </data>
+  <data name="이동 목적 ROW" xml:space="preserve">
+    <value>Movement Destination ROW</value>
+  </data>
+  <data name="이동 목적 BAY" xml:space="preserve">
+    <value>Movement Destination BAY</value>
+  </data>
+  <data name="이동 목적 LEVEL" xml:space="preserve">
+    <value>Movement Destination LEVEL</value>
+  </data>
+  <data name="이동 처리상태" xml:space="preserve">
+    <value>Movement Processing Status</value>
+  </data>
+  <data name="이동 처리단계" xml:space="preserve">
+    <value>Movement Processing Stage</value>
+  </data>
+  <data name="주행 설정 속도" xml:space="preserve">
+    <value>Travel Setting Speed</value>
+  </data>
+  <data name="승강 설정 속도" xml:space="preserve">
+    <value>Lift Setting Speed</value>
+  </data>
+  <data name="포크1 설정 속도" xml:space="preserve">
+    <value>Fork 1 Setting Speed</value>
+  </data>
+  <data name="포크2 설정 속도" xml:space="preserve">
+    <value>Fork 2 Setting Speed</value>
+  </data>
+  <data name="주행 설정 가속도" xml:space="preserve">
+    <value>Travel Setting Acceleration</value>
+  </data>
+  <data name="승강 설정 가속도" xml:space="preserve">
+    <value>Lift Setting Acceleration</value>
+  </data>
+  <data name="포크1 설정 가속도" xml:space="preserve">
+    <value>Fork 1 Setting Acceleration</value>
+  </data>
+  <data name="포크2 설정 가속도" xml:space="preserve">
+    <value>Fork 2 Setting Acceleration</value>
+  </data>
+  <data name="주행 설정 감속도" xml:space="preserve">
+    <value>Travel Setting Deceleration</value>
+  </data>
+  <data name="승강 설정 감속도" xml:space="preserve">
+    <value>Lift Setting Deceleration</value>
+  </data>
+  <data name="포크1 설정 감속도" xml:space="preserve">
+    <value>Fork 1 Setting Deceleration</value>
+  </data>
+  <data name="포크2 설정 감속도" xml:space="preserve">
+    <value>Fork 2 Setting Deceleration</value>
+  </data>
+  <data name="주행 설정 저크" xml:space="preserve">
+    <value>Travel Setting Jerk</value>
+  </data>
+  <data name="승강 설정 저크" xml:space="preserve">
+    <value>Lift Setting Jerk</value>
+  </data>
+  <data name="포크1 설정 저크" xml:space="preserve">
+    <value>Fork 1 Setting Jerk</value>
+  </data>
+  <data name="포크2 설정 저크" xml:space="preserve">
+    <value>Fork 2 Setting Jerk</value>
+  </data>
+  <data name="로딩 전 이동 지연시간" xml:space="preserve">
+    <value>Loading Pre-Movement Delay Time</value>
+  </data>
+  <data name="로딩 후 이동 지연시간" xml:space="preserve">
+    <value>Loading Post-Movement Delay Time</value>
+  </data>
+  <data name="로딩 전 포크 전개 지연시간" xml:space="preserve">
+    <value>Loading Pre-Fork Extension Delay Time</value>
+  </data>
+  <data name="로딩 후 포크 전개 지연시간" xml:space="preserve">
+    <value>Loading Post-Fork Extension Delay Time</value>
+  </data>
+  <data name="로딩 전 포크 승강 지연시간" xml:space="preserve">
+    <value>Loading Pre-Fork Lift Delay Time</value>
+  </data>
+  <data name="로딩 후 포크 승강 지연시간" xml:space="preserve">
+    <value>Loading Post-Fork Lift Delay Time</value>
+  </data>
+  <data name="로딩 전 포크 후진 지연시간" xml:space="preserve">
+    <value>Loading Pre-Fork Reverse Delay Time</value>
+  </data>
+  <data name="로딩 후 포크 후진 지연시간" xml:space="preserve">
+    <value>Loading Post-Fork Reverse Delay Time</value>
+  </data>
+  <data name="언로딩 전 이동 지연시간" xml:space="preserve">
+    <value>Unloading Pre-Movement Delay Time</value>
+  </data>
+  <data name="언로딩 후 이동 지연시간" xml:space="preserve">
+    <value>Unloading Post-Movement Delay Time</value>
+  </data>
+  <data name="언로딩 전 포크 전개 지연시간" xml:space="preserve">
+    <value>Unloading Pre-Fork Extension Delay Time</value>
+  </data>
+  <data name="언로딩 후 포크 전개 지연시간" xml:space="preserve">
+    <value>Unloading Post-Fork Extension Delay Time</value>
+  </data>
+  <data name="언로딩 전 포크 승강 지연시간" xml:space="preserve">
+    <value>Unloading Pre-Fork Lift Delay Time</value>
+  </data>
+  <data name="언로딩 후 포크 승강 지연시간" xml:space="preserve">
+    <value>Unloading Post-Fork Lift Delay Time</value>
+  </data>
+  <data name="언로딩 전 포크 후진 지연시간" xml:space="preserve">
+    <value>Unloading Pre-Fork Reverse Delay Time</value>
+  </data>
+  <data name="언로딩 후 포크 후진 지연시간" xml:space="preserve">
+    <value>Unloading Post-Fork Reverse Delay Time</value>
+  </data>
+  <data name="주행 모터 토크" xml:space="preserve">
+    <value>Travel Motor Torque</value>
+  </data>
+  <data name="승강 모터 토크" xml:space="preserve">
+    <value>Lift Motor Torque</value>
+  </data>
+  <data name="포크1 모터 토크" xml:space="preserve">
+    <value>Fork 1 Motor Torque</value>
+  </data>
+  <data name="포크2 모터 토크" xml:space="preserve">
+    <value>Fork 2 Motor Torque</value>
+  </data>
+  <data name="총 동작 시간" xml:space="preserve">
+    <value>Total Operation Time</value>
+  </data>
+  <data name="주행 동작 시간" xml:space="preserve">
+    <value>Travel Operation Time</value>
+  </data>
+  <data name="승강 동작 시간" xml:space="preserve">
+    <value>Lift Operation Time</value>
+  </data>
+  <data name="포크1 동작 시간" xml:space="preserve">
+    <value>Fork 1 Operation Time</value>
+  </data>
+  <data name="포크2 동작 시간" xml:space="preserve">
+    <value>Fork 2 Operation Time</value>
+  </data>
+  <data name="주행 브레이크 해제 횟수" xml:space="preserve">
+    <value>Travel Brake Release Count</value>
+  </data>
+  <data name="승강 브레이크 해제 횟수" xml:space="preserve">
+    <value>Lift Brake Release Count</value>
+  </data>
+  <data name="포크1 브레이크 해제 횟수" xml:space="preserve">
+    <value>Fork 1 Brake Release Count</value>
+  </data>
+  <data name="포크2 브레이크 해제 횟수" xml:space="preserve">
+    <value>Fork 2 Brake Release Count</value>
+  </data>
+  <data name="스테이션설정" xml:space="preserve">
+    <value>Station Settings</value>
+  </data>
+  <data name="포크2 작업" xml:space="preserve">
+    <value>Fork 2
+Selection</value>
+  </data>
+  <data name="C/V 인터록무시 조건이 켜져있습니다, 진행하시겠습니까?" xml:space="preserve">
+    <value>C/V interlock override condition is enabled.
+Do you want to proceed?</value>
+  </data>
+  <data name="셋업 모드" xml:space="preserve">
+    <value>Setup Mode</value>
+  </data>
+  <data name="강제 모드" xml:space="preserve">
+    <value>Forced Mode</value>
+  </data>
+  <data name="수동 모드" xml:space="preserve">
+    <value>Manual Mode</value>
+  </data>
+  <data name="자동 모드" xml:space="preserve">
+    <value>Auto Mode</value>
+  </data>
+  <data name="작업 요구" xml:space="preserve">
+    <value>Job Request</value>
+  </data>
+  <data name="인버터 접속 상태" xml:space="preserve">
+    <value>Inverter Connection Status</value>
+  </data>
+  <data name="이상 상태" xml:space="preserve">
+    <value>Error Status</value>
+  </data>
+  <data name="경고 상태" xml:space="preserve">
+    <value>Warning Status</value>
+  </data>
+  <data name="비상 정지" xml:space="preserve">
+    <value>Emergency Stop</value>
+  </data>
+  <data name="시작 상태" xml:space="preserve">
+    <value>Start Status</value>
+  </data>
+  <data name="시작 가능" xml:space="preserve">
+    <value>Start Ready</value>
+  </data>
+  <data name="비상스위치 상태" xml:space="preserve">
+    <value>Emergency Switch Status</value>
+  </data>
+  <data name="자동/수동 스위치" xml:space="preserve">
+    <value>Auto/Manual Switch</value>
+  </data>
+  <data name="보수 위치" xml:space="preserve">
+    <value>Maintenance Position</value>
+  </data>
+  <data name="홈 위치" xml:space="preserve">
+    <value>Home Position</value>
+  </data>
+  <data name="장비 동작코드" xml:space="preserve">
+    <value>Equipment Operation Code</value>
+  </data>
+  <data name="에러 코드" xml:space="preserve">
+    <value>Error Code</value>
+  </data>
+  <data name="경고 코드" xml:space="preserve">
+    <value>Warning Code</value>
+  </data>
+  <data name="서브 코드" xml:space="preserve">
+    <value>Sub Code</value>
+  </data>
+  <data name="작업 스텝" xml:space="preserve">
+    <value>Job Step</value>
+  </data>
+  <data name="주행 홈복귀" xml:space="preserve">
+    <value>Traveling Home Return</value>
+  </data>
+  <data name="주행 정위치" xml:space="preserve">
+    <value>Traveling In-Position</value>
+  </data>
+  <data name="주행 이동방향" xml:space="preserve">
+    <value>Traveling Direction</value>
+  </data>
+  <data name="주행 감속중" xml:space="preserve">
+    <value>Traveling Decelerating</value>
+  </data>
+  <data name="주행 가속중" xml:space="preserve">
+    <value>Traveling Accelerating</value>
+  </data>
+  <data name="주행 동작중" xml:space="preserve">
+    <value>Traveling Operating</value>
+  </data>
+  <data name="주행 부하 튜닝중" xml:space="preserve">
+    <value>Traveling Load Tuning</value>
+  </data>
+  <data name="주행 무부하 튜닝중" xml:space="preserve">
+    <value>Traveling No-Load Tuning</value>
+  </data>
+  <data name="주행 원점확인" xml:space="preserve">
+    <value>Traveling Origin Check</value>
+  </data>
+  <data name="주행 인버터 알람" xml:space="preserve">
+    <value>Traveling Inverter Alarm</value>
+  </data>
+  <data name="주행 인버터 접속" xml:space="preserve">
+    <value>Traveling Inverter Connection</value>
+  </data>
+  <data name="주행 전진감속번호" xml:space="preserve">
+    <value>Traveling Fwd Decel No</value>
+  </data>
+  <data name="주행 후진감속번호" xml:space="preserve">
+    <value>Traveling Bwd Decel No</value>
+  </data>
+  <data name="주행 현재위치" xml:space="preserve">
+    <value>Traveling Current Pos</value>
+  </data>
+  <data name="주행 현재속도" xml:space="preserve">
+    <value>Traveling Current Spd</value>
+  </data>
+  <data name="주행 목표위치" xml:space="preserve">
+    <value>Traveling Target Pos</value>
+  </data>
+  <data name="주행 목표속도" xml:space="preserve">
+    <value>Traveling Target Spd</value>
+  </data>
+  <data name="승강 홈복귀" xml:space="preserve">
+    <value>Hoisting Home Return</value>
+  </data>
+  <data name="승강 정위치" xml:space="preserve">
+    <value>Hoisting In-Position</value>
+  </data>
+  <data name="승강 이동방향" xml:space="preserve">
+    <value>Hoisting Direction</value>
+  </data>
+  <data name="승강 감속중" xml:space="preserve">
+    <value>Hoisting Decelerating</value>
+  </data>
+  <data name="승강 가속중" xml:space="preserve">
+    <value>Hoisting Accelerating</value>
+  </data>
+  <data name="승강 동작중" xml:space="preserve">
+    <value>Hoisting Operating</value>
+  </data>
+  <data name="승강 부하 튜닝중" xml:space="preserve">
+    <value>Hoisting Load Tuning</value>
+  </data>
+  <data name="승강 무부하 튜닝중" xml:space="preserve">
+    <value>Hoisting No-Load Tuning</value>
+  </data>
+  <data name="승강 원점확인" xml:space="preserve">
+    <value>Hoisting Origin Check</value>
+  </data>
+  <data name="승강 인버터 알람" xml:space="preserve">
+    <value>Hoisting Inverter Alarm</value>
+  </data>
+  <data name="승강 인버터 접속" xml:space="preserve">
+    <value>Hoisting Inverter Connection</value>
+  </data>
+  <data name="승강 상승감속번호" xml:space="preserve">
+    <value>Hoisting Up Decel No</value>
+  </data>
+  <data name="승강 하강감속번호" xml:space="preserve">
+    <value>Hoisting Down Decel No</value>
+  </data>
+  <data name="승강 현재위치" xml:space="preserve">
+    <value>Hoisting Current Pos</value>
+  </data>
+  <data name="승강 현재속도" xml:space="preserve">
+    <value>Hoisting Current Spd</value>
+  </data>
+  <data name="승강 목표위치" xml:space="preserve">
+    <value>Hoisting Target Pos</value>
+  </data>
+  <data name="승강 목표속도" xml:space="preserve">
+    <value>Hoisting Target Spd</value>
+  </data>
+  <data name="타입없음" xml:space="preserve">
+    <value>No Type</value>
+  </data>
+  <data name="입출고" xml:space="preserve">
+    <value>In/Out</value>
+  </data>
+  <data name="가상스테이션" xml:space="preserve">
+    <value>Virtual Station</value>
+  </data>
+  <data name="모든 화물 허용 안함" xml:space="preserve">
+    <value>No Cargo Allowed</value>
+  </data>
+  <data name="1종" xml:space="preserve">
+    <value>Type 1</value>
+  </data>
+  <data name="2종" xml:space="preserve">
+    <value>Type 2</value>
+  </data>
+  <data name="3종" xml:space="preserve">
+    <value>Type 3</value>
+  </data>
+  <data name="4종" xml:space="preserve">
+    <value>Type 4</value>
+  </data>
+  <data name="5종" xml:space="preserve">
+    <value>Type 5</value>
+  </data>
+  <data name="6종" xml:space="preserve">
+    <value>Type 6</value>
+  </data>
+  <data name="7종" xml:space="preserve">
+    <value>Type 7</value>
+  </data>
+  <data name="8종" xml:space="preserve">
+    <value>Type 8</value>
+  </data>
+  <data name="스테이션 정보요청 버튼 Click" xml:space="preserve">
+    <value>Station Info Request Button Click</value>
+  </data>
+  <data name="미송신 작업 전송대기" xml:space="preserve">
+    <value>Waiting to send unsent job</value>
+  </data>
+  <data name="시작 시 명령전송" xml:space="preserve">
+    <value>Transmit command on start</value>
+  </data>
+  <data name="미완료 작업 실행대기" xml:space="preserve">
+    <value>Waiting to execute incomplete job</value>
+  </data>
+  <data name="시작 시 명령실행" xml:space="preserve">
+    <value>Execute command on start</value>
+  </data>
+  <data name="SRM에 삭제되지 않은 작업이 남아 있습니다" xml:space="preserve">
+    <value>Undeleted jobs remain
+in SRM.</value>
+  </data>
+  <data name="광모뎀 에러 사용" xml:space="preserve">
+    <value>Modem Error Usage</value>
+  </data>
+  <data name="현재" xml:space="preserve">
+    <value>Current</value>
+  </data>
+  <data name="다음" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="목적" xml:space="preserve">
+    <value>Target</value>
+  </data>
+  <data name="닫기" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Access Code" xml:space="preserve">
+    <value>Access Code</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="logo2" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="SRM 작업이 존재합니다. 아래 작업을 수행하시겠습니까?\nSRM작업: " xml:space="preserve">
+    <value>An SRM job exists. Do you want to perform the action below?\nSRM job: </value>
+  </data>
+</root>

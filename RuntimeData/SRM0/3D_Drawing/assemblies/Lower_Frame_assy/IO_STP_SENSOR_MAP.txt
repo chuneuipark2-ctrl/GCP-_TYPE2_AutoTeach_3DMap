@@ -1,0 +1,26 @@
+# IO_STP_SENSOR_MAP — Lower_Frame_assy 전용
+# PLC signalKey <TAB> STP 센서 번호 (1~23)
+# ※ GDFL 없음 — SOLID_EDGE_IO_DEFINE 배치명 우선, 이 파일은 번호 보조
+Travel_Limit_Sensor_H	1
+Travel_Limit_Sensor_E	2
+Travel1_Brake_MMS_FLT	3
+Travel2_Brake_MMS_FLT	4
+Travel_DEC	5
+Travel_Home_Position	6
+Modem_Fault	7
+Station_Ready_1	8
+Station_Ready_2	9
+Station_Ready_3	10
+Station_Ready_4	11
+Station_Ready_5	12
+Station_Ready_6	13
+Station_Ready_7	14
+Station_Ready_8	15
+Station_Stop_1	16
+Station_Stop_2	17
+Station_Stop_3	18
+Station_Stop_4	19
+Station_Stop_5	20
+Station_Stop_6	21
+Station_Stop_7	22
+Station_Stop_8	23

@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>크레인 운영 모니터</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: rgb(0, 31, 44);
+            overflow: hidden;
+            height: 100vh;
+            color: #fff;
+        }
+
+        #container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #info-panel {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.3); /* 투명도를 0.8에서 0.3으로 낮춤 */
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            min-width: 200px;
+            z-index: 10;
+            border: 1px solid rgba(68, 68, 68, 0.5); /* 테두리도 투명하게 */
+            pointer-events: none; /* 클릭 이벤트가 뒤로 전달되도록 */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* 텍스트 가독성을 위한 그림자 추가 */
+        }
+
+        #rack-viewport {
+            position: absolute;
+            top: 80px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: auto; /* 스크롤바 활성화 */
+            background: rgb(0, 31, 44);
+        }
+
+        #rack-container {
+            position: relative;
+            /* transform 제거 - 스크롤 방식으로 변경 */
+            min-width: 100%;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* 내용을 아래쪽에 정렬 */
+            align-items: flex-start; /* 왼쪽에 정렬 */
+        }
+
+        #rack-area {
+            display: grid;
+            grid-template-columns: 40px repeat(var(--bay-count), 60px);
+            grid-template-rows: repeat(var(--lev-count), 50px) 30px;
+            gap: 3px;
+            padding: 50px;
+            position: relative; /* absolute에서 relative로 변경 */
+            /* flex 컨테이너 내에서 아래쪽에 정렬됨 */
+        }
+
+        .rack-grid {
+            grid-column: 2 / -1;
+            grid-row: 1 / -2;
+            display: grid;
+            gap: 3px;
+            grid-template-rows: repeat(var(--lev-count), 50px);
+            grid-template-columns: repeat(var(--bay-count), 60px);
+        }
+
+        .rack-cell {
+            width: 60px;
+            height: 50px;
+            background: linear-gradient(145deg, #95a5a6, #7f8c8d);
+            border: 2px solid #34495e;
+            border-radius: 6px;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .rack-cell:hover {
+            background: linear-gradient(145deg, #3498db, #2980b9);
+            transform: scale(1.05);
+            color: white;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .rack-cell.occupied {
+            background: linear-gradient(145deg, #e67e22, #d35400);
+            color: white;
+        }
+
+        .rack-cell.selected {
+            background: linear-gradient(145deg, #27ae60, #229954);
+            color: white;
+            box-shadow: 0 0 20px rgba(39, 174, 96, 0.8);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 20px rgba(39, 174, 96, 0.8); }
+            50% { box-shadow: 0 0 30px rgba(39, 174, 96, 1); }
+            100% { box-shadow: 0 0 20px rgba(39, 174, 96, 0.8); }
+        }
+
+        .bay-labels {
+            grid-column: 2 / -1;
+            grid-row: -1;
+            display: grid;
+            grid-template-columns: repeat(var(--bay-count), 60px);
+            gap: 3px;
+        }
+
+        .bay-label {
+            width: 60px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #34495e, #2c3e50);
+            color: #ecf0f1;
+            font-weight: bold;
+            font-size: 12px;
+            border-radius: 6px;
+            border: 1px solid #7f8c8d;
+        }
+
+        .lev-labels {
+            grid-column: 1;
+            grid-row: 1 / -2;
+            display: grid;
+            grid-template-rows: repeat(var(--lev-count), 50px);
+            gap: 3px;
+        }
+
+        .lev-label {
+            width: 40px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #34495e, #2c3e50);
+            color: #ecf0f1;
+            font-weight: bold;
+            font-size: 12px;
+            border-radius: 6px;
+            border: 1px solid #7f8c8d;
+        }
+
+        #crane {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: transparent;
+            border-radius: 10px;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 12px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        #crane::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15px;
+            height: 15px;
+            background: #f39c12;
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+
+        .crane-moving {
+            /* 크기 변화 애니메이션 제거 */
+        }
+
+        /* 스테이션 스타일 */
+        .station {
+            position: absolute;
+            width: 60px;
+            height: 50px;
+            background: #4CAF50; /* 녹색 배경 */
+            color: white;
+            border: 2px solid #45a049;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 10px;
+            z-index: 500;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .station:hover {
+            background: #2196F3; /* 파란색으로 변경 (렉과 동일) */
+            border-color: #1976D2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+        }
+
+        .station::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px dashed #4CAF50;
+            border-radius: 8px;
+            opacity: 0.7;
+            transition: border-color 0.2s ease;
+        }
+        
+        .station:hover::before {
+            border-color: #2196F3;
+        }
+
+        @keyframes craneMove {
+            /* 크기 변화 애니메이션 제거 */
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            color: #ecf0f1;
+        }
+
+        .coordinate-display {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            border: 1px solid #444;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-moving {
+            background: #f39c12;
+            animation: blink 1s infinite;
+        }
+
+        .status-idle {
+            background: #27ae60;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="loading" id="loading">크레인 시스템 초기화 중...</div>
+        
+        <div id="info-panel">
+            <div><strong>🏗️ 크레인 상태</strong></div>
+            <hr style="margin: 8px 0; border-color: #555;">
+            <div><span class="status-indicator status-idle" id="status-indicator"></span><span id="crane-status">대기</span></div>
+            <div>현재 위치: BAY <span id="current-bay">1</span>, LEV <span id="current-lev">1</span></div>
+            <div>목표 위치: BAY <span id="target-bay">1</span>, LEV <span id="target-lev">1</span></div>
+            <div>렉 크기: <span id="rack-size">10 x 6</span></div>
+            <div>총 렉 수: <span id="total-racks">60</span></div>
+            <div id="distance-info"></div>
+        </div>
+
+        <div id="rack-viewport">
+            <div id="rack-container">
+                <div id="rack-area">
+                    <div class="bay-labels" id="bay-labels"></div>
+                    <div class="lev-labels" id="lev-labels"></div>
+                    <div class="rack-grid" id="rack-grid"></div>
+                    <div id="crane">SRM</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="coordinate-display">
+            <div>클릭한 위치: BAY <span id="clicked-bay">-</span>, LEV <span id="clicked-lev">-</span></div>
+        </div>
+    </div>
+
+    <script>
+        class CraneOperationSystem {
+            constructor() {
+                this.bayCount = 10;
+                this.levCount = 6;
+                this.currentBay = 1;
+                this.currentLev = 1;
+                this.targetBay = 1;
+                this.targetLev = 1;
+                this.isMoving = false;
+                this.animationSpeed = 50; // 0.05초에 10픽셀 이동 (더 빠른 속도)
+                this.pixelPerStep = 10; // 한 단계당 10픽셀 이동 (더 큰 이동량)
+                
+                // 정위치 설정 (기준 위치 - BIT로 설정되는 위치)
+                this.homeBay = 1;
+                this.homeLev = 1;
+                
+                // 렉 셀 실제 크기 설정
+                this.rackCellWidth = 60;   // 렉 셀 가로 크기 (픽셀)
+                this.rackCellHeight = 50;  // 렉 셀 세로 크기 (픽셀)
+                
+                // 스테이션 관리
+                this.stations = []; // 스테이션 배열
+                
+                // 실제 베이/레벨 위치값 설정 (예: 베이1=1300, 베이2=1800, 레벨1=500, 레벨2=1000)
+                this.bayPositions = this.generateBayPositions();
+                this.levPositions = this.generateLevPositions();
+                
+                // 화면 픽셀 기준 렉 간격 설정 (렉 셀 크기 + gap)
+                this.bayPixelGap = this.rackCellWidth + 3; // 베이 간 픽셀 간격
+                this.levPixelGap = this.rackCellHeight + 3; // 레벨 간 픽셀 간격
+                
+                // this.initializeSystem(); // 자동 초기화 제거
+            }
+
+            // 실제 베이 위치값 생성 (예: 베이1=1300, 베이2=1800, 베이3=2300 등)
+            generateBayPositions() {
+                const positions = {};
+                
+                for (let bay = 1; bay <= this.bayCount; bay++) {
+                    // 베이1=1300부터 시작해서 500씩 일정하게 증가
+                    positions[bay] = 1300 + (bay - 1) * 500;
+                }
+                
+                return positions;
+            }
+
+            // 실제 레벨 위치값 생성 (예: 레벨1=1000, 레벨2=2000, 레벨3=3200 등)
+            generateLevPositions() {
+                const positions = {};
+                
+                for (let lev = 1; lev <= this.levCount; lev++) {
+                    // 레벨1=1000, 레벨2=2000, 레벨3=3200, 레벨4=4600, 레벨5=6200, 레벨6=8000
+                    // 각 레벨마다 증가폭이 점점 커지는 현실적인 패턴
+                    if (lev === 1) {
+                        positions[lev] = 1000;
+                    } else if (lev === 2) {
+                        positions[lev] = 2000;
+                    } else if (lev === 3) {
+                        positions[lev] = 3200;
+                    } else if (lev === 4) {
+                        positions[lev] = 4600;
+                    } else if (lev === 5) {
+                        positions[lev] = 6200;
+                    } else if (lev === 6) {
+                        positions[lev] = 8000;
+                    } else {
+                        // 6레벨 이상인 경우를 위한 공식
+                        positions[lev] = 1000 + (lev - 1) * 1000 + Math.pow(lev - 1, 2) * 200;
+                    }
+                }
+                
+                return positions;
+            }
+
+            // 실제 위치값을 화면 픽셀 좌표로 변환 (렉 셀 중앙 기준)
+            positionToPixel(position, positions, pixelGap, isLevel = false) {
+                const minPosition = Math.min(...Object.values(positions));
+                const maxPosition = Math.max(...Object.values(positions));
+                const positionRange = maxPosition - minPosition;
+                
+                // 위치값을 0~1 범위의 비율로 변환
+                const ratio = (position - minPosition) / positionRange;
+                
+                // 비율을 픽셀 좌표로 변환 (렉 개수 * 픽셀 간격)
+                const maxPixels = (Object.keys(positions).length - 1) * pixelGap;
+                const pixelPosition = ratio * maxPixels;
+                
+                // 마지막 위치값일 때 정확한 픽셀 좌표 보장
+                if (position === maxPosition) {
+                    return isLevel ? 0 : maxPixels; // 레벨의 경우 뒤집기
+                }
+                
+                // 첫 번째 위치값일 때 정확한 픽셀 좌표 보장
+                if (position === minPosition) {
+                    return isLevel ? maxPixels : 0; // 레벨의 경우 뒤집기
+                }
+                
+                // 반올림으로 픽셀 좌표 계산 (더 정확한 위치)
+                const result = Math.round(pixelPosition);
+                
+                // 레벨의 경우: 높은 위치값(상단)을 낮은 픽셀값(화면상 하단)으로 매핑
+                // 즉, 레벨1(낮은 위치값) = maxPixels(화면 하단), 레벨N(높은 위치값) = 0px(화면 상단)
+                if (isLevel) {
+                    return maxPixels - result; // 방향을 뒤집음
+                }
+                
+                return result;
+            }
+
+            // 화면 픽셀 좌표를 실제 위치값으로 변환
+            pixelToPosition(pixel, positions, pixelGap, isLevel = false) {
+                const maxPixels = (Object.keys(positions).length - 1) * pixelGap;
+                
+                // 마지막 픽셀 위치일 때 적절한 위치값 반환
+                if (pixel >= maxPixels) {
+                    return isLevel ? Math.min(...Object.values(positions)) : Math.max(...Object.values(positions));
+                }
+                
+                let adjustedPixel = pixel;
+                
+                // 레벨의 경우: 픽셀 좌표를 뒤집어서 사용 (높은 픽셀 = 낮은 위치값)
+                if (isLevel) {
+                    adjustedPixel = maxPixels - pixel; // 방향을 뒤집음
+                }
+                
+                const ratio = adjustedPixel / maxPixels;
+                
+                const minPosition = Math.min(...Object.values(positions));
+                const maxPosition = Math.max(...Object.values(positions));
+                const positionRange = maxPosition - minPosition;
+                
+                const position = minPosition + (ratio * positionRange);
+                return Math.round(position); // 위치값 단위로 반올림
+            }
+
+            // 현재 크레인 위치를 실제 위치값으로 가져오기
+            getCurrentPosition() {
+                return {
+                    bay: this.bayPositions[this.currentBay],
+                    lev: this.levPositions[this.currentLev]
+                };
+            }
+
+            // 목표 위치를 실제 위치값으로 설정
+            setTargetPosition(bayPosition, levPosition) {
+                // 가장 가까운 베이와 레벨 찾기
+                this.targetBay = this.findClosestBay(bayPosition);
+                this.targetLev = this.findClosestLev(levPosition);
+            }
+
+            // 가장 가까운 베이 찾기
+            findClosestBay(targetPosition) {
+                let closestBay = 1;
+                let minDifference = Math.abs(this.bayPositions[1] - targetPosition);
+                
+                for (let bay = 2; bay <= this.bayCount; bay++) {
+                    const difference = Math.abs(this.bayPositions[bay] - targetPosition);
+                    if (difference < minDifference) {
+                        minDifference = difference;
+                        closestBay = bay;
+                    }
+                }
+                
+                return closestBay;
+            }
+
+            // 가장 가까운 레벨 찾기
+            findClosestLev(targetPosition) {
+                let closestLev = 1;
+                let minDifference = Math.abs(this.levPositions[1] - targetPosition);
+                
+                for (let lev = 2; lev <= this.levCount; lev++) {
+                    const difference = Math.abs(this.levPositions[lev] - targetPosition);
+                    if (difference < minDifference) {
+                        minDifference = difference;
+                        closestLev = lev;
+                    }
+                }
+                
+                return closestLev;
+            }
+
+            // 부드러운 이동을 위한 단계별 경로 계산 (간단 버전)
+            calculateSmoothMovementSteps(fromBay, fromLev, toBay, toLev) {
+                const steps = [];
+                
+                // 베이와 레벨 이동 거리 계산
+                const bayDistance = Math.abs(toBay - fromBay);
+                const levDistance = Math.abs(toLev - fromLev);
+                const totalDistance = Math.sqrt(bayDistance * bayDistance + levDistance * levDistance);
+                
+                // 단계 수 계산 (최소 10단계, 거리에 비례해서 증가)
+                const stepCount = Math.max(10, Math.ceil(totalDistance * 5));
+                
+                for (let i = 0; i <= stepCount; i++) {
+                    const progress = i / stepCount;
+                    
+                    // 베이와 레벨 보간 (소수점 포함)
+                    const currentBay = fromBay + (toBay - fromBay) * progress;
+                    const currentLev = fromLev + (toLev - fromLev) * progress;
+                    
+                    steps.push({
+                        bay: Math.round(currentBay),
+                        lev: Math.round(currentLev),
+                        bayFloat: currentBay,
+                        levFloat: currentLev,
+                        progress: progress
+                    });
+                }
+                
+                return steps;
+            }
+
+            initializeSystem() {
+                setTimeout(() => {
+                    document.getElementById('loading').style.display = 'none';
+                    this.updateLayout();
+                    this.positionCrane();
+                    this.updateInfoPanel();
+                }, 1000);
+            }
+
+            updateLayout() {
+                const rackGrid = document.getElementById('rack-grid');
+                const bayLabels = document.getElementById('bay-labels');
+                const levLabels = document.getElementById('lev-labels');
+
+                // CSS 변수 설정
+                document.documentElement.style.setProperty('--bay-count', this.bayCount);
+                document.documentElement.style.setProperty('--lev-count', this.levCount);
+
+                // 렉 그리드 초기화
+                rackGrid.innerHTML = '';
+                bayLabels.innerHTML = '';
+                levLabels.innerHTML = '';
+
+                // BAY 라벨 생성 (1부터 bayCount까지)
+                for (let bay = 1; bay <= this.bayCount; bay++) {
+                    const label = document.createElement('div');
+                    label.className = 'bay-label';
+                    label.textContent = `B${bay}`;
+                    bayLabels.appendChild(label);
+                }
+
+                // LEV 라벨 생성 (1부터 levCount까지, 아래에서 위로 - 낮은 레벨이 하단, 높은 레벨이 상단)
+                for (let lev = this.levCount; lev >= 1; lev--) {
+                    const label = document.createElement('div');
+                    label.className = 'lev-label';
+                    label.textContent = `L${lev}`;
+                    levLabels.appendChild(label);
+                }
+
+                // 렉 셀 생성 (아래에서 위로, 왼쪽에서 오른쪽으로 - 낮은 레벨이 하단, 높은 레벨이 상단)
+                for (let lev = this.levCount; lev >= 1; lev--) {
+                    for (let bay = 1; bay <= this.bayCount; bay++) {
+                        const cell = document.createElement('div');
+                        cell.className = 'rack-cell';
+                        cell.dataset.bay = bay;
+                        cell.dataset.lev = lev;
+                        cell.textContent = `${bay}-${lev}`;
+                        
+                        // 랜덤하게 일부 렉을 occupied로 설정
+                        if (Math.random() < 0.2) {
+                            cell.classList.add('occupied');
+                        }
+
+                        cell.addEventListener('click', () => this.onRackClick(bay, lev));
+                        rackGrid.appendChild(cell);
+                    }
+                }
+
+                this.updateRackSelection();
+            }
+
+            positionCrane() {
+                const crane = document.getElementById('crane');
+                
+                // 실제 렉 셀 픽셀 좌표 직접 계산 (CSS Grid 기반)
+                // 베이: (베이번호-1) * (셀너비 + 간격) = (currentBay-1) * (60 + 3) = (currentBay-1) * 63
+                const bayPixel = (this.currentBay - 1) * (this.rackCellWidth + 3);
+                
+                // 레벨: (레벨번호-1) * (셀높이 + 간격) = (currentLev-1) * (50 + 3) = (currentLev-1) * 53
+                // 주의: 레벨은 화면상 역순이므로 최대레벨에서 현재레벨을 뺀다
+                const levPixel = (this.levCount - this.currentLev) * (this.rackCellHeight + 3);
+                
+                // 디버깅 로그
+                console.log(`=== positionCrane 디버깅 (간단 버전) ===`);
+                console.log(`현재 베이/레벨: ${this.currentBay}/${this.currentLev}`);
+                console.log(`계산된 픽셀: 베이=${bayPixel}, 레벨=${levPixel}`);
+                
+                // 렉 셀 중앙 기준으로 화면 좌표 계산
+                // 패딩(50px) + 레벨라벨 너비(40px) + 베이 픽셀 위치 + 렉 셀 중앙(30px)
+                const x = 50 + 40 + bayPixel + 30;
+                // 패딩(50px) + 레벨 픽셀 위치 + 렉 셀 중앙(25px)
+                const y = 50 + levPixel + 25;
+                
+                // SRM 박스(80x80)를 렉 셀 중앙에 정확히 배치
+                crane.style.left = `${x - 40}px`; // 크레인 너비(80px)의 절반만큼 빼기
+                crane.style.top = `${y - 40}px`;  // 상단 기준으로 배치
+                
+                console.log(`최종 화면 좌표: left=${x-40}px, top=${y-40}px`);
+
+                // 크레인이 뷰포트 중앙에 오도록 배경 이동
+                setTimeout(() => {
+                    this.centerViewOnCrane();
+                }, 100);
+            }
+
+            // 베이/레벨 번호로 크레인 위치 설정 (부드러운 이동용)
+            setCranePositionByBayLev(targetBay, targetLev) {
+                const crane = document.getElementById('crane');
+                
+                // 실제 렉 셀 픽셀 좌표 직접 계산 (CSS Grid 기반)
+                const bayPixel = (targetBay - 1) * (this.rackCellWidth + 3);
+                const levPixel = (this.levCount - targetLev) * (this.rackCellHeight + 3);
+                
+                // 디버깅 로그
+                console.log(`=== setCranePositionByBayLev 디버깅 ===`);
+                console.log(`목표 베이/레벨: ${targetBay}/${targetLev}`);
+                console.log(`계산된 픽셀: 베이=${bayPixel}, 레벨=${levPixel}`);
+                
+                // 렉 셀 중앙 기준으로 화면 좌표 계산
+                const x = 50 + 40 + bayPixel + 30;
+                const y = 50 + levPixel + 25;
+                
+                // SRM 박스(80x80)를 렉 셀 중앙에 정확히 배치
+                crane.style.left = `${x - 40}px`;
+                crane.style.top = `${y - 40}px`;
+                
+                console.log(`최종 화면 좌표: left=${x-40}px, top=${y-40}px`);
+            }
+
+            centerViewOnCrane() {
+                console.log('=== centerViewOnCrane 호출됨 (스크롤 방식) ===');
+                
+                const viewport = document.getElementById('rack-viewport');
+                const crane = document.getElementById('crane');
+                
+                if (!viewport || !crane) {
+                    console.error('필요한 요소를 찾을 수 없음:', { viewport, crane });
+                    return;
+                }
+                
+                // 크레인의 현재 위치 (패딩 고려)
+                const craneLeft = parseInt(crane.style.left) || 0;
+                const craneTop = parseInt(crane.style.top) || 0;
+                
+                // 크레인 중앙 좌표 (패딩 50px + 크레인 중심 40px)
+                const craneCenterX = 50 + craneLeft + 40; // 패딩 + 크레인 위치 + 크레인 중심
+                const craneCenterY = 50 + craneTop + 40;  // 패딩 + 크레인 위치 + 크레인 중심
+                
+                // 뷰포트 중앙에 크레인이 오도록 스크롤 위치 계산
+                const targetScrollLeft = craneCenterX - viewport.offsetWidth / 2;
+                const targetScrollTop = craneCenterY - viewport.offsetHeight / 2;
+                
+                console.log(`크레인 위치: left=${craneLeft}px, top=${craneTop}px`);
+                console.log(`크레인 중앙 좌표: (${craneCenterX}, ${craneCenterY})`);
+                console.log(`뷰포트 크기: ${viewport.offsetWidth}x${viewport.offsetHeight}`);
+                console.log(`목표 스크롤 위치: left=${targetScrollLeft}, top=${targetScrollTop}`);
+                
+                // 부드러운 스크롤 적용
+                viewport.scrollTo({
+                    left: Math.max(0, targetScrollLeft),
+                    top: Math.max(0, targetScrollTop),
+                    behavior: 'smooth'
+                });
+                
+
+                
+                console.log('=== centerViewOnCrane 완료 (스크롤 방식) ===');
+            }
+
+            onRackClick(bay, lev) {
+                console.log('=== onRackClick 호출됨 ===');
+                console.log(`클릭한 위치: BAY ${bay}, LEV ${lev}`);
+                console.log(`현재 위치: BAY ${this.currentBay}, LEV ${this.currentLev}`);
+                console.log(`isMoving: ${this.isMoving}`);
+                
+                document.getElementById('clicked-bay').textContent = bay;
+                document.getElementById('clicked-lev').textContent = lev;
+                
+                if (!this.isMoving) {
+                    console.log('크레인 이동 시작...');
+                    this.moveCraneTo(bay, lev);
+                    // 렉 클릭 시 즉시 포커싱 (이전 커밋처럼)
+                    console.log('centerViewOnCrane 예약됨 (50ms 후)');
+                    setTimeout(() => {
+                        console.log('centerViewOnCrane 호출 시도...');
+                        this.centerViewOnCrane();
+                    }, 50);
+                } else {
+                    console.log('크레인이 이동 중이므로 클릭 무시됨');
+                }
+            }
+
+            async moveCraneTo(targetBay, targetLev) {
+                if (this.isMoving || (targetBay === this.currentBay && targetLev === this.currentLev)) {
+                    return;
+                }
+
+                this.isMoving = true;
+                this.targetBay = targetBay;
+                this.targetLev = targetLev;
+                this.updateMovingStatus(true);
+
+                // 단계별 이동 경로 계산
+                const steps = this.calculateSmoothMovementSteps(this.currentBay, this.currentLev, targetBay, targetLev);
+                
+                for (const step of steps) {
+                    await this.moveToStep(step);
+                    // 0.1초에 5픽셀 이동 속도로 설정
+                    await this.delay(this.animationSpeed);
+                }
+
+                // 이동 완료 후 현재 위치 업데이트
+                this.currentBay = targetBay;
+                this.currentLev = targetLev;
+                
+                console.log(`이동 완료: 현재 위치 BAY ${this.currentBay}, LEV ${this.currentLev}`);
+                
+                this.isMoving = false;
+                this.updateMovingStatus(false);
+                this.updateRackSelection();
+                this.updateInfoPanel();
+                
+                // 크레인이 뷰포트 중앙에 오도록 배경 이동 (이동 완료 후)
+                console.log('이동 완료 - centerViewOnCrane 예약됨 (100ms 후)');
+                setTimeout(() => {
+                    console.log('이동 완료 후 centerViewOnCrane 호출...');
+                    this.centerViewOnCrane();
+                }, 100);
+            }
+
+            async moveToStep(step) {
+                // 베이/레벨 번호로 크레인 위치 설정 (소수점 값 사용해서 부드러운 이동)
+                this.setCranePositionByBayLevFloat(step.bayFloat, step.levFloat, step.progress);
+                
+                // 크레인에 움직임 애니메이션 추가
+                const crane = document.getElementById('crane');
+                crane.classList.add('crane-moving');
+                
+                this.updateInfoPanel();
+            }
+            
+            // 소수점 베이/레벨로 크레인 위치 설정 (부드러운 이동용)
+            setCranePositionByBayLevFloat(bayFloat, levFloat, progress = 0) {
+                const crane = document.getElementById('crane');
+                
+                // 실제 렉 셀 픽셀 좌표 직접 계산 (소수점 값 지원)
+                const bayPixel = (bayFloat - 1) * (this.rackCellWidth + 3);
+                const levPixel = (this.levCount - levFloat) * (this.rackCellHeight + 3);
+                
+                // 렉 셀 중앙 기준으로 화면 좌표 계산
+                const x = 50 + 40 + bayPixel + 30;
+                const y = 50 + levPixel + 25;
+                
+                // SRM 박스(80x80)를 렉 셀 중앙에 정확히 배치
+                crane.style.left = `${x - 40}px`;
+                crane.style.top = `${y - 40}px`;
+                
+                // 이동 중에는 centerViewOnCrane 호출하지 않음 (성능 최적화)
+                
+                setTimeout(() => {
+                    crane.classList.remove('crane-moving');
+                }, 100);
+            }
+
+            updateRackSelection() {
+                // 모든 셀에서 selected 클래스 제거
+                document.querySelectorAll('.rack-cell.selected').forEach(cell => {
+                    cell.classList.remove('selected');
+                });
+
+                // 현재 위치의 셀에 selected 클래스 추가
+                const currentCell = document.querySelector(`[data-bay="${this.currentBay}"][data-lev="${this.currentLev}"]`);
+                if (currentCell) {
+                    currentCell.classList.add('selected');
+                }
+            }
+
+            updateMovingStatus(isMoving) {
+                const statusIndicator = document.getElementById('status-indicator');
+                const craneStatus = document.getElementById('crane-status');
+                
+                if (isMoving) {
+                    statusIndicator.className = 'status-indicator status-moving';
+                    craneStatus.textContent = '이동 중';
+                } else {
+                    statusIndicator.className = 'status-indicator status-idle';
+                    craneStatus.textContent = '대기';
+                }
+            }
+
+            updateInfoPanel() {
+                document.getElementById('current-bay').textContent = this.currentBay;
+                document.getElementById('current-lev').textContent = this.currentLev;
+                document.getElementById('target-bay').textContent = this.targetBay;
+                document.getElementById('target-lev').textContent = this.targetLev;
+                document.getElementById('rack-size').textContent = `${this.bayCount} x ${this.levCount}`;
+                document.getElementById('total-racks').textContent = this.bayCount * this.levCount;
+                
+                // 실제 위치값 정보 추가 - 배열 인덱스 오류 수정
+                const currentBayPosition = this.realBayPositions ? this.realBayPositions[this.currentBay - 1] : this.bayPositions[this.currentBay];
+                const currentLevPosition = this.realLevPositions ? this.realLevPositions[this.currentLev - 1] : this.levPositions[this.currentLev];
+                
+                // 현재 픽셀 좌표 계산
+                const currentBayPixel = this.positionToPixel(currentBayPosition, this.bayPositions, this.bayPixelGap, false);
+                const currentLevPixel = this.positionToPixel(currentLevPosition, this.levPositions, this.levPixelGap, true);
+                
+                // 위치값 정보를 표시할 요소가 있다면 업데이트
+                const distanceInfo = document.getElementById('distance-info');
+                if (distanceInfo) {
+                    distanceInfo.innerHTML = `
+                        <div><strong>정위치: BAY ${this.homeBay}, LEV ${this.homeLev}</strong></div>
+                        <div><strong>렉 셀 크기: ${this.rackCellWidth} x ${this.rackCellHeight} 픽셀</strong></div>
+                        <div>현재 위치값: BAY ${currentBayPosition}, LEV ${currentLevPosition}</div>
+                        <div>실제 위치값 사용: ${this.realBayPositions ? 'Yes' : 'No'}</div>
+                        <div>스테이션 개수: ${this.stations.length}</div>
+                    `;
+                }
+            }
+
+            // 베이 간격 정보 반환
+            getBayGapInfo() {
+                const gaps = [];
+                for (let i = 1; i < this.bayCount; i++) {
+                    const gap = this.bayPositions[i + 1] - this.bayPositions[i];
+                    gaps.push(`${i}→${i + 1}: ${gap}`);
+                }
+                return gaps.join(', ');
+            }
+
+            delay(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+            // 실제 거리 기반 애니메이션 속도 계산
+            calculateAnimationSpeed(fromBay, fromLev, toBay, toLev) {
+                const fromBayPosition = this.bayPositions[fromBay];
+                const toBayPosition = this.bayPositions[toBay];
+                const fromLevPosition = this.levPositions[fromLev];
+                const toLevPosition = this.levPositions[toLev];
+                
+                const totalBayDistance = Math.abs(toBayPosition - fromBayPosition);
+                const totalLevDistance = Math.abs(toLevPosition - fromLevPosition);
+                const totalDistance = Math.sqrt(totalBayDistance * totalBayDistance + totalLevDistance * totalLevDistance);
+                
+                // 0.1초에 5픽셀 이동
+                const baseSpeed = 100; // 기본 0.1초
+                const distanceFactor = totalDistance / 1000; // 1000 단위당 0.1초
+                
+                return Math.max(50, Math.min(300, baseSpeed * distanceFactor));
+            }
+
+            // 정위치로 이동
+            moveToHomePosition() {
+                this.moveCraneTo(this.homeBay, this.homeLev);
+            }
+
+            // 정위치 설정
+            setHomePosition(bay, lev) {
+                this.homeBay = bay;
+                this.homeLev = lev;
+                this.updateInfoPanel();
+            }
+
+            // C#에서 호출할 메서드들
+            updateRackLayout(bayCount, levCount) {
+                console.log(`=== updateRackLayout 호출됨: ${bayCount}x${levCount} ===`);
+                
+                // 로딩 화면 숨기기
+                document.getElementById('loading').style.display = 'none';
+                
+                this.bayCount = bayCount;
+                this.levCount = levCount;
+                
+                // 새로운 레이아웃에 맞게 위치값 재생성
+                this.bayPositions = this.generateBayPositions();
+                this.levPositions = this.generateLevPositions();
+                
+                // 현재 위치 초기화
+                this.currentBay = 1;
+                this.currentLev = 1;
+                this.targetBay = 1;
+                this.targetLev = 1;
+                
+                console.log('렉 레이아웃 생성 중...');
+                this.updateLayout();
+                
+                console.log('크레인 위치 설정 중...');
+                this.positionCrane();
+                
+                this.updateInfoPanel();
+                
+                // 레이아웃 생성 후 centerViewOnCrane 호출 (DOM 렌더링 대기)
+                console.log('centerViewOnCrane 예약됨 (레이아웃 생성 후)');
+                setTimeout(() => {
+                    console.log('레이아웃 생성 완료 후 centerViewOnCrane 호출...');
+                    this.centerViewOnCrane();
+                }, 200);
+            }
+
+            setCranePosition(bay, lev, animate = true) {
+                if (animate) {
+                    this.moveCraneTo(bay, lev);
+                } else {
+                    this.currentBay = bay;
+                    this.currentLev = lev;
+                    this.targetBay = bay;
+                    this.targetLev = lev;
+                    this.positionCrane();
+                    this.updateRackSelection();
+                    this.updateInfoPanel();
+                }
+            }
+
+            setAnimationSpeed(speed) {
+                this.animationSpeed = speed;
+            }
+
+            // 스테이션 생성 메서드
+            createStation(id, bay, lev, name = 'STA') {
+                console.log(`스테이션 생성: ID=${id}, BAY=${bay}, LEV=${lev}, NAME=${name}`);
+                
+                const station = {
+                    id: id,
+                    bay: bay,
+                    lev: lev,
+                    name: name,
+                    element: null
+                };
+                
+                // 스테이션 DOM 요소 생성
+                const stationElement = document.createElement('div');
+                stationElement.className = 'station';
+                stationElement.id = `station-${id}`;
+                stationElement.textContent = name;
+                stationElement.title = `스테이션 ${name} (BAY:${bay}, LEV:${lev})`;
+                
+                // 스테이션 위치 계산 (렉 셀과 같은 방식)
+                const bayPixel = (bay - 1) * (this.rackCellWidth + 3);
+                const levPixel = (this.levCount - lev) * (this.rackCellHeight + 3);
+                
+                // 렉 셀 앞쪽(왼쪽)에 배치 (렉 셀보다 20픽셀 앞으로)
+                const x = 50 + 40 + bayPixel - 80; // 렉 앞쪽으로 80픽셀
+                const y = 50 + levPixel;
+                
+                stationElement.style.left = `${x}px`;
+                stationElement.style.top = `${y}px`;
+                
+                // 스테이션 클릭 이벤트 추가
+                stationElement.addEventListener('click', () => {
+                    console.log(`스테이션 ${name} 클릭됨 - 이동 시작`);
+                    this.moveToStation(station);
+                });
+                
+                // DOM에 추가
+                const rackArea = document.getElementById('rack-area');
+                rackArea.appendChild(stationElement);
+                
+                station.element = stationElement;
+                this.stations.push(station);
+                
+                console.log(`스테이션 ${name} 생성 완료: 위치 (${x}px, ${y}px)`);
+                return station;
+            }
+
+            // 모든 스테이션 제거
+            clearStations() {
+                this.stations.forEach(station => {
+                    if (station.element && station.element.parentNode) {
+                        station.element.parentNode.removeChild(station.element);
+                    }
+                });
+                this.stations = [];
+                console.log('모든 스테이션이 제거되었습니다.');
+            }
+
+            // 스테이션 ID로 찾기
+            getStationById(id) {
+                return this.stations.find(station => station.id === id);
+            }
+
+            // 테스트용: 1베이 1레벨에 스테이션 생성
+            createTestStation() {
+                this.createStation('test1', 1, 1, 'ST1');
+            }
+
+
+
+            // 스테이션으로 크레인 이동
+            async moveToStation(station) {
+                if (this.isMoving) {
+                    console.log('이미 이동 중입니다.');
+                    return;
+                }
+
+                console.log(`=== 스테이션 ${station.name}으로 이동 시작 ===`);
+                console.log(`스테이션 위치: TravPos=${station.travPos}, LiftPos=${station.liftPos}`);
+
+                // 실제 위치값을 베이/레벨 번호로 변환
+                const targetBayLev = this.realPositionToBayLev(station.travPos, station.liftPos);
+                
+                if (!targetBayLev) {
+                    console.error('스테이션 위치를 베이/레벨로 변환할 수 없습니다.');
+                    return;
+                }
+
+                console.log(`변환된 목표 위치: BAY=${targetBayLev.bay}, LEV=${targetBayLev.lev}`);
+
+                // 스테이션 선택 표시
+                this.selectStation(station);
+
+                // 크레인 이동
+                await this.moveCraneTo(targetBayLev.bay, targetBayLev.lev);
+                
+                console.log(`=== 스테이션 ${station.name} 이동 완료 ===`);
+            }
+
+            // 실제 위치값을 베이/레벨 번호로 변환 (실제 위치값 기반 좌표계)
+            realPositionToBayLev(travPos, liftPos) {
+                if (!this.realBayPositions || !this.realLevPositions) {
+                    console.error('실제 위치값 배열이 설정되지 않았습니다.');
+                    return null;
+                }
+
+                console.log(`=== 실제 위치값을 베이/레벨로 변환 (실제 좌표계 기반) ===`);
+                console.log(`입력: TravPos=${travPos}, LiftPos=${liftPos}`);
+                console.log('베이 위치값들:', this.realBayPositions);
+                console.log('레벨 위치값들:', this.realLevPositions);
+
+                // 주행 위치값을 베이 번호로 변환 (실제 위치값 기반)
+                let targetBay = 1;
+                let minBayDistance = Math.abs(travPos - this.realBayPositions[0]);
+                
+                for (let i = 0; i < this.realBayPositions.length; i++) {
+                    const distance = Math.abs(travPos - this.realBayPositions[i]);
+                    if (distance < minBayDistance) {
+                        minBayDistance = distance;
+                        targetBay = i + 1; // 베이 번호는 1부터 시작
+                    }
+                }
+                
+                console.log(`베이 위치값 매칭: TravPos=${travPos} → BAY${targetBay}(${this.realBayPositions[targetBay-1]}) - 거리: ${minBayDistance}`);
+
+                // 승강 위치값을 레벨 번호로 변환 (실제 위치값 기반)
+                let targetLev = 1;
+                let minLevDistance = Math.abs(liftPos - this.realLevPositions[0]);
+                
+                for (let i = 0; i < this.realLevPositions.length; i++) {
+                    const distance = Math.abs(liftPos - this.realLevPositions[i]);
+                    if (distance < minLevDistance) {
+                        minLevDistance = distance;
+                        targetLev = i + 1; // 레벨 번호는 1부터 시작
+                    }
+                }
+                
+                console.log(`레벨 위치값 매칭: LiftPos=${liftPos} → LEV${targetLev}(${this.realLevPositions[targetLev-1]}) - 거리: ${minLevDistance}`);
+
+                console.log(`변환 결과: TravPos=${travPos} → BAY${targetBay}, LiftPos=${liftPos} → LEV${targetLev}`);
+                
+                return {
+                    bay: targetBay,
+                    lev: targetLev
+                };
+            }
+
+            // 스테이션 선택 표시
+            selectStation(station) {
+                // 기존 선택 해제
+                this.stations.forEach(s => {
+                    if (s.element) {
+                        s.element.classList.remove('selected');
+                    }
+                });
+
+                // 선택된 스테이션 표시
+                if (station.element) {
+                    station.element.classList.add('selected');
+                }
+
+                console.log(`스테이션 ${station.name} 선택됨`);
+            }
+
+            // 실제 위치값 기반 렉 레이아웃 설정
+            setRackLayoutWithRealPositions(maxBay, maxLev, bayPositions, levPositions) {
+                console.log(`=== 실제 위치값 기반 렉 레이아웃 설정 ===`);
+                console.log(`MaxBay: ${maxBay}, MaxLev: ${maxLev}`);
+                console.log('Bay Positions:', bayPositions);
+                console.log('Lev Positions:', levPositions);
+
+                // 로딩 화면 숨기기
+                document.getElementById('loading').style.display = 'none';
+                
+                this.bayCount = maxBay;
+                this.levCount = maxLev;
+                
+                // 실제 위치값 저장
+                this.realBayPositions = [...bayPositions];
+                this.realLevPositions = [...levPositions];
+                
+                // 기존 가상 위치값은 실제 위치값으로 대체
+                this.bayPositions = [...bayPositions];
+                this.levPositions = [...levPositions];
+                
+                // 전체 영역 범위 계산 (렉 + 스테이션 포함)
+                this.calculateTotalLayoutBounds();
+                
+                // 현재 위치 초기화
+                this.currentBay = 1;
+                this.currentLev = 1;
+                this.targetBay = 1;
+                this.targetLev = 1;
+                
+                console.log('렉 레이아웃 생성 중...');
+                this.updateLayout();
+                
+                console.log('크레인 위치 설정 중...');
+                this.positionCrane();
+                
+                this.updateInfoPanel();
+                
+                // 레이아웃 생성 후 centerViewOnCrane 호출
+                setTimeout(() => {
+                    console.log('실제 위치값 기반 레이아웃 생성 완료');
+                    this.centerViewOnCrane();
+                }, 200);
+            }
+
+            // 전체 레이아웃 영역 범위 계산 (렉 + 스테이션 포함)
+            calculateTotalLayoutBounds() {
+                if (!this.realBayPositions || !this.realLevPositions) {
+                    console.error('실제 위치값이 설정되지 않았습니다.');
+                    return;
+                }
+
+                // 렉 영역 범위
+                const minBayPos = Math.min(...this.realBayPositions);
+                const maxBayPos = Math.max(...this.realBayPositions);
+                const minLevPos = Math.min(...this.realLevPositions);
+                const maxLevPos = Math.max(...this.realLevPositions);
+
+                // 스테이션이 있다면 스테이션 범위도 포함
+                let totalMinBayPos = minBayPos;
+                let totalMaxBayPos = maxBayPos;
+                let totalMinLevPos = minLevPos;
+                let totalMaxLevPos = maxLevPos;
+
+                if (this.stations && this.stations.length > 0) {
+                    const stationBayPositions = this.stations.map(s => s.travPos);
+                    const stationLevPositions = this.stations.map(s => s.liftPos);
+                    
+                    totalMinBayPos = Math.min(totalMinBayPos, ...stationBayPositions);
+                    totalMaxBayPos = Math.max(totalMaxBayPos, ...stationBayPositions);
+                    totalMinLevPos = Math.min(totalMinLevPos, ...stationLevPositions);
+                    totalMaxLevPos = Math.max(totalMaxLevPos, ...stationLevPositions);
+                }
+
+                // 전체 영역 범위 저장
+                this.totalLayoutBounds = {
+                    minBayPos: totalMinBayPos,
+                    maxBayPos: totalMaxBayPos,
+                    minLevPos: totalMinLevPos,
+                    maxLevPos: totalMaxLevPos,
+                    bayRange: totalMaxBayPos - totalMinBayPos,
+                    levRange: totalMaxLevPos - totalMinLevPos
+                };
+
+                // 레이아웃 오프셋은 필요 없음 (가장 앞쪽 기준으로 계산)
+                this.layoutOffsetX = 0;
+
+                console.log('=== 전체 레이아웃 범위 계산 완료 ===');
+                console.log('렉 범위:', { minBayPos, maxBayPos, minLevPos, maxLevPos });
+                console.log('전체 범위:', this.totalLayoutBounds);
+                console.log('레이아웃 오프셋 X:', this.layoutOffsetX);
+            }
+
+            // 실제 위치값 기반 스테이션들 설정
+            setStationsWithRealPositions(stations) {
+                console.log('=== 실제 위치값 기반 스테이션 설정 ===');
+                console.log('입력 스테이션들:', stations);
+                
+                // 기존 스테이션들 제거
+                this.clearStations();
+                
+                // 스테이션 정보를 미리 저장 (범위 계산을 위해)
+                const tempStations = stations.map((station, index) => ({
+                    id: station.id,
+                    travPos: station.travPos,
+                    liftPos: station.liftPos,
+                    name: `ST${index + 1}`,
+                    element: null
+                }));
+                
+                // 임시 스테이션들을 사용해서 범위 계산
+                this.stations = [...tempStations];
+                this.calculateTotalLayoutBounds();
+                
+                // 다시 비우고 실제 생성
+                this.clearStations();
+                
+                // 각 스테이션을 실제 위치값을 기반으로 생성
+                tempStations.forEach((station, index) => {
+                    const pixelPos = this.realPositionToPixel(station.travPos, station.liftPos);
+                    console.log(`스테이션 ${station.name} 픽셀 위치 계산:`, pixelPos);
+                    
+                    this.createStationAtPixelPosition(
+                        station.id, 
+                        station.travPos, 
+                        station.liftPos, 
+                        pixelPos.x, 
+                        pixelPos.y, 
+                        station.name
+                    );
+                });
+                
+                console.log(`총 ${this.stations.length}개 스테이션 생성 완료`);
+            }
+
+            // 실제 위치값을 통합 그리드 좌표로 변환 (실제 위치값 기반 좌표계)
+            realPositionToPixel(travPos, liftPos) {
+                if (!this.totalLayoutBounds || !this.realBayPositions || !this.realLevPositions) {
+                    console.error('전체 레이아웃 범위가 설정되지 않았습니다.');
+                    return { x: 0, y: 0 };
+                }
+
+                console.log(`=== 통합 그리드 위치 계산 (실제 좌표계 기반) ===`);
+                console.log(`입력 위치: TravPos=${travPos}, LiftPos=${liftPos}`);
+                console.log('전체 범위:', this.totalLayoutBounds);
+                console.log('렉 베이 위치들:', this.realBayPositions);
+                console.log('렉 레벨 위치들:', this.realLevPositions);
+
+                // 베이 위치값과 가장 가까운 베이 찾기 (실제 위치값 기반)
+                let bayIndex = 0;
+                let minBayDistance = Math.abs(travPos - this.realBayPositions[0]);
+                
+                for (let i = 0; i < this.realBayPositions.length; i++) {
+                    const distance = Math.abs(travPos - this.realBayPositions[i]);
+                    if (distance < minBayDistance) {
+                        minBayDistance = distance;
+                        bayIndex = i;
+                    }
+                }
+
+                // 레벨 위치값과 가장 가까운 레벨 찾기 (실제 위치값 기반)
+                let levIndex = 0;
+                let minLevDistance = Math.abs(liftPos - this.realLevPositions[0]);
+                
+                for (let i = 0; i < this.realLevPositions.length; i++) {
+                    const distance = Math.abs(liftPos - this.realLevPositions[i]);
+                    if (distance < minLevDistance) {
+                        minLevDistance = distance;
+                        levIndex = i;
+                    }
+                }
+
+                console.log(`위치값 매칭: TravPos=${travPos} → 베이${bayIndex + 1}(${this.realBayPositions[bayIndex]}), LiftPos=${liftPos} → 레벨${levIndex + 1}(${this.realLevPositions[levIndex]})`);
+                console.log(`베이/레벨 인덱스: (${bayIndex}, ${levIndex})`);
+                console.log(`베이 거리: ${minBayDistance}, 레벨 거리: ${minLevDistance}`);
+
+                // 베이와 레벨 인덱스를 픽셀 좌표로 변환
+                const bayPixel = bayIndex * (this.rackCellWidth + 3);
+                const levPixel = (this.levCount - 1 - levIndex) * (this.rackCellHeight + 3); // Y축 반전
+
+                // 렉 영역의 시작점을 기준으로 최종 좌표 계산
+                const finalX = 50 + 40 + bayPixel; // 패딩 + 레벨라벨 + 계산된 X
+                const finalY = 50 + levPixel;      // 패딩 + 계산된 Y
+
+                console.log(`위치값 매칭: TravPos=${travPos} → 베이${bayIndex + 1}, LiftPos=${liftPos} → 레벨${levIndex + 1}`);
+                console.log(`베이/레벨 인덱스: (${bayIndex}, ${levIndex})`);
+                console.log(`픽셀 좌표: (${bayPixel}, ${levPixel})`);
+                console.log(`최종 좌표: (${finalX}, ${finalY})`);
+
+                return { x: Math.round(finalX), y: Math.round(finalY) };
+            }
+
+            // 픽셀 위치에 스테이션 생성 (실제 위치값 기반)
+            createStationAtPixelPosition(id, travPos, liftPos, pixelX, pixelY, name = 'STA') {
+                console.log(`스테이션 생성: ID=${id}, 실제위치=(${travPos}, ${liftPos}), 픽셀위치=(${pixelX}, ${pixelY})`);
+                
+                const station = {
+                    id: id,
+                    travPos: travPos,
+                    liftPos: liftPos,
+                    name: name,
+                    element: null
+                };
+                
+                // 스테이션 DOM 요소 생성
+                const stationElement = document.createElement('div');
+                stationElement.className = 'station';
+                stationElement.id = `station-${id}`;
+                stationElement.textContent = name;
+                stationElement.title = `스테이션 ${name} (TravPos:${travPos}, LiftPos:${liftPos})`;
+                
+                // 픽셀 위치 설정
+                stationElement.style.left = `${pixelX}px`;
+                stationElement.style.top = `${pixelY}px`;
+                
+                // 스테이션 클릭 이벤트 추가 (실제 위치값 기반)
+                stationElement.addEventListener('click', () => {
+                    console.log(`스테이션 ${name} 클릭됨 - 실제 위치로 이동 시작`);
+                    this.moveToStation(station);
+                });
+                
+                // DOM에 추가
+                const rackArea = document.getElementById('rack-area');
+                rackArea.appendChild(stationElement);
+                
+                station.element = stationElement;
+                this.stations.push(station);
+                
+                console.log(`스테이션 ${name} 생성 완료 - 총 스테이션 수: ${this.stations.length}`);
+                return station;
+            }
+        }
+
+        // 전역 인스턴스 생성
+        let craneSystem;
+
+        // DOM 로드 완료 후 초기화 - C#에서 레이아웃 설정까지 대기
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM 로드 완료, 크레인 시스템 초기화 시작...');
+            craneSystem = new CraneOperationSystem();
+            
+            // 윈도우 리사이즈 이벤트
+            window.addEventListener('resize', function() {
+                if (craneSystem) {
+                    setTimeout(() => craneSystem.centerViewOnCrane(), 100);
+                }
+            });
+            
+            console.log('크레인 시스템 생성 완료 - C#에서 레이아웃 설정 대기 중...');
+        });
+
+        // C#에서 호출할 수 있는 전역 함수들
+        function updateLayout(bayCount, levCount) {
+            if (craneSystem) {
+                craneSystem.updateRackLayout(bayCount, levCount);
+            }
+        }
+
+        // 외부에서 렉 레이아웃을 설정하는 전역 함수
+        function setRackLayout(bayCount, levCount) {
+            if (craneSystem) {
+                craneSystem.updateRackLayout(bayCount, levCount);
+            }
+        }
+
+        function moveCrane(bay, lev, animate = true) {
+            if (craneSystem) {
+                craneSystem.setCranePosition(bay, lev, animate);
+            }
+        }
+
+        function setAnimationSpeed(speed) {
+            if (craneSystem) {
+                craneSystem.setAnimationSpeed(speed);
+            }
+        }
+
+        function getCranePosition() {
+            if (craneSystem) {
+                return {
+                    bay: craneSystem.currentBay,
+                    lev: craneSystem.currentLev,
+                    isMoving: craneSystem.isMoving
+                };
+            }
+            return { bay: 1, lev: 1, isMoving: false };
+        }
+
+        // 정위치 관련 함수들
+        function moveToHomePosition() {
+            if (craneSystem) {
+                craneSystem.moveToHomePosition();
+            }
+        }
+
+        function setHomePosition(bay, lev) {
+            if (craneSystem) {
+                craneSystem.setHomePosition(bay, lev);
+            }
+        }
+
+
+
+        function getHomePosition() {
+            if (craneSystem) {
+                return {
+                    bay: craneSystem.homeBay,
+                    lev: craneSystem.homeLev
+                };
+            }
+            return { bay: 1, lev: 1 };
+        }
+
+        // 스테이션 관련 전역 함수들 (C#에서 호출용)
+        function createStation(id, bay, lev, name = 'STA') {
+            if (craneSystem) {
+                return craneSystem.createStation(id, bay, lev, name);
+            }
+        }
+
+        function clearStations() {
+            if (craneSystem) {
+                craneSystem.clearStations();
+            }
+        }
+
+        function getStationById(id) {
+            if (craneSystem) {
+                return craneSystem.getStationById(id);
+            }
+        }
+
+        // 테스트용 스테이션 생성 함수
+        function createTestStation() {
+            if (craneSystem) {
+                craneSystem.createTestStation();
+            }
+        }
+
+        // INI 파일 데이터로 렉 레이아웃 설정 (실제 위치값 기반)
+        function setRackLayoutWithPositions(rackInfo) {
+            if (craneSystem) {
+                console.log('=== INI 파일 기반 렉 레이아웃 설정 ===');
+                console.log('Rack Info:', rackInfo);
+                
+                craneSystem.setRackLayoutWithRealPositions(
+                    rackInfo.maxBay, 
+                    rackInfo.maxLev, 
+                    rackInfo.bayPositions, 
+                    rackInfo.levPositions
+                );
+            }
+        }
+
+        // 실제 위치값으로 스테이션들 설정
+        function setStationsWithPositions(stations) {
+            if (craneSystem) {
+                console.log('=== INI 파일 기반 스테이션 설정 ===');
+                console.log('Stations:', stations);
+                
+                craneSystem.setStationsWithRealPositions(stations);
+            }
+        }
+    </script>
+</body>
+</html>

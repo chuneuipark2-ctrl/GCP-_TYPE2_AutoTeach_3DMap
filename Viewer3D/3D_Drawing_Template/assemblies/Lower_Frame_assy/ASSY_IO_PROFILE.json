@@ -1,0 +1,22 @@
+{
+  "assyId": "Lower_Frame_assy",
+  "label": "Lower_Frame_assy",
+  "stpCanonicalBase": "LOWER_FRAME_ASSY",
+  "excludeStpNamePatterns": ["ELEC_CONVERT"],
+  "manifest": {
+    "matchPriority": ["stp_occurrence", "solid_edge_io_define"],
+    "sensorPartNamePatterns": [],
+    "useIoStpSensorMap": false,
+    "allowSensorPartSeq": false,
+    "defaultRadiusMm": 20,
+    "_note": "전 ASSY 동일 — stp_occurrence 만. fallback(io_stp_sensor_map) 금지"
+  },
+  "viewer": {
+    "skipSurfaceSnapPatterns": [
+      "^Travel_",
+      "^Modem_Fault$",
+      "^Station_(Ready|Stop)_\\d+$"
+    ],
+    "deoverlapGapMm": 6
+  }
+}

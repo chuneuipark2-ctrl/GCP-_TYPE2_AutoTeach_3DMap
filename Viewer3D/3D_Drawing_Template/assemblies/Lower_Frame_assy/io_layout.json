@@ -1,0 +1,121 @@
+{
+    "assyId":  "Lower_Frame_assy",
+    "_note": "레거시 수동좌표. 좌표는 STP→io_manifest.json 사용. I/O 목록: PLC_PART_IO_DEFINE.txt",
+    "points":  {
+                   "Station_Ready_1":  {
+                                           "x":  null,
+                                           "y":  null,
+                                           "z":  null
+                                       },
+                   "Station_Ready_2":  {
+                                           "x":  null,
+                                           "y":  null,
+                                           "z":  null
+                                       },
+                   "Station_Ready_3":  {
+                                           "x":  null,
+                                           "y":  null,
+                                           "z":  null
+                                       },
+                   "Station_Ready_4":  {
+                                           "x":  null,
+                                           "y":  null,
+                                           "z":  null
+                                       },
+                   "Station_Ready_5":  {
+                                           "x":  null,
+                                           "y":  null,
+                                           "z":  null
+                                       },
+                   "Station_Ready_6":  {
+                                           "x":  null,
+                                           "y":  null,
+                                           "z":  null
+                                       },
+                   "Station_Ready_7":  {
+                                           "x":  null,
+                                           "y":  null,
+                                           "z":  null
+                                       },
+                   "Station_Ready_8":  {
+                                           "x":  null,
+                                           "y":  null,
+                                           "z":  null
+                                       },
+                   "Station_Stop_1":  {
+                                          "x":  null,
+                                          "y":  null,
+                                          "z":  null
+                                      },
+                   "Station_Stop_2":  {
+                                          "x":  null,
+                                          "y":  null,
+                                          "z":  null
+                                      },
+                   "Station_Stop_3":  {
+                                          "x":  null,
+                                          "y":  null,
+                                          "z":  null
+                                      },
+                   "Station_Stop_4":  {
+                                          "x":  null,
+                                          "y":  null,
+                                          "z":  null
+                                      },
+                   "Station_Stop_5":  {
+                                          "x":  null,
+                                          "y":  null,
+                                          "z":  null
+                                      },
+                   "Station_Stop_6":  {
+                                          "x":  null,
+                                          "y":  null,
+                                          "z":  null
+                                      },
+                   "Station_Stop_7":  {
+                                          "x":  null,
+                                          "y":  null,
+                                          "z":  null
+                                      },
+                   "Station_Stop_8":  {
+                                          "x":  null,
+                                          "y":  null,
+                                          "z":  null
+                                      },
+                   "Travel_DEC":  {
+                                      "x":  null,
+                                      "y":  null,
+                                      "z":  null
+                                  },
+                   "Travel_Home_Position":  {
+                                                "x":  null,
+                                                "y":  null,
+                                                "z":  null
+                                            },
+                   "Modem_Fault":  {
+                                       "x":  null,
+                                       "y":  null,
+                                       "z":  null
+                                   },
+                   "Travel_Limit_Sensor_E":  {
+                                                 "x":  null,
+                                                 "y":  null,
+                                                 "z":  null
+                                             },
+                   "Travel_Limit_Sensor_H":  {
+                                                 "x":  null,
+                                                 "y":  null,
+                                                 "z":  null
+                                             },
+                   "Travel1_Brake_MMS_FLT":  {
+                                                 "x":  null,
+                                                 "y":  null,
+                                                 "z":  null
+                                             },
+                   "Travel2_Brake_MMS_FLT":  {
+                                                 "x":  null,
+                                                 "y":  null,
+                                                 "z":  null
+                                             }
+               }
+}

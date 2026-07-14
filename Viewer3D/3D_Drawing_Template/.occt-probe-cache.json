@@ -1,0 +1,17 @@
+{
+  "d:\\02._Main_Project\\01. kemko_GCP_IO_Tree_modify\\gcp_type3-KEMCO\\Viewer3D\\3D_Drawing_Template\\assemblies\\SCP\\SCP.stp|57611|1782364027925.4688": {
+    "meshTotal": 17,
+    "meshWithPosition": 17,
+    "parseMs": 363
+  },
+  "d:\\02._Main_Project\\01. kemko_GCP_IO_Tree_modify\\gcp_type3-KEMCO\\Viewer3D\\3D_Drawing_Template\\assemblies\\Lower_Frame_assy\\LOWER_FRAME_ASSY_ELEC_CONVERT.stp|40634222|1782097326506": {
+    "meshTotal": 2192,
+    "meshWithPosition": 2192,
+    "parseMs": 193045
+  },
+  "d:\\02._Main_Project\\01. kemko_GCP_IO_Tree_modify\\gcp_type3-KEMCO\\Viewer3D\\3D_Drawing_Template\\assemblies\\Carriage_Assy\\Carriage_Assy.stp|69449054|1783412095338.4749": {
+    "meshTotal": 2887,
+    "meshWithPosition": 0,
+    "parseMs": 295428
+  }
+}

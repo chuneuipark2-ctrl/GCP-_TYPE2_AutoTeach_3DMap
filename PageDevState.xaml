@@ -1,0 +1,576 @@
+<Page x:Class="gcp_Wpf.PageDevState"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:gcp_Wpf"
+      xmlns:lx="clr-namespace:gcp_Wpf"
+      Title="PageDevState" HorizontalAlignment="Stretch">
+    <Grid x:Name="Grid_DevMain">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="grid_Block" Column="1" Row="0" Background="#CC000000" ZIndex="-1" Grid.RowSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="lbl_travInfo" Content="TRAV STATE" Grid.Row="0" Panel.ZIndex="1" Foreground="White"
+             HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Background="{x:Null}"/>
+            <Label x:Name="lbl_liftInfo" Content="LIFT STATE" Grid.Row="1" Panel.ZIndex="1" Foreground="White"
+             HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+            <Label x:Name="lbl_forkInfo" Content="FORK STATE" Grid.Row="2" Panel.ZIndex="1" Foreground="White"
+             HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+            <Label x:Name="lbl_startInfo" Content="START STATE" Grid.Row="0" Panel.ZIndex="1" Foreground="White"
+             HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="30" Grid.RowSpan="5"
+             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        </Grid>
+        <Border Grid.Row="0" BorderBrush="White" BorderThickness="1" Margin="10,0,10,5" CornerRadius="5,5,5,5">
+            <Grid Margin="0,0,5,0">
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="0*"/>
+                        <ColumnDefinition Width="1.8*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1.8*"/>
+                        <ColumnDefinition Width="0*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Ellipse x:Name="lampEllipse" Grid.Row="0" Grid.Column="10" Width="20" Height="20" Fill="Red" Stroke="White"
+                   StrokeThickness="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,15,0,0"
+                   RenderTransformOrigin="-0.983,2.55" Grid.RowSpan="2"/>
+                    <Label x:Name="lbl_SemiAuto" Grid.Row="3" Content="MODE" HorizontalAlignment="Left"
+                 VerticalAlignment="Stretch" Foreground="#FF78DE65" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" FontWeight="Bold" FontSize="15" FontStyle="Normal" Height="50"
+                 Grid.ColumnSpan="4" Margin="5,0,0,0"/>
+                    <Label x:Name="lbl_JobStep" Grid.Row="3" Content="STEP" HorizontalAlignment="Right"
+                 VerticalAlignment="Stretch" Foreground="#FFFF8D01" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" FontWeight="Bold" FontSize="15" FontStyle="Normal" Height="50"
+                 Grid.ColumnSpan="4" Grid.Column="7" Margin="0,0,5,0"/>
+                    <Label x:Name="lbl_SrmNum" Grid.Row="1" Content="SRM #" HorizontalAlignment="Left"
+                 VerticalAlignment="Stretch" Foreground="#FFDEAD65" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" FontWeight="Bold" FontSize="20" FontStyle="Normal" Height="50"
+                 Grid.ColumnSpan="5"/>
+                    <Label x:Name="lbl_prevBay" Content="000" Grid.Column="0" Foreground="#FFADADAD" FontSize="20"
+                 HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.Row="2"
+                 HorizontalAlignment="Stretch" Grid.ColumnSpan="2"/>
+                    <Label x:Name="lbl_nextBay" Content="000" Grid.Column="9" Foreground="#FFADADAD" FontSize="20"
+                 HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="2"
+                 Grid.Row="2" HorizontalAlignment="Stretch"/>
+                    <Label x:Name="lbl_nextLev" Content="00" Grid.Row="1" Grid.Column="6" Foreground="#FFADADAD" FontSize="20" VerticalContentAlignment="Center" Grid.RowSpan="1"
+                 Grid.ColumnSpan="2" Margin="5,0,0,0"/>
+                    <Label x:Name="lbl_prevLev" Content="00" Grid.Column="6" Foreground="#FFADADAD" FontSize="20" VerticalContentAlignment="Center" Grid.Row="3"
+                 Grid.ColumnSpan="2" Margin="5,0,0,0"/>
+                    <Label x:Name="lbl_curBay" Content="000" Grid.Column="3" HorizontalAlignment="Stretch"
+                 VerticalAlignment="Stretch" FontWeight="Bold" Foreground="White" FontSize="30"
+                 HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.Row="2"
+                 Grid.ColumnSpan="2"/>
+                    <Label Content="-" Grid.Column="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                 FontWeight="Bold" Foreground="White" FontSize="48" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" Grid.Row="2"/>
+                    <Label x:Name="lbl_curLev" Content="00" Grid.Column="6" FontWeight="Bold" Foreground="White" FontSize="30"
+                 HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Grid.Row="2"
+                 HorizontalAlignment="Stretch" Grid.ColumnSpan="2"/>
+                    <Border x:Name="lbl_top" Grid.Row="2" Grid.Column="4" BorderBrush="#4CFFFFFF" BorderThickness="0,7,0,0"
+                  VerticalAlignment="Stretch" Grid.ColumnSpan="3"/>
+                    <Border x:Name="lbl_bottom" Grid.Row="2" Grid.Column="4" BorderBrush="#4CFFFFFF" BorderThickness="0,0,0,7"
+                  VerticalAlignment="Stretch" Grid.ColumnSpan="3"/>
+                    <Label x:Name="lbl_BMove" Grid.Column="1" HorizontalAlignment="Right" FontWeight="Bold"
+                 Foreground="#FFADADAD" Width="30" FontSize="40" HorizontalContentAlignment="Center" Height="50"
+                 VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" Grid.Row="2" Grid.ColumnSpan="2">
+                        <Control.Background>
+                            <ImageBrush ImageSource="/Resources/moveLN.png"/>
+                        </Control.Background>
+                    </Label>
+                    <Label x:Name="lbl_FMove" Grid.Column="8" HorizontalAlignment="Left" FontWeight="Bold"
+                 Foreground="#FFADADAD" Width="30" FontSize="40" HorizontalContentAlignment="Center" Height="50"
+                 VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" Grid.Row="2" Grid.ColumnSpan="2">
+                        <Control.Background>
+                            <ImageBrush ImageSource="/Resources/moveRN.png"/>
+                        </Control.Background>
+                    </Label>
+                    <Label x:Name="lbl_UMove" Grid.Column="4" FontWeight="Bold" Foreground="#FFADADAD" Width="50"
+                 HorizontalContentAlignment="Stretch" Height="30" VerticalContentAlignment="Stretch"
+                 RenderTransformOrigin="0.5,0.5" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"
+                 Panel.ZIndex="1">
+                        <Control.Background>
+                            <ImageBrush ImageSource="/Resources/moveUN.png"/>
+                        </Control.Background>
+                    </Label>
+                    <Label x:Name="lbl_DMove" Grid.Column="4" FontWeight="Bold" Foreground="#FFADADAD" Width="50"
+                 HorizontalContentAlignment="Stretch" Height="30" VerticalContentAlignment="Stretch"
+                 RenderTransformOrigin="0.5,0.5" Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Stretch">
+                        <Control.Background>
+                            <ImageBrush ImageSource="/Resources/moveDN.png"/>
+                        </Control.Background>
+                    </Label>
+                </Grid>
+            </Grid>
+        </Border>
+        <Border Grid.Row="2" BorderBrush="White" BorderThickness="1" CornerRadius="5,5,5,5" Margin="10,5,10,5" Grid.RowSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+                <Button Click="Btn_StartOnOff_Click" x:Name="Btn_StartOnOff" Content="{lx:Loc 시작}" Grid.Row="0" Visibility="Visible" Foreground="Black" Background="LightBlue" FontWeight="Bold" Margin="15,7,15,7"/>
+                <Button Click="Btn_Home_Click" x:Name="Btn_Home" Grid.Row="0" Content="{lx:Loc 홈복귀}"
+                  BorderBrush="#FFB8D8FC" FontWeight="Bold" Grid.Column="1" Margin="15,7,15,7">
+                    <FrameworkElement.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Control.Background" Value="LightBlue"/>
+                            <Style.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Control.Background" Value="LightCoral"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </FrameworkElement.Style>
+                </Button>
+                <Button Click="Btn_Reset_Click" x:Name="Btn_Reset" Content="{lx:Loc 이상리셋}" Grid.Row="1"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="#FFB8D8FC" FontWeight="Bold" Grid.Column="1" Margin="15,7,15,7">
+                    <FrameworkElement.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Control.Background" Value="LightBlue"/>
+                            <Style.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Control.Background" Value="LightCoral"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </FrameworkElement.Style>
+                </Button>
+                <Button Click="Btn_BuzzStop_Click" x:Name="Btn_BuzzStop" Content="{lx:Loc 부저정지}" Grid.Row="1"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="#FFB8D8FC" FontWeight="Bold" Margin="15,7,15,7">
+                    <FrameworkElement.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Control.Background" Value="LightBlue"/>
+                            <Style.Triggers>
+                                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                    <Setter Property="Control.Background" Value="LightCoral"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </FrameworkElement.Style>
+                </Button>
+            </Grid>
+        </Border>
+        <Border Grid.Row="1" BorderBrush="White" BorderThickness="1" CornerRadius="5,5,5,5" Margin="10,5,10,1">
+            <Grid x:Name="Grid_JobState">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Height="2" Margin="5,0,5,0" IsEnabled="False"/>
+                <Grid x:Name="Grid_Fork1State" Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="15*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="8*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid x:Name="Grid_Fork1ProcBtn" Row="1" Column="1" ColumnSpan="5" RowSpan="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Click="Btn_Complete_Click" x:Name="Btn_Fork1Complete" Grid.Row="0" Content="{lx:Loc 작업완료}"
+                    BorderBrush="#FFACACAC" FontWeight="Bold" Margin="30,2,10,2" Grid.Column="0" Grid.ColumnSpan="2"
+                    Background="#FF757575">
+                            <FrameworkElement.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Control.Background" Value="LightBlue"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                            <Setter Property="Control.Background" Value="LightCoral"/>
+                                        </Trigger>
+                                        <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                            <Setter Property="Control.Foreground" Value="Black"/>
+                                        </Trigger>
+                                        <Trigger Property="ButtonBase.IsPressed" Value="False">
+                                            <Setter Property="Control.Foreground" Value="White"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </FrameworkElement.Style>
+                        </Button>
+                        <Button Click="Btn_Delete_Click" x:Name="Btn_Fork1Delete" Grid.Row="0" Content="{lx:Loc 작업삭제}"
+                    BorderBrush="#FFACACAC" FontWeight="Bold" Margin="10,2,30,2" Grid.Column="3" Grid.ColumnSpan="2"
+                    Background="#FF757575">
+                            <FrameworkElement.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Control.Background" Value="LightBlue"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                            <Setter Property="Control.Background" Value="LightCoral"/>
+                                        </Trigger>
+                                        <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                            <Setter Property="Control.Foreground" Value="Black"/>
+                                        </Trigger>
+                                        <Trigger Property="ButtonBase.IsPressed" Value="False">
+                                            <Setter Property="Control.Foreground" Value="White"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </FrameworkElement.Style>
+                        </Button>
+                    </Grid>
+                    <ToggleButton x:Name="Btn_Fork1" Content="{lx:Loc 포크1}" FontSize="15" FontWeight="Bold" Background="#02000000"
+                        BorderBrush="White" BorderThickness="1,1,1,1" HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch" Grid.Row="0" Margin="5,2,5,2" HorizontalContentAlignment="Center"
+                        Grid.RowSpan="2">
+                        <FrameworkElement.Style>
+                            <Style TargetType="{x:Type ToggleButton}">
+                                <Setter Property="Control.Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                            <Border x:Name="border" CornerRadius="5" Background="{TemplateBinding Control.Background}"
+                              BorderBrush="{TemplateBinding Control.BorderBrush}"
+                              BorderThickness="{TemplateBinding Control.BorderThickness}"
+                              Padding="{TemplateBinding Control.Padding}">
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}"
+                                          SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                                                    <Setter TargetName="border" Property="Border.Background" Value="#FFB6D8FB"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Control.Foreground" Value="#7FC8C8C8"/>
+                                <Style.Triggers>
+                                    <Trigger Property="ToggleButton.IsChecked" Value="True">
+                                        <Setter Property="Control.Foreground" Value="Black"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </FrameworkElement.Style>
+                    </ToggleButton>
+                    <Grid x:Name="Grid_Fork1JobArea" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="lbl_Fork1WcsJob" Text="WCS: -" Grid.Row="0" HorizontalAlignment="Stretch"
+                 Foreground="#FF78DE65" TextAlignment="Center" FontWeight="Bold" FontSize="12" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="lbl_Fork1Job" Text="SRM: -" Grid.Row="1" HorizontalAlignment="Stretch"
+                 Foreground="White" TextAlignment="Center" FontWeight="Bold" FontSize="12" TextWrapping="Wrap"/>
+                    </Grid>
+                    <Label x:Name="lbl_jobState" Content="Step" Grid.Column="0" VerticalAlignment="Stretch"
+                 Foreground="#FF42ACDC" VerticalContentAlignment="Center" FontWeight="Bold" Margin="5,0,0,0"
+                 FontSize="9" Padding="5,5,5,5" Grid.Row="3" Grid.RowSpan="1"/>
+                    <Label x:Name="lbl_jobProc" Content="State" Grid.Column="1" HorizontalAlignment="Stretch"
+                 VerticalAlignment="Stretch" Foreground="#FFA3C9DA" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" FontWeight="Bold" FontSize="13" Grid.Row="3" Grid.RowSpan="1"/>
+                    <Label x:Name="lbl_notifyJob" Grid.Row="4" Content="" Panel.ZIndex="0" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" FontSize="15" Foreground="#FFB44545" FontWeight="Bold"
+                 Background="#33000000" Grid.RowSpan="1" Grid.ColumnSpan="2"/>
+                    <Grid x:Name="Grid_Fork1Position" Row="4" Column="0" ColumnSpan="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="lbl_fPosLF" Content="F" Grid.Column="0" Foreground="#FFADADAD" FontSize="20"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"
+                   Padding="0,0,0,0"/>
+                        <Label x:Name="lbl_fDirLF" Grid.Column="1" FontWeight="Bold" Foreground="#FFADADAD" FontSize="40"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   RenderTransformOrigin="0.5,0.5" Margin="10,10,10,10" MaxHeight="30" MaxWidth="30">
+                            <Control.Background>
+                                <ImageBrush ImageSource="/Resources/moveLN.png"/>
+                            </Control.Background>
+                        </Label>
+                        <Label x:Name="lbl_fPosLM" Content="M" Grid.Column="2" Foreground="#FFADADAD" FontSize="20"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"
+                   Padding="0,0,0,0"/>
+                        <Label x:Name="lbl_fDirLM" Grid.Column="3" FontWeight="Bold" Foreground="#FFADADAD" FontSize="40"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   RenderTransformOrigin="0.5,0.5" Margin="10,10,10,10" MaxHeight="30" MaxWidth="30">
+                            <Control.Background>
+                                <ImageBrush ImageSource="/Resources/moveLN.png"/>
+                            </Control.Background>
+                        </Label>
+                        <Label x:Name="lbl_fPosLH" Content="H" Grid.Column="4" Foreground="#FFADADAD" FontSize="20"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"
+                   Padding="0,0,0,0"/>
+                        <Label x:Name="lbl_fDirLH" Grid.Column="5" FontWeight="Bold" Foreground="#FFADADAD" FontSize="40"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   RenderTransformOrigin="0.5,0.5" Margin="10,10,10,10" MaxHeight="30" MaxWidth="30">
+                            <Control.Background>
+                                <ImageBrush ImageSource="/Resources/moveLN.png"/>
+                            </Control.Background>
+                        </Label>
+                        <Label x:Name="lbl_fPosC" Content="C" Grid.Column="6" FontWeight="Bold" Foreground="#FFADADAD"
+                   FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   Padding="0,0,0,0"/>
+                        <Label x:Name="lbl_fPosRF" Content="F" Grid.Column="12" Foreground="#FFADADAD" FontSize="20"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"
+                   Padding="0,0,0,0"/>
+                        <Label x:Name="lbl_fDirRF" Grid.Column="11" FontWeight="Bold" Foreground="#FFADADAD" FontSize="40"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   RenderTransformOrigin="0.5,0.5" Margin="10,10,10,10" MaxHeight="30" MaxWidth="30">
+                            <Control.Background>
+                                <ImageBrush ImageSource="/Resources/moveRN.png"/>
+                            </Control.Background>
+                        </Label>
+                        <Label x:Name="lbl_fPosRM" Content="M" Grid.Column="10" Foreground="#FFADADAD" FontSize="20"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"
+                   Padding="0,0,0,0"/>
+                        <Label x:Name="lbl_fDirRM" Grid.Column="9" FontWeight="Bold" Foreground="#FFADADAD" FontSize="40"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   RenderTransformOrigin="0.5,0.5" Margin="10,10,10,10" MaxHeight="30" MaxWidth="30">
+                            <Control.Background>
+                                <ImageBrush ImageSource="/Resources/moveRN.png"/>
+                            </Control.Background>
+                        </Label>
+                        <Label x:Name="lbl_fPosRH" Content="H" Grid.Column="8" Foreground="#FFADADAD" FontSize="20"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"
+                   Padding="0,0,0,0"/>
+                        <Label x:Name="lbl_fDirRH" Grid.Column="7" FontWeight="Bold" Foreground="#FFADADAD" FontSize="40"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   RenderTransformOrigin="0.5,0.5" Margin="10,10,10,10" MaxHeight="30" MaxWidth="30">
+                            <Control.Background>
+                                <ImageBrush ImageSource="/Resources/moveRN.png"/>
+                            </Control.Background>
+                        </Label>
+                    </Grid>
+                </Grid>
+                <Grid x:Name="Grid_Fork2State" Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="15*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="8*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid x:Name="Grid_Fork2ProcBtn" Row="1" Column="1" ColumnSpan="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Click="Btn_Complete_Click" x:Name="Btn_Fork2Complete" Grid.Row="0" Content="{lx:Loc 작업완료}"
+                    BorderBrush="#FFACACAC" FontWeight="Bold" Margin="30,2,10,2" Grid.Column="0" Grid.ColumnSpan="2"
+                    Background="#FF757575">
+                            <FrameworkElement.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Control.Background" Value="LightBlue"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                            <Setter Property="Control.Background" Value="LightCoral"/>
+                                        </Trigger>
+                                        <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                            <Setter Property="Control.Foreground" Value="Black"/>
+                                        </Trigger>
+                                        <Trigger Property="ButtonBase.IsPressed" Value="False">
+                                            <Setter Property="Control.Foreground" Value="White"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </FrameworkElement.Style>
+                        </Button>
+                        <Button Click="Btn_Delete_Click" x:Name="Btn_Fork2Delete" Grid.Row="0" Content="{lx:Loc 작업삭제}"
+                    BorderBrush="#FFACACAC" FontWeight="Bold" Margin="10,2,30,2" Grid.Column="3" Grid.ColumnSpan="2"
+                    Background="#FF757575">
+                            <FrameworkElement.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Control.Background" Value="LightBlue"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="UIElement.IsMouseOver" Value="True">
+                                            <Setter Property="Control.Background" Value="LightCoral"/>
+                                        </Trigger>
+                                        <Trigger Property="ButtonBase.IsPressed" Value="True">
+                                            <Setter Property="Control.Foreground" Value="Black"/>
+                                        </Trigger>
+                                        <Trigger Property="ButtonBase.IsPressed" Value="False">
+                                            <Setter Property="Control.Foreground" Value="White"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </FrameworkElement.Style>
+                        </Button>
+                    </Grid>
+                    <ToggleButton x:Name="Btn_Fork2" Content="{lx:Loc 포크2}" FontSize="15" FontWeight="Bold" Background="#02000000"
+                        BorderBrush="White" BorderThickness="1,1,1,1" HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch" IsEnabled="False" Grid.Row="0" Margin="5,2,5,2"
+                        HorizontalContentAlignment="Center" Grid.RowSpan="2">
+                        <FrameworkElement.Style>
+                            <Style TargetType="{x:Type ToggleButton}">
+                                <Setter Property="Control.Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                            <Border x:Name="border" CornerRadius="5" Background="{TemplateBinding Control.Background}"
+                              BorderBrush="{TemplateBinding Control.BorderBrush}"
+                              BorderThickness="{TemplateBinding Control.BorderThickness}"
+                              Padding="{TemplateBinding Control.Padding}">
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}"
+                                          SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                                                    <Setter TargetName="border" Property="Border.Background" Value="#FFB6D8FB"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Control.Foreground" Value="#7FC8C8C8"/>
+                                <Style.Triggers>
+                                    <Trigger Property="ToggleButton.IsChecked" Value="True">
+                                        <Setter Property="Control.Foreground" Value="Black"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </FrameworkElement.Style>
+                    </ToggleButton>
+                    <Grid x:Name="Grid_Fork2JobArea" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="lbl_Fork2WcsJob" Text="WCS: -" Grid.Row="0" HorizontalAlignment="Stretch"
+                 Foreground="#FF78DE65" TextAlignment="Center" FontWeight="Bold" FontSize="12" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="lbl_Fork2Job" Text="SRM: -" Grid.Row="1" HorizontalAlignment="Stretch"
+                 Foreground="White" TextAlignment="Center" FontWeight="Bold" FontSize="12" TextWrapping="Wrap"/>
+                    </Grid>
+                    <Label x:Name="lbl_jobState2" Content="Step" Grid.Column="0" VerticalAlignment="Stretch"
+                 Foreground="#FF42ACDC" VerticalContentAlignment="Center" FontWeight="Bold" Margin="5,0,0,0"
+                 FontSize="9" Padding="5,5,5,5" Grid.Row="3" Grid.RowSpan="1"/>
+                    <Label x:Name="lbl_jobProc2" Content="State" Grid.Column="1" HorizontalAlignment="Stretch"
+                 VerticalAlignment="Stretch" Foreground="#FFA3C9DA" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" FontWeight="Bold" FontSize="13" Grid.Row="3" Grid.RowSpan="1"/>
+                    <Grid x:Name="Grid_Fork2Position" Row="4" Column="0" ColumnSpan="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="lbl_fPosLF2" Content="F" Grid.Column="0" Foreground="#FFADADAD" FontSize="20"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"
+                   Padding="0,0,0,0"/>
+                        <Label x:Name="lbl_fDirLF2" Grid.Column="1" FontWeight="Bold" Foreground="#FFADADAD" FontSize="40"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   RenderTransformOrigin="0.5,0.5" Margin="10,10,10,10" MaxHeight="30" MaxWidth="30">
+                            <Control.Background>
+                                <ImageBrush ImageSource="/Resources/moveLN.png"/>
+                            </Control.Background>
+                        </Label>
+                        <Label x:Name="lbl_fPosLM2" Content="M" Grid.Column="2" Foreground="#FFADADAD" FontSize="20"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"
+                   Padding="0,0,0,0"/>
+                        <Label x:Name="lbl_fDirLM2" Grid.Column="3" FontWeight="Bold" Foreground="#FFADADAD" FontSize="40"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   RenderTransformOrigin="0.5,0.5" Margin="10,10,10,10" MaxHeight="30" MaxWidth="30">
+                            <Control.Background>
+                                <ImageBrush ImageSource="/Resources/moveLN.png"/>
+                            </Control.Background>
+                        </Label>
+                        <Label x:Name="lbl_fPosLH2" Content="H" Grid.Column="4" Foreground="#FFADADAD" FontSize="20"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"
+                   Padding="0,0,0,0"/>
+                        <Label x:Name="lbl_fDirLH2" Grid.Column="5" FontWeight="Bold" Foreground="#FFADADAD" FontSize="40"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   RenderTransformOrigin="0.5,0.5" Margin="10,10,10,10" MaxHeight="30" MaxWidth="30">
+                            <Control.Background>
+                                <ImageBrush ImageSource="/Resources/moveLN.png"/>
+                            </Control.Background>
+                        </Label>
+                        <Label x:Name="lbl_fPosC2" Content="C" Grid.Column="6" FontWeight="Bold" Foreground="#FFADADAD"
+                   FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   Padding="0,0,0,0"/>
+                        <Label x:Name="lbl_fPosRF2" Content="F" Grid.Column="12" Foreground="#FFADADAD" FontSize="20"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"
+                   Padding="0,0,0,0"/>
+                        <Label x:Name="lbl_fDirRF2" Grid.Column="11" FontWeight="Bold" Foreground="#FFADADAD" FontSize="40"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   RenderTransformOrigin="0.5,0.5" Margin="10,10,10,10" MaxHeight="30" MaxWidth="30">
+                            <Control.Background>
+                                <ImageBrush ImageSource="/Resources/moveRN.png"/>
+                            </Control.Background>
+                        </Label>
+                        <Label x:Name="lbl_fPosRM2" Content="M" Grid.Column="10" Foreground="#FFADADAD" FontSize="20"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"
+                   Padding="0,0,0,0"/>
+                        <Label x:Name="lbl_fDirRM2" Grid.Column="9" FontWeight="Bold" Foreground="#FFADADAD" FontSize="40"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   RenderTransformOrigin="0.5,0.5" Margin="10,10,10,10" MaxHeight="30" MaxWidth="30">
+                            <Control.Background>
+                                <ImageBrush ImageSource="/Resources/moveRN.png"/>
+                            </Control.Background>
+                        </Label>
+                        <Label x:Name="lbl_fPosRH2" Content="H" Grid.Column="8" Foreground="#FFADADAD" FontSize="20"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"
+                   Padding="0,0,0,0"/>
+                        <Label x:Name="lbl_fDirRH2" Grid.Column="7" FontWeight="Bold" Foreground="#FFADADAD" FontSize="40"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   RenderTransformOrigin="0.5,0.5" Margin="10,10,10,10" MaxHeight="30" MaxWidth="30">
+                            <Control.Background>
+                                <ImageBrush ImageSource="/Resources/moveRN.png"/>
+                            </Control.Background>
+                        </Label>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sort -k2)",
+      "Bash(grep -ivE \"TravelOffsetMm|//|backupLift|XOffset|ZOffset|offsetMm|pxOffset\")",
+      "Bash(python -)"
+    ]
+  }
+}

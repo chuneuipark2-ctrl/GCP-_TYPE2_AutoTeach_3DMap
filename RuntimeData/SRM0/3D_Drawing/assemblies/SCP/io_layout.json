@@ -1,0 +1,126 @@
+{
+  "assyId": "SCP",
+  "_note": "x,y,z null = Solid Edge에서 좌표 채울 것 (io_assy_mapping name과 키 이름 동일)",
+  "points": {
+    "Auto_Key_SW": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "GOV": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "INV_Inhibit": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "INV_MDR_MC_FeedBack": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "INV_MDR_Ready": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "INV_Reset": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Lift_Brake_MMS_FLT": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "M_Cage_Door_SW": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "M_Cage_EMS": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "M_Cage_Error": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "M_Cage_Key_SW": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Maint_Key_SW": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Over_Temp_Sensor": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Panel_EMO_SW": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Panel_Reset_SW": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Safety_Relay_Alarm": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Tower_Lamp_Blue": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Tower_Lamp_Buzzer": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Tower_Lamp_Green": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Tower_Lamp_RED": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Tower_Lamp_White": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Tower_Lamp_Yellow": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Lift_Out_Limit_Sensor_H": {
+      "x": null,
+      "y": null,
+      "z": null
+    },
+    "Lift_Out_Limit_Sensor_E": {
+      "x": null,
+      "y": null,
+      "z": null
+    }
+  }
+}

@@ -1,0 +1,364 @@
+{
+  "assyId": "Carriage_Assy",
+  "stpFile": "Carriage_Assy.stp",
+  "glbFile": "Carriage_Assy.glb",
+  "glbExportHint": "external_y_up",
+  "_glbNote": "ImageToStl Y-up GLB — Assimp OBJ 대체 금지",
+  "generatedAt": "2026-07-09T00:32:09.061Z",
+  "linearDeflection": null,
+  "coordsOnly": true,
+  "source": "stp",
+  "coordinateSystem": "solid_edge_z_up_mm",
+  "_note": "형체=GLB. 센서=STP 배치이름(occurrence)+배치좌표 우선, part파일명은 보조.",
+  "occurrenceCount": 1324,
+  "sensorOccurrenceCount": 33,
+  "cadReference": {
+    "center": [
+      18.0977827002445,
+      744.7197637162551,
+      224.63126810317027
+    ],
+    "zUp": true,
+    "unit": "mm"
+  },
+  "assemblyBBox": {
+    "center": [
+      17.69420035795997,
+      1168.417527055189,
+      192.31431260300207
+    ],
+    "min": [
+      -580.080569189938,
+      289.000000000008,
+      -863.300000000006
+    ],
+    "max": [
+      615.468969905858,
+      2047.83505411037,
+      1247.92862520601
+    ],
+    "zUp": true,
+    "unit": "mm"
+  },
+  "assemblyOrigin": [
+    0,
+    0,
+    0
+  ],
+  "points": {
+    "Rope_Tension_Rear": {
+      "x": 23.7906715445488,
+      "y": 1130.49841569048,
+      "z": -863.300000000006,
+      "occurrenceName": "Rope_Tension_Rear",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Rope_Tension_Front": {
+      "x": 83.9093284555143,
+      "y": 1133.50366503041,
+      "z": 863.299999999992,
+      "occurrenceName": "Rope_Tension_Front",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Lift_DEC": {
+      "x": 53.0000000000131,
+      "y": 1762.51318794426,
+      "z": 951.274967309557,
+      "occurrenceName": "Lift_DEC",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Lift_Home_Position": {
+      "x": -389.9999999993,
+      "y": 1007.03921699493,
+      "z": 1120.00000000192,
+      "occurrenceName": "Lift_Home_Position",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Lift_In_Limit_Sensor_H": {
+      "x": -264.040542223619,
+      "y": 981.006770754458,
+      "z": 1247.92862520601,
+      "occurrenceName": "Lift_In_Limit_Sensor_H",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Lift_In_Limit_Sensor_E": {
+      "x": -112.899999999987,
+      "y": 1835.17532426908,
+      "z": 847.856787757938,
+      "occurrenceName": "Lift_In_Limit_Sensor_E",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Fork_Center_Left": {
+      "x": 205.000000000032,
+      "y": 381.500000000006,
+      "z": -355.000000000019,
+      "occurrenceName": "Fork_Center_Left",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Fork_Center_Right": {
+      "x": 245.000000000017,
+      "y": 381.500000000004,
+      "z": 94.9999999999828,
+      "occurrenceName": "Fork_Center_Right",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Fork_Out_Left": {
+      "x": 565.39999999976,
+      "y": 515.799999999984,
+      "z": 852.999999999987,
+      "occurrenceName": "Fork_Out_Left",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Fork_Out_Right": {
+      "x": -565.39999999976,
+      "y": 515.799999999984,
+      "z": 852.999999999987,
+      "occurrenceName": "Fork_Out_Right",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Fork_Half_Left": {
+      "x": 295.000000000011,
+      "y": 374.999999999998,
+      "z": 421.999999999985,
+      "occurrenceName": "Fork_Half_Left",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Fork_Half_Right": {
+      "x": -154.999999999975,
+      "y": 375.000000000004,
+      "z": -28.0000000000305,
+      "occurrenceName": "Fork_Half_Right",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Fork_End_Left": {
+      "x": 558.419259147636,
+      "y": 374.999999999997,
+      "z": 421.999999999991,
+      "occurrenceName": "Fork_End_Left",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Fork_End_Right": {
+      "x": -444.999999999975,
+      "y": 375.000000000006,
+      "z": -28.0000000000402,
+      "occurrenceName": "Fork_End_Right",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Goods_OX": {
+      "x": 253.645637065324,
+      "y": 545.678088988363,
+      "z": 728.287249092149,
+      "occurrenceName": "Goods_OX",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Goods_Width_Left": {
+      "x": 615.468969905705,
+      "y": 296.389633578641,
+      "z": 551.887199590401,
+      "occurrenceName": "Goods_Width_Left",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Goods_Width_Right": {
+      "x": -548.999999999925,
+      "y": 296.38963357864,
+      "z": 551.887199590392,
+      "occurrenceName": "Goods_Width_Right",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Goods_Depth_Front_L": {
+      "x": 615.468969905693,
+      "y": 289.000000000008,
+      "z": 635.499999999991,
+      "occurrenceName": "Goods_Depth_Front_L",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Goods_Depth_Front_R": {
+      "x": -548.999999999913,
+      "y": 289.000000000008,
+      "z": 635.499999999992,
+      "occurrenceName": "Goods_Depth_Front_R",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Goods_Depth_Rear_L": {
+      "x": 615.468969905858,
+      "y": 326.000000000009,
+      "z": -574.999999999991,
+      "occurrenceName": "Goods_Depth_Rear_L",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Goods_Depth_Rear_R": {
+      "x": -538.200000000079,
+      "y": 326.000000000008,
+      "z": -575.000000000002,
+      "occurrenceName": "Goods_Depth_Rear_R",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Goods_Height_Left": {
+      "x": 422.874289300721,
+      "y": 2047.83505411037,
+      "z": -797.276358674936,
+      "occurrenceName": "Goods_Height_Left",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Goods_Height_Right": {
+      "x": -422.874289300721,
+      "y": 2047.83505411037,
+      "z": -797.276358674936,
+      "occurrenceName": "Goods_Height_Right",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "LiDAR1_Observe_Signal": {
+      "x": 580.080569189938,
+      "y": 741.810382375631,
+      "z": 25.4999999999958,
+      "occurrenceName": "LiDAR1_Observe_Signal",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "LiDAR1_Alert_Signal": {
+      "x": 580.080569189938,
+      "y": 626.685601028361,
+      "z": 25.4999999999956,
+      "occurrenceName": "LiDAR1_Alert_Signal",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "LiDAR1_Alarm_Signal": {
+      "x": 580.080569189938,
+      "y": 501.746332156849,
+      "z": 25.4999999999956,
+      "occurrenceName": "LiDAR1_Alarm_Signal",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "LiDAR1_System_Alarm": {
+      "x": 580.080569189938,
+      "y": 868.681999516104,
+      "z": 25.4999999999956,
+      "occurrenceName": "LiDAR1_System_Alarm",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "LiDAR2_Observe_Signal": {
+      "x": -580.080569189938,
+      "y": 741.810382375631,
+      "z": 25.4999999999957,
+      "occurrenceName": "LiDAR2_Observe_Signal",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "LiDAR2_Alert_Signal": {
+      "x": -580.080569189938,
+      "y": 626.685601028361,
+      "z": 25.4999999999957,
+      "occurrenceName": "LiDAR2_Alert_Signal",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "LiDAR2_Alarm_Signal": {
+      "x": -580.080569189938,
+      "y": 501.746332156849,
+      "z": 25.4999999999957,
+      "occurrenceName": "LiDAR2_Alarm_Signal",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "LiDAR2_System_Alarm": {
+      "x": -580.080569189938,
+      "y": 868.681999516104,
+      "z": 25.4999999999957,
+      "occurrenceName": "LiDAR2_System_Alarm",
+      "partName": "Carriage_Assy_final",
+      "sourceMesh": "Carriage_Assy_final",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    }
+  },
+  "matchCount": 31,
+  "signalCount": 116,
+  "meshCount": 0,
+  "_meshNameSample": []
+}

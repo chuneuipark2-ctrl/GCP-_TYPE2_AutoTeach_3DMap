@@ -1,0 +1,17 @@
+{
+  "assyId": "SCP",
+  "label": "Standing_Control_Panel",
+  "stpCanonicalBase": "SCP",
+  "excludeStpNamePatterns": [],
+  "manifest": {
+    "matchPriority": ["stp_occurrence", "solid_edge_io_define"],
+    "sensorPartNamePatterns": [],
+    "useIoStpSensorMap": false,
+    "allowSensorPartSeq": false,
+    "defaultRadiusMm": 20
+  },
+  "viewer": {
+    "skipSurfaceSnapPatterns": ["^Tower_Lamp_"],
+    "deoverlapGapMm": 6
+  }
+}

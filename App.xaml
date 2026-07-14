@@ -1,0 +1,28 @@
+﻿<Application x:Class="gcp_Wpf.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:gcp_Wpf"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!-- Global font resource -->
+        <FontFamily x:Key="AppDefaultFont">pack://application:,,,/Resources/Fonts/NeoHyundaiB.ttf#NeoHyundaiB</FontFamily>
+
+        <!-- Apply font to all controls -->
+        <Style TargetType="{x:Type Control}">
+            <Setter Property="FontFamily" Value="{StaticResource AppDefaultFont}" />
+        </Style>
+
+        <!-- Ensure TextBlocks (not derived from Control) also pick up the font -->
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="{StaticResource AppDefaultFont}" />
+        </Style>
+
+        <!-- Flow documents / text elements -->
+        <Style TargetType="{x:Type Paragraph}">
+            <Setter Property="FontFamily" Value="{StaticResource AppDefaultFont}" />
+        </Style>
+        <Style TargetType="{x:Type Run}">
+            <Setter Property="FontFamily" Value="{StaticResource AppDefaultFont}" />
+        </Style>
+    </Application.Resources>
+</Application>

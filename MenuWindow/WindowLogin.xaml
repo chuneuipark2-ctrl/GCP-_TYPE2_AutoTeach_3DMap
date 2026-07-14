@@ -1,0 +1,86 @@
+<Window x:Class="gcp_Wpf.MenuWindow.WindowLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gcp_Wpf.MenuWindow"
+        xmlns:lx="clr-namespace:gcp_Wpf"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        Title="Login" Height="200" Width="300"
+        Background="#1F1F1F" Stylus.IsFlicksEnabled="False" TouchDown="Window_TouchDown" BorderBrush="White">
+    <Window.Resources>
+        <Style x:Key="NumpadButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Width" Value="60" />
+            <Setter Property="Height" Value="60" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Background" Value="#1F1F1F" />
+            <Setter Property="Foreground" Value="#B8D8FC"/>
+            <Setter Property="BorderBrush" Value="#B8D8FC" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="5"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="DarkBlue"/>
+                    <Setter Property="Background" Value="#B6D8FB"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid x:Name="grid_Password" Margin="0,5,0,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="{lx:Loc Access Code}" Grid.ColumnSpan="4" Foreground="White"
+               VerticalContentAlignment="Center" FontSize="15" HorizontalContentAlignment="Center"/>
+
+        <Label x:Name="lbl_info" Content="" Grid.ColumnSpan="4" Foreground="#FF8F8F"
+         VerticalContentAlignment="Center" FontSize="15" Grid.Row="3"/>
+
+        <PasswordBox x:Name="PasswordBox" Grid.Row="1" Grid.ColumnSpan="4" Margin="5,5,5,5"
+                     PreviewMouseDown="Click_OpenNumpad"/>
+
+        <Button x:Name="Btn_Close" Content="{lx:Loc 닫기}" Background="#02000000" BorderBrush="#B8D8FC"
+                FontWeight="Bold" Click="Btn_Close_Click" Grid.Row="2" Grid.Column="3" Margin="5,5,5,5">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                </Style>
+            </Button.Resources>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="#B8D8FC"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="DarkBlue"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Grid>
+</Window>

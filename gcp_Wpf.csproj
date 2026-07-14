@@ -1,0 +1,361 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Configurations>Debug;Release;Remote</Configurations>
+    <Platforms>AnyCPU;x64</Platforms>
+    <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+    <BaseOutputPath>$(MSBuildProjectDirectory)\bin\</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(MSBuildProjectDirectory)\obj\</BaseIntermediateOutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+    <!-- 경고 억제 설정 -->
+    <NoWarn>$(NoWarn);NETSDK1138;NU1701</NoWarn>
+    <!-- NuGet 패키지 복원 보장 -->
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE;</DefineConstants>
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DefineConstants>$(DefineConstants)TRACE;</DefineConstants>
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Remote|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE;</DefineConstants>
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Remote|x64'">
+    <DefineConstants>$(DefineConstants)TRACE;</DefineConstants>
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
+    <Optimize>True</Optimize>
+    <DefineConstants>$(DefineConstants)TRACE;</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DefineConstants>$(DefineConstants)TRACE;</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="HostAnalyzer\**" />
+    <Compile Remove="image\**" />
+    <Compile Remove="LogAnalyzer\**" />
+    <EmbeddedResource Remove="HostAnalyzer\**" />
+    <EmbeddedResource Remove="image\**" />
+    <EmbeddedResource Remove="LogAnalyzer\**" />
+    <None Remove="HostAnalyzer\**" />
+    <None Remove="image\**" />
+    <None Remove="LogAnalyzer\**" />
+    <Page Remove="HostAnalyzer\**" />
+    <Page Remove="image\**" />
+    <Page Remove="LogAnalyzer\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="commClass\FileName.cs" />
+    <Compile Remove="LicenseGeneratorTool\**" />
+    <Page Remove="LicenseGeneratorTool\**" />
+    <None Remove="LicenseGeneratorTool\**" />
+    <!-- License 폴더에서 생성용 클래스 제외 (검증용만 포함) -->
+    <Compile Remove="License\KeyGenerator.cs" />
+    <Compile Remove="License\LicenseGenerator.cs" />
+    <Compile Remove="License\WindowLicenseGenerator.xaml.cs" />
+    <Page Remove="License\WindowLicenseGenerator.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="arrow_fwd.png" />
+    <None Remove="arrow_right.png" />
+    <None Remove="Asset5.png" />
+    <None Remove="Asset6.png" />
+    <None Remove="Background.png" />
+    <None Remove="carrige.png" />
+    <None Remove="logo.png" />
+    <None Remove="Resources\arrow_bwd.png" />
+    <None Remove="Resources\arrow_fwd.png" />
+    <None Remove="Resources\arrow_left.png" />
+    <None Remove="Resources\arrow_right.png" />
+    <None Remove="Resources\Asset2.png" />
+    <None Remove="Resources\Asset5.png" />
+    <None Remove="Resources\Asset6.png" />
+    <None Remove="Resources\Background.png" />
+    <None Remove="Resources\carrige.png" />
+    <None Remove="Resources\carrige_tr.png" />
+    <None Remove="Resources\checked.png" />
+    <None Remove="Resources\connected.png" />
+    <None Remove="Resources\disconnected.png" />
+    <None Remove="Resources\Empty2_off.png" />
+    <None Remove="Resources\Empty2_on.png" />
+    <None Remove="Resources\Emptyoff.png" />
+    <None Remove="Resources\Emptyon.png" />
+    <None Remove="Resources\Emtpy2_on.png" />
+    <None Remove="Resources\fastD.png" />
+    <None Remove="Resources\fastDP.png" />
+    <None Remove="Resources\fastL.png" />
+    <None Remove="Resources\fastLP.png" />
+    <None Remove="Resources\fastR.png" />
+    <None Remove="Resources\fastRP.png" />
+    <None Remove="Resources\fastU.png" />
+    <None Remove="Resources\fastUP.png" />
+    <None Remove="Resources\fCenter.png" />
+    <None Remove="Resources\fkC.png" />
+    <None Remove="Resources\fkCN.png" />
+    <None Remove="Resources\fkL.png" />
+    <None Remove="Resources\fkLN.png" />
+    <None Remove="Resources\fkM.png" />
+    <None Remove="Resources\fkMN.png" />
+    <None Remove="Resources\fkR.png" />
+    <None Remove="Resources\fkRN.png" />
+    <None Remove="Resources\fLeft1.png" />
+    <None Remove="Resources\fLeft10.png" />
+    <None Remove="Resources\fLeft2.png" />
+    <None Remove="Resources\fLeft3.png" />
+    <None Remove="Resources\fLeft4.png" />
+    <None Remove="Resources\fLeft5.png" />
+    <None Remove="Resources\fLeft6.png" />
+    <None Remove="Resources\fLeft7.png" />
+    <None Remove="Resources\fLeft8.png" />
+    <None Remove="Resources\fLeft9.png" />
+    <None Remove="Resources\Fonts\NeoHyundaiB.ttf" />
+    <None Remove="Resources\fRight1.png" />
+    <None Remove="Resources\fRight10.png" />
+    <None Remove="Resources\fRight2.png" />
+    <None Remove="Resources\fRight3.png" />
+    <None Remove="Resources\fRight4.png" />
+    <None Remove="Resources\fRight5.png" />
+    <None Remove="Resources\fRight6.png" />
+    <None Remove="Resources\fRight7.png" />
+    <None Remove="Resources\fRight8.png" />
+    <None Remove="Resources\fRight9.png" />
+    <None Remove="Resources\logo.png" />
+    <None Remove="Resources\logo2.png" />
+    <None Remove="Resources\mast.png" />
+    <None Remove="Resources\mast2.png" />
+    <None Remove="Resources\moveL.png" />
+    <None Remove="Resources\moveLC.png" />
+    <None Remove="Resources\moveLN.png" />
+    <None Remove="Resources\moveR.png" />
+    <None Remove="Resources\moveRC.png" />
+    <None Remove="Resources\moveRN.png" />
+    <None Remove="Resources\NeoHyundaiB.ttf" />
+    <None Remove="Resources\rack.png" />
+    <None Remove="Resources\rack_proh.png" />
+    <None Remove="Resources\rack_sel.png" />
+    <None Remove="Resources\rack_spec.png" />
+    <None Remove="Resources\rail.png" />
+    <None Remove="Resources\slowD.png" />
+    <None Remove="Resources\slowDP.png" />
+    <None Remove="Resources\slowL.png" />
+    <None Remove="Resources\slowLP.png" />
+    <None Remove="Resources\slowR.png" />
+    <None Remove="Resources\slowRP.png" />
+    <None Remove="Resources\slowU.png" />
+    <None Remove="Resources\slowUP.png" />
+    <None Remove="Resources\srmmain.png" />
+    <None Remove="Resources\test_box.png" />
+    <None Remove="Resources\unchecked.png" />
+    <None Remove="srmmain.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\carrige_tr.png" />
+    <Resource Include="Resources\checked.png" />
+    <Resource Include="Resources\connected.png" />
+    <Resource Include="Resources\disconnected.png" />
+    <Resource Include="Resources\Empty2_on.png" />
+    <Resource Include="Resources\fastUP.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AssimpNet" Version="5.0.0-beta1" />
+    <PackageReference Include="ClosedXML" Version="0.102.3" />
+    <PackageReference Include="EasyModbusTCP" Version="5.6.0" />
+    <PackageReference Include="McProtocol" Version="1.2.5" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2365.46" />
+    <PackageReference Include="System.IO.Ports" Version="7.0.0" />
+    <PackageReference Include="System.Management" Version="8.0.0" />
+  </ItemGroup>
+
+  <!-- Dio3D 3D MAP -->
+  <ItemGroup>
+    <Compile Remove="tools\Dio3DAssyBuild\**" />
+    <None Remove="tools\Dio3DAssyBuild\**" />
+    <EmbeddedResource Remove="tools\Dio3DAssyBuild\**" />
+    <Content Include="Viewer3D\**\*" Exclude="Viewer3D\**\*ELEC_CONVERT*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tools\stp-io-manifest.mjs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tools\check-assy-stp-export.mjs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tools\check-lower-stp-export.mjs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tools\lib\**\*.mjs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <!-- 런타임은 bin/.../SRM0/3D_Drawing — 소스 트리는 RuntimeData/SRM0 유지(기존 프로젝트 루트 비파괴) -->
+    <Content Include="RuntimeData\SRM0\3D_Drawing\**\*">
+      <Link>SRM0\3D_Drawing\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <!-- 빌드 전 NuGet 패키지 복원 보장 -->
+  <Target Name="RestoreNuGetPackages" BeforeTargets="Build">
+    <Exec Command="dotnet restore &quot;$(MSBuildProjectFile)&quot;" ContinueOnError="false" />
+  </Target>
+
+  <ItemGroup>
+    <Resource Include="Resources\Empty2_off.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\arrow_bwd.png" />
+    <Resource Include="Resources\arrow_fwd.png" />
+    <Resource Include="Resources\arrow_left.png" />
+    <Resource Include="Resources\arrow_right.png" />
+    <Resource Include="Resources\Asset2.png" />
+    <Resource Include="Resources\Asset5.png" />
+    <Resource Include="Resources\Asset6.png" />
+    <Resource Include="Resources\Background.png" />
+    <Resource Include="Resources\carrige.png" />
+    <Resource Include="Resources\Emptyoff.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Emptyon.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Emtpy2_on.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\fastD.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\fastDP.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\fastL.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\fastLP.png" />
+    <Resource Include="Resources\fastR.png" />
+    <Resource Include="Resources\fastRP.png" />
+    <Resource Include="Resources\fastU.png" />
+    <Resource Include="Resources\fCenter.png" />
+    <Resource Include="Resources\fkC.png" />
+    <Resource Include="Resources\fkCN.png" />
+    <Resource Include="Resources\fkM.png" />
+    <Resource Include="Resources\fkMN.png" />
+    <Resource Include="Resources\fLeft1.png" />
+    <Resource Include="Resources\fLeft10.png" />
+    <Resource Include="Resources\fLeft2.png" />
+    <Resource Include="Resources\fLeft3.png" />
+    <Resource Include="Resources\fLeft4.png" />
+    <Resource Include="Resources\fLeft5.png" />
+    <Resource Include="Resources\fLeft6.png" />
+    <Resource Include="Resources\fLeft7.png" />
+    <Resource Include="Resources\fLeft8.png" />
+    <Resource Include="Resources\fLeft9.png" />
+    <Resource Include="Resources\Fonts\NeoHyundaiB.ttf" />
+    <Resource Include="Resources\fRight1.png" />
+    <Resource Include="Resources\fRight10.png" />
+    <Resource Include="Resources\fRight2.png" />
+    <Resource Include="Resources\fRight3.png" />
+    <Resource Include="Resources\fRight4.png" />
+    <Resource Include="Resources\fRight5.png" />
+    <Resource Include="Resources\fRight6.png" />
+    <Resource Include="Resources\fRight7.png" />
+    <Resource Include="Resources\fRight8.png" />
+    <Resource Include="Resources\fRight9.png" />
+    <Resource Include="Resources\logo.png" />
+    <Resource Include="Resources\logo2.png" />
+    <Resource Include="Resources\mast.png" />
+    <Resource Include="Resources\mast2.png" />
+    <Resource Include="Resources\moveD.png" />
+    <Resource Include="Resources\moveDC.png" />
+    <Resource Include="Resources\moveDN.png" />
+    <Resource Include="Resources\moveL.png" />
+    <Resource Include="Resources\moveLC.png" />
+    <Resource Include="Resources\moveLN.png" />
+    <Resource Include="Resources\moveR.png" />
+    <Resource Include="Resources\moveRC.png" />
+    <Resource Include="Resources\moveRN.png" />
+    <Resource Include="Resources\moveU.png" />
+    <Resource Include="Resources\moveUC.png" />
+    <Resource Include="Resources\moveUN.png" />
+    <Resource Include="Resources\rack.png" />
+    <Resource Include="Resources\rack_proh.png" />
+    <Resource Include="Resources\rack_sel.png" />
+    <Resource Include="Resources\rack_spec.png" />
+    <Resource Include="Resources\rail.png" />
+    <Resource Include="Resources\slowD.png" />
+    <Resource Include="Resources\slowDP.png" />
+    <Resource Include="Resources\slowL.png" />
+    <Resource Include="Resources\slowLP.png" />
+    <Resource Include="Resources\slowR.png" />
+    <Resource Include="Resources\slowRP.png" />
+    <Resource Include="Resources\slowU.png" />
+    <Resource Include="Resources\slowUP.png" />
+    <Resource Include="Resources\srmmain.png" />
+    <Resource Include="Resources\test_box.png" />
+    <Resource Include="Resources\unchecked.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

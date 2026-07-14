@@ -1,0 +1,303 @@
+﻿<Page x:Class="gcp_Wpf.PageProhibitRack"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:gcp_Wpf"
+      xmlns:lx="clr-namespace:gcp_Wpf"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageProhibitRack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Foreground="{x:Null}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="ProhRackSetting" >               <!--금지렉 직접 설정 기능 숨김-->     
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox x:Name="Combo_row" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{x:Null}" Margin="0,0,0,0" Grid.Row="1" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <ComboBox.Style>
+                        <Style TargetType="{x:Type ComboBox}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                                        <Border BorderThickness="1,1,1,1"
+                                    BorderBrush="#FFB8D8FC" CornerRadius="5,5,5,5">
+                                            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="3,3,3,3">
+                                                <ToggleButton x:Name="ToggleButton"
+                                            
+                                            Focusable="False"
+                                            IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                            ClickMode="Press" Background="#02000000" BorderThickness="0"/>
+                                                <ContentPresenter x:Name="ContentSite"
+                                            IsHitTestVisible="False"
+                                            Content="{TemplateBinding SelectionBoxItem}"
+                                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                            VerticalAlignment="Stretch"
+                                            HorizontalAlignment="Stretch" Width="108" Height="21" Grid.ColumnSpan="1"/>
+                                                <TextBox x:Name="PART_EditableTextBox"
+                                            Style="{x:Null}"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Margin="3,3,23,3"
+                                            Focusable="True"
+                                            Background="Transparent"
+                                            Visibility="Hidden"
+                                            IsReadOnly="{TemplateBinding IsReadOnly}" />
+                                                <Popup x:Name="Popup"
+                                            Placement="Bottom"
+                                            IsOpen="{TemplateBinding IsDropDownOpen}"
+                                            AllowsTransparency="True"
+                                            Focusable="False"
+                                            PopupAnimation="Slide">
+                                                    <Grid x:Name="DropDown"
+                                                SnapsToDevicePixels="True"
+                                                MinWidth="{TemplateBinding ActualWidth}"
+                                                MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                                        <Border x:Name="DropDownBorder"
+                                                    BorderThickness="1"
+                                                    BorderBrush="Black" Background="#99000000" />
+                                                        <ScrollViewer Margin="10,10,10,10"
+                                                    SnapsToDevicePixels="True">
+                                                            <StackPanel IsItemsHost="True"
+                                                        KeyboardNavigation.DirectionalNavigation="Contained" />
+                                                        </ScrollViewer>
+                                                    </Grid>
+                                                </Popup>
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ComboBox.Style>
+                    <ListBoxItem Content="{lx:Loc 한국어}" Height="20" Foreground="White"/>
+                    <ListBoxItem Content="{lx:Loc 영어}" Foreground="White"/>
+                    <ListBoxItem Content="{lx:Loc 중국어}" Foreground="White"/>
+                    <ComboBoxItem Content="ComboBoxItem" Height="20" Foreground="White"/>
+                    <ComboBoxItem Content="ComboBoxItem" Height="20" Foreground="White"/>
+                    <ComboBoxItem Content="ComboBoxItem" Height="20" Foreground="White"/>
+                </ComboBox>
+                <Label Content="ROW" Grid.Column="0" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                <Label Content="BAY" Grid.Column="3" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                <Label Content="LEV" Grid.Column="4" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                <Label Content="PROH" Grid.Column="5" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                <Label Content="SPEC" Grid.Column="6" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                <Label Content="/" Grid.Column="1" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal"  FontStyle="Normal" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="1" />
+                <Label Content="0"  Grid.Column="2" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal" FontSize="13" Grid.Row="1"/>
+                <Label Content="0"  Grid.Column="3" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal" FontSize="13" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                <Label Content="0"  Grid.Column="4" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal" FontSize="13" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                <Button x:Name="Btn_Proh" Content="PROH SET/RESET" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#02000000" BorderBrush="#FFB8D8FC" FontWeight="Bold" Grid.Column="7" Margin="0,2,0,2">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="3"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Foreground" Value="#FFB8D8FC"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="DarkBlue"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button x:Name="Btn_Spec" Content="SPEC SET/RESET" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#02000000" BorderBrush="#FFB8D8FC" FontWeight="Bold" Grid.Column="7" Grid.Row="1" Margin="0,2,0,2">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="3"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Foreground" Value="#FFB8D8FC"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="DarkBlue"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+            <GridSplitter HorizontalAlignment="Stretch" Height="50" VerticalAlignment="Stretch" Width="1" Grid.Column="1"/>
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="Btn_UnCheck" Content="UnCheck ALL" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#02000000" BorderBrush="#FFB8D8FC" Height="42" Width="92" FontWeight="Bold">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="3"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Foreground" Value="#FFB8D8FC"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="DarkBlue"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button x:Name="Btn_SelBayS" Content="Bay ALL" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#02000000" BorderBrush="#FFB8D8FC" Height="42" Width="92" FontWeight="Bold" Grid.Column="1">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="3"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Foreground" Value="#FFB8D8FC"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="DarkBlue"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button x:Name="Btn_SelLevS" Content="Lev ALL" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#02000000" BorderBrush="#FFB8D8FC" Height="42" Width="92" FontWeight="Bold" Grid.Column="2">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="3"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Foreground" Value="#FFB8D8FC"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="DarkBlue"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+        </Grid>
+        <ScrollViewer x:Name="ScrollView" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" BorderBrush="#FF575757" Margin="10,10,10,10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Label Content="                                                              BAY, LEV" Foreground="#FF00FF61" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Panel.ZIndex="-1" FontWeight="Bold"/>
+                <TabControl x:Name="tabRowControl" Background="{x:Null}" SelectionChanged="tabRowControl_SelectionChanged" Grid.RowSpan="2">
+                    <TabControl.Resources>
+                        <Style TargetType="{x:Type TabItem}">
+                            <Setter Property="Background" Value="#00808080"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="14"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Padding" Value="5"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#00000000"/>
+                                    <Setter Property="Foreground" Value="Black"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TabControl.Resources>
+                    <TabItem x:Name="tab_row1" Header="Row1" Visibility="Collapsed">
+                        <StackPanel x:Name="stack_row1">
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem x:Name="tab_row2" Header="Row2" Visibility="Collapsed">
+                        <StackPanel>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem x:Name="tab_row3" Header="Row3" Visibility="Collapsed">
+                        <StackPanel>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem x:Name="tab_row4" Header="Row4" Visibility="Collapsed">
+                        <StackPanel>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem x:Name="tab_row5" Header="Row5" Visibility="Collapsed">
+                        <StackPanel>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem x:Name="tab_row6" Header="Row6" Visibility="Collapsed">
+                        <StackPanel>
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+            <!--<StackPanel  x:Name="RackStack" Margin="5,5,5,5">
+            </StackPanel>-->
+        </ScrollViewer>
+        <Grid x:Name="ProhRackSave" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="Lbl_State" Content="0" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal" FontSize="13" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Button x:Name="Btn_Save" Content="SAVE" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#02000000" BorderBrush="#FFB8D8FC" FontWeight="Bold" Grid.Row="2" Grid.Column="4" Margin="5,5,0,5">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Foreground" Value="#FFB8D8FC"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="DarkBlue"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button x:Name="Btn_Cancel" Content="CANCEL" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#02000000" BorderBrush="#FFB8D8FC" FontWeight="Bold" Grid.Row="1" Grid.Column="3" Margin="0,5,5,5">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Foreground" Value="#FFB8D8FC"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="DarkBlue"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
+    </Grid>
+</Page>

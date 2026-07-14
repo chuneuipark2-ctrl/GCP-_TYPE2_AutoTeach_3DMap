@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "gcp_Wpf": {
+      "commandName": "Project",
+      "remoteDebugEnabled": false,
+      "authenticationMode": "Windows",
+      "remoteDebugMachine": "DESKTOP-SSS0J16:4026",
+      "nativeDebugging": true
+    }
+  }
+}

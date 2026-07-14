@@ -1,0 +1,177 @@
+﻿<Page x:Class="gcp_Wpf.PageMonitorToWCS"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:gcp_Wpf"
+      xmlns:lx="clr-namespace:gcp_Wpf"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageMonitorToWCS">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="90*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="{lx:Loc GCP --> WCS 전송 정보}" Margin="9,5,9,6" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="16"/>
+            <Label Grid.Column="1" Content="WORD / BIT / TYPE / VALUE" Margin="9,5,9,6" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="16"/>
+            <Label Grid.Column="2" Content="" Margin="9,5,9,6" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" HorizontalAlignment="Left" VerticalAlignment="Stretch" FontSize="16"/>
+            <TextBox x:Name="edit_Bit" Grid.Column="2" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="0" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" BorderBrush="#FFB8D8FC" Foreground="White" Background="{x:Null}" VerticalAlignment="Stretch" PreviewMouseDown="Click_OpenNumpad">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBox x:Name="edit_Word" Grid.Column="3" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="0" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" BorderBrush="#FFB8D8FC" Foreground="White" Background="{x:Null}" VerticalAlignment="Stretch" PreviewMouseDown="Click_OpenNumpad">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBox x:Name="edit_DWord" Grid.Column="4" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="0" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" BorderBrush="#FFB8D8FC" Foreground="White" Background="{x:Null}" VerticalAlignment="Stretch" PreviewMouseDown="Click_OpenNumpad">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+        </Grid>
+        <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Height="2" Margin="0,0,0,0" VerticalAlignment="Top"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="9*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="9*"/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="dataLeft" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+            <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" Width="2" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+            <Grid x:Name="dataRight" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+            <Button x:Name="Btn_Left" Content="&lt;" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,5,0,0" FontSize="150" FontWeight="Bold">
+                <Button.Resources>
+                    <SolidColorBrush x:Key="HoverColor" Color="Transparent"/>
+                    <SolidColorBrush x:Key="NormalForeground" Color="#CC925555"/>
+                    <SolidColorBrush x:Key="HoverBackground" Color="Transparent"/>
+                    <ImageBrush x:Key="BackgroundImage" ImageSource="/Resources/slowL.png">
+                        <ImageBrush.Viewport>
+                            <Rect>0.25, 0.25, 0.5, 0.5</Rect>
+                            <!-- Center the image (left, top, width, height) -->
+                        </ImageBrush.Viewport>
+                        <ImageBrush.Viewbox>
+                            <Rect>0, 0, 1, 1</Rect>
+                            <!-- Display the entire image (left, top, width, height) -->
+                        </ImageBrush.Viewbox>
+                    </ImageBrush>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Foreground" Value="#7F925555"/>
+                        <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- Trigger to change background color on mouse over -->
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Foreground" Value="{StaticResource NormalForeground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="Btn_Right" Content="&gt;" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,5,0,0" FontSize="150" FontWeight="Bold">
+                <Button.Resources>
+                    <SolidColorBrush x:Key="HoverColor" Color="Transparent"/>
+                    <SolidColorBrush x:Key="NormalForeground" Color="#CC925555"/>
+                    <SolidColorBrush x:Key="HoverBackground" Color="Transparent"/>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Foreground" Value="#7F925555"/>
+                        <Setter Property="Background" Value="{StaticResource HoverBackground}"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- Trigger to change background color on mouse over -->
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Foreground" Value="{StaticResource NormalForeground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+    </Grid>
+</Page>

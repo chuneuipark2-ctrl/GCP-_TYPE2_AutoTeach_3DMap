@@ -1,0 +1,1746 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="arrow_bwd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow_bwd.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="arrow_fwd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow_fwd.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="arrow_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow_left.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="arrow_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow_right.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Asset2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Asset2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Asset5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Asset5.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Asset6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Asset6.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Background.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="carrige" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\carrige.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="carrige_tr" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\carrige_tr.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="checked" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\checked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="connected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\connected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="disconnected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\disconnected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Empty2_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Empty2_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Empty2_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Empty2_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Emptyoff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Emptyoff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Emptyon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Emptyon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fastD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fastD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fastDP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fastDP.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fastL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fastL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fastLP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fastLP.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fastR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fastR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fastRP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fastRP.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fastU" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fastU.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fastUP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fastUP.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fCenter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fCenter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fkC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fkC.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fkCN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fkCN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fkM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fkM.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fkMN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fkMN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fLeft1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fLeft1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fLeft10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fLeft10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fLeft2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fLeft2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fLeft3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fLeft3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fLeft4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fLeft4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fLeft5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fLeft5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fLeft6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fLeft6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fLeft7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fLeft7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fLeft8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fLeft8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fLeft9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fLeft9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fRight1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fRight1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fRight10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fRight10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fRight2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fRight2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fRight3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fRight3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fRight4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fRight4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fRight5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fRight5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fRight6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fRight6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fRight7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fRight7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fRight8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fRight8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fRight9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fRight9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mast" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mast.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mast2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mast2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="moveL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\moveL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="moveLC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\moveLC.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="moveLN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\moveLN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="moveR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\moveR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="moveRC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\moveRC.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="moveRN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\moveRN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rack.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="rack_proh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rack_proh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rack_sel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rack_sel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rack_spec" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rack_spec.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rail" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rail1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="slowD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\slowD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="slowDP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\slowDP.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="slowL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\slowL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="slowLP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\slowLP.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="slowR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\slowR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="slowRP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\slowRP.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="slowU" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\slowU.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="slowUP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\slowUP.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="srmmain" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\srmmain.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="test_box" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\test_box.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="unchecked" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\unchecked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="영어" xml:space="preserve">
+    <value>영어</value>
+  </data>
+  <data name="저장" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="저장문구" xml:space="preserve">
+    <value>저장 하시겠습니까?</value>
+  </data>
+  <data name="저장완료재시작" xml:space="preserve">
+    <value>저장이 완료되었습니다.
+변경 내용은 재시작 후 적용됩니다</value>
+  </data>
+  <data name="중국어" xml:space="preserve">
+    <value>중국어</value>
+  </data>
+  <data name="지상반 키 Online 상태가 아닙니다" xml:space="preserve">
+    <value>지상반 키 Online 상태가 아닙니다</value>
+  </data>
+  <data name="지상반 키 모드확인" xml:space="preserve">
+    <value>지상반 키 모드확인</value>
+  </data>
+  <data name="한국어" xml:space="preserve">
+    <value>한국어</value>
+  </data>
+  <data name="SRM 통신상태 확인" xml:space="preserve">
+    <value>SRM 통신상태 확인</value>
+  </data>
+  <data name="기상반 키 수동 상태입니다" xml:space="preserve">
+    <value>기상반 키 수동 상태입니다</value>
+  </data>
+  <data name="기상반 셋업/강제모드 입니다" xml:space="preserve">
+    <value>기상반 셋업/강제모드 입니다</value>
+  </data>
+  <data name="기상반 수동모드 입니다" xml:space="preserve">
+    <value>기상반 수동모드 입니다</value>
+  </data>
+  <data name="기상반 자동모드 입니다" xml:space="preserve">
+    <value>기상반 자동모드 입니다</value>
+  </data>
+  <data name="지상반 키 반자동 상태입니다" xml:space="preserve">
+    <value>지상반 키 반자동 상태입니다</value>
+  </data>
+  <data name="SRM I/O" xml:space="preserve">
+    <value>SRM
+I/O</value>
+  </data>
+  <data name="지상반 키 수동 상태입니다" xml:space="preserve">
+    <value>지상반 키 수동 상태입니다</value>
+  </data>
+  <data name="지상반 키 자동 상태입니다" xml:space="preserve">
+    <value>지상반 키 자동 상태입니다</value>
+  </data>
+  <data name="지상반 보수모드 상태입니다" xml:space="preserve">
+    <value>지상반 보수모드 상태입니다</value>
+  </data>
+  <data name="BAY는 1-50, LEV는 1-20 범위 내에서 입력해주세요." xml:space="preserve">
+    <value>BAY는 1-50, LEV는 1-20 범위 내에서
+입력해주세요.</value>
+  </data>
+  <data name="올바른 숫자를 입력해주세요." xml:space="preserve">
+    <value>올바른 숫자를 입력해주세요.</value>
+  </data>
+  <data name="장치가 수동 상태입니다." xml:space="preserve">
+    <value>장치가 수동 상태입니다.</value>
+  </data>
+  <data name="장치가 현재 홈 위치에 있습니다." xml:space="preserve">
+    <value>장치가 현재 홈 위치에 있습니다.</value>
+  </data>
+  <data name="장치가 현재 동작 중 입니다." xml:space="preserve">
+    <value>장치가 현재 동작 중 입니다.</value>
+  </data>
+  <data name="크레인 자동모드가 아닙니다." xml:space="preserve">
+    <value>크레인 자동모드가 아닙니다.</value>
+  </data>
+  <data name="장치 이상을 해제해 주십시오." xml:space="preserve">
+    <value>장치 이상을 해제해 주십시오.</value>
+  </data>
+  <data name="장치 시작가능 상태가 아닙니다." xml:space="preserve">
+    <value>장치 시작가능 상태가 아닙니다.</value>
+  </data>
+  <data name="비상상황 발생" xml:space="preserve">
+    <value>비상상황 발생</value>
+  </data>
+  <data name="정비모드 진입" xml:space="preserve">
+    <value>정비모드 진입</value>
+  </data>
+  <data name="모드 / 시작 상태를 확인해주세요1" xml:space="preserve">
+    <value>모드 / 시작 상태를 확인해주세요1</value>
+  </data>
+  <data name="모드 / 시작 상태를 확인해주세요2" xml:space="preserve">
+    <value>모드 / 시작 상태를 확인해주세요2</value>
+  </data>
+  <data name="모드 / 시작 상태를 확인해주세요3" xml:space="preserve">
+    <value>모드 / 시작 상태를 확인해주세요3</value>
+  </data>
+  <data name="프로그램을 종료하시겠습니까?" xml:space="preserve">
+    <value>프로그램을 종료하시겠습니까?</value>
+  </data>
+  <data name="작업없음" xml:space="preserve">
+    <value>작업없음</value>
+  </data>
+  <data name="설정" xml:space="preserve">
+    <value>설정</value>
+  </data>
+  <data name="모니터" xml:space="preserve">
+    <value>모니터</value>
+  </data>
+  <data name="로그" xml:space="preserve">
+    <value>로그</value>
+  </data>
+  <data name="종료" xml:space="preserve">
+    <value>종료</value>
+  </data>
+  <data name="메인" xml:space="preserve">
+    <value>메인</value>
+  </data>
+  <data name="자동" xml:space="preserve">
+    <value>자동</value>
+  </data>
+  <data name="수동" xml:space="preserve">
+    <value>수동</value>
+  </data>
+  <data name="반자동" xml:space="preserve">
+    <value>반자동</value>
+  </data>
+  <data name="테스트" xml:space="preserve">
+    <value>테스트</value>
+  </data>
+  <data name="이상내역" xml:space="preserve">
+    <value>이상내역</value>
+  </data>
+  <data name="발생일시" xml:space="preserve">
+    <value>발생일시</value>
+  </data>
+  <data name="에러코드" xml:space="preserve">
+    <value>에러코드</value>
+  </data>
+  <data name="서브코드" xml:space="preserve">
+    <value>서브코드</value>
+  </data>
+  <data name="메인코드" xml:space="preserve">
+    <value>메인코드</value>
+  </data>
+  <data name="에러내용" xml:space="preserve">
+    <value>에러내용</value>
+  </data>
+  <data name="에러리스트" xml:space="preserve">
+    <value>에러리스트</value>
+  </data>
+  <data name="경고리스트" xml:space="preserve">
+    <value>경고리스트</value>
+  </data>
+  <data name="경고내용" xml:space="preserve">
+    <value>경고내용</value>
+  </data>
+  <data name="알람 테스트" xml:space="preserve">
+    <value>알람 테스트</value>
+  </data>
+  <data name="기상반 통신 설정" xml:space="preserve">
+    <value>기상반 통신 설정</value>
+  </data>
+  <data name="상위 통신 설정" xml:space="preserve">
+    <value>상위 통신 설정</value>
+  </data>
+  <data name="DIO 통신 설정" xml:space="preserve">
+    <value>DIO 통신 설정</value>
+  </data>
+  <data name="DIO 사용" xml:space="preserve">
+    <value>DIO 사용</value>
+  </data>
+  <data name="DIO 타입" xml:space="preserve">
+    <value>DIO 타입</value>
+  </data>
+  <data name="SAFETY PLUG 사용" xml:space="preserve">
+    <value>SAFETY PLUG 사용</value>
+  </data>
+  <data name="프로그램 정보" xml:space="preserve">
+    <value>프로그램 정보</value>
+  </data>
+  <data name="언어설정" xml:space="preserve">
+    <value>언어설정</value>
+  </data>
+  <data name="사용대수" xml:space="preserve">
+    <value>사용대수</value>
+  </data>
+  <data name="레이아웃 업데이트" xml:space="preserve">
+    <value>레이아웃 업데이트</value>
+  </data>
+  <data name="크레인 위치 - BAY:" xml:space="preserve">
+    <value>크레인 위치 - BAY:</value>
+  </data>
+  <data name="크레인 이동" xml:space="preserve">
+    <value>크레인 이동</value>
+  </data>
+  <data name="크레인 정보" xml:space="preserve">
+    <value>크레인 정보</value>
+  </data>
+  <data name="불러오기" xml:space="preserve">
+    <value>불러오기</value>
+  </data>
+  <data name="크레인 타입" xml:space="preserve">
+    <value>크레인 타입</value>
+  </data>
+  <data name="포크개수" xml:space="preserve">
+    <value>포크개수</value>
+  </data>
+  <data name="포크타입" xml:space="preserve">
+    <value>포크타입</value>
+  </data>
+  <data name="크레인 No" xml:space="preserve">
+    <value>크레인 No</value>
+  </data>
+  <data name="열 (ROW)" xml:space="preserve">
+    <value>열 (ROW)</value>
+  </data>
+  <data name="행 (BAY)" xml:space="preserve">
+    <value>행 (BAY)</value>
+  </data>
+  <data name="단 (Level)" xml:space="preserve">
+    <value>단 (Level)</value>
+  </data>
+  <data name="수신안됨" xml:space="preserve">
+    <value>수신안됨</value>
+  </data>
+  <data name="싱글" xml:space="preserve">
+    <value>싱글</value>
+  </data>
+  <data name="트윈" xml:space="preserve">
+    <value>트윈</value>
+  </data>
+  <data name="더블 2POS" xml:space="preserve">
+    <value>더블 2POS</value>
+  </data>
+  <data name="더블 3POS" xml:space="preserve">
+    <value>더블 3POS</value>
+  </data>
+  <data name="더블 2POS 베리언트" xml:space="preserve">
+    <value>더블 2POS 베리언트</value>
+  </data>
+  <data name="더블 3POS 베리언트" xml:space="preserve">
+    <value>더블 3POS 베리언트</value>
+  </data>
+  <data name="프로젝트 No" xml:space="preserve">
+    <value>프로젝트 No</value>
+  </data>
+  <data name="그룹 No" xml:space="preserve">
+    <value>그룹 No</value>
+  </data>
+  <data name="호기 No" xml:space="preserve">
+    <value>호기 No</value>
+  </data>
+  <data name="펌웨어 버젼" xml:space="preserve">
+    <value>펌웨어 버젼</value>
+  </data>
+  <data name="프로토콜 버전" xml:space="preserve">
+    <value>프로토콜 버전</value>
+  </data>
+  <data name="장비시간" xml:space="preserve">
+    <value>장비시간</value>
+  </data>
+  <data name="장비시간 동기화" xml:space="preserve">
+    <value>장비시간 동기화</value>
+  </data>
+  <data name="장비시간 동기화 문구" xml:space="preserve">
+    <value>장비시간을 GCP 기준으로 동기화 하시겠습니까?</value>
+  </data>
+  <data name="PLC인터록무시" xml:space="preserve">
+    <value>PLC인터록무시</value>
+  </data>
+  <data name="공출고/공입고 무시" xml:space="preserve">
+    <value>공출고/공입고 무시</value>
+  </data>
+  <data name="기타 설정" xml:space="preserve">
+    <value>기타 설정</value>
+  </data>
+  <data name="지상반 I/O" xml:space="preserve">
+    <value>지상반
+I/O</value>
+  </data>
+  <data name="시작" xml:space="preserve">
+    <value>시작</value>
+  </data>
+  <data name="홈복귀" xml:space="preserve">
+    <value>홈복귀</value>
+  </data>
+  <data name="이상리셋" xml:space="preserve">
+    <value>이상리셋</value>
+  </data>
+  <data name="부저정지" xml:space="preserve">
+    <value>부저정지</value>
+  </data>
+  <data name="작업완료" xml:space="preserve">
+    <value>작업완료</value>
+  </data>
+  <data name="작업삭제" xml:space="preserve">
+    <value>작업삭제</value>
+  </data>
+  <data name="포크1" xml:space="preserve">
+    <value>포크1</value>
+  </data>
+  <data name="포크2" xml:space="preserve">
+    <value>포크2</value>
+  </data>
+  <data name="지상반설정" xml:space="preserve">
+    <value>지상반설정</value>
+  </data>
+  <data name="크레인정보" xml:space="preserve">
+    <value>크레인정보</value>
+  </data>
+  <data name="오류" xml:space="preserve">
+    <value>오류</value>
+  </data>
+  <data name="입력 오류" xml:space="preserve">
+    <value>입력 오류</value>
+  </data>
+  <data name="크레인 이동 실패" xml:space="preserve">
+    <value>크레인 이동 실패</value>
+  </data>
+  <data name="레이아웃 업데이트 실패" xml:space="preserve">
+    <value>레이아웃 업데이트 실패</value>
+  </data>
+  <data name="HTML 파일을 찾을 수 없습니다" xml:space="preserve">
+    <value>HTML 파일을 찾을 수 없습니다</value>
+  </data>
+  <data name="HTML 파일 로드 실패" xml:space="preserve">
+    <value>HTML 파일 로드 실패</value>
+  </data>
+  <data name="WebView 초기화 실패" xml:space="preserve">
+    <value>WebView 초기화 실패</value>
+  </data>
+  <data name="BAY는 1-50, LEV는 1-20 범위 내에서 입력해주세요" xml:space="preserve">
+    <value>BAY는 1-50, LEV는 1-20 범위 내에서 입력해주세요</value>
+  </data>
+  <data name="올바른 숫자를 입력해주세요" xml:space="preserve">
+    <value>올바른 숫자를 입력해주세요</value>
+  </data>
+  <data name="진출가능" xml:space="preserve">
+    <value>진출가능</value>
+  </data>
+  <data name="진출불가" xml:space="preserve">
+    <value>진출불가</value>
+  </data>
+  <data name="포크진출불가" xml:space="preserve">
+    <value>포크진출불가</value>
+  </data>
+  <data name="수동작업" xml:space="preserve">
+    <value>수동작업</value>
+  </data>
+  <data name="크레인 통신상태 확인" xml:space="preserve">
+    <value>크레인 통신상태 확인</value>
+  </data>
+  <data name="통신확인" xml:space="preserve">
+    <value>통신확인</value>
+  </data>
+  <data name="작업선택" xml:space="preserve">
+    <value>작업선택</value>
+  </data>
+  <data name="이동" xml:space="preserve">
+    <value>이동</value>
+  </data>
+  <data name="입고" xml:space="preserve">
+    <value>입고</value>
+  </data>
+  <data name="출고" xml:space="preserve">
+    <value>출고</value>
+  </data>
+  <data name="렉간이동" xml:space="preserve">
+    <value>렉간이동</value>
+  </data>
+  <data name="스테이션간이동" xml:space="preserve">
+    <value>스테이션간
+이동</value>
+  </data>
+  <data name="자재재위치" xml:space="preserve">
+    <value>자재재위치</value>
+  </data>
+  <data name="목적지" xml:space="preserve">
+    <value>목적지</value>
+  </data>
+  <data name="작업 명" xml:space="preserve">
+    <value>작업 명</value>
+  </data>
+  <data name="포크1 작업" xml:space="preserve">
+    <value>포크1
+작업</value>
+  </data>
+  <data name="전송" xml:space="preserve">
+    <value>전송</value>
+  </data>
+  <data name="초기화" xml:space="preserve">
+    <value>초기화</value>
+  </data>
+  <data name="취소" xml:space="preserve">
+    <value>취소</value>
+  </data>
+  <data name="확인" xml:space="preserve">
+    <value>확인</value>
+  </data>
+  <data name="예" xml:space="preserve">
+    <value>예</value>
+  </data>
+  <data name="아니오" xml:space="preserve">
+    <value>아니오</value>
+  </data>
+  <data name="금지랙설정" xml:space="preserve">
+    <value>금지랙설정</value>
+  </data>
+  <data name="GCP --&gt; WCS 전송 정보" xml:space="preserve">
+    <value>GCP --&gt; WCS 전송 정보</value>
+  </data>
+  <data name="SRM 상태 정보    TYPE / VALUE" xml:space="preserve">
+    <value>SRM 상태 정보    TYPE / VALUE</value>
+  </data>
+  <data name="주행/승강" xml:space="preserve">
+    <value>주행/승강</value>
+  </data>
+  <data name="포크1/2 작업" xml:space="preserve">
+    <value>포크1/2 작업</value>
+  </data>
+  <data name="스테이션 정보" xml:space="preserve">
+    <value>스테이션 정보</value>
+  </data>
+  <data name="스테이션 타입" xml:space="preserve">
+    <value>스테이션 타입</value>
+  </data>
+  <data name="화물타입" xml:space="preserve">
+    <value>화물타입</value>
+  </data>
+  <data name="인터록 번호" xml:space="preserve">
+    <value>인터록 번호</value>
+  </data>
+  <data name="정위치기준" xml:space="preserve">
+    <value>정위치기준</value>
+  </data>
+  <data name="좌측" xml:space="preserve">
+    <value>좌측</value>
+  </data>
+  <data name="우측" xml:space="preserve">
+    <value>우측</value>
+  </data>
+  <data name="주행" xml:space="preserve">
+    <value>주행</value>
+  </data>
+  <data name="후진" xml:space="preserve">
+    <value>후진</value>
+  </data>
+  <data name="전진" xml:space="preserve">
+    <value>전진</value>
+  </data>
+  <data name="승강" xml:space="preserve">
+    <value>승강</value>
+  </data>
+  <data name="하강" xml:space="preserve">
+    <value>하강</value>
+  </data>
+  <data name="상승" xml:space="preserve">
+    <value>상승</value>
+  </data>
+  <data name="포크" xml:space="preserve">
+    <value>포크</value>
+  </data>
+  <data name="하프모드" xml:space="preserve">
+    <value>하프모드</value>
+  </data>
+  <data name="풀모드" xml:space="preserve">
+    <value>풀모드</value>
+  </data>
+  <data name="폴링제외" xml:space="preserve">
+    <value>폴링제외</value>
+  </data>
+  <data name="정지" xml:space="preserve">
+    <value>정지</value>
+  </data>
+  <data name="항상위" xml:space="preserve">
+    <value>항상위</value>
+  </data>
+  <data name="SRM 상태" xml:space="preserve">
+    <value>SRM 상태</value>
+  </data>
+  <data name="목적지 랙 변경" xml:space="preserve">
+    <value>목적지
+랙 변경</value>
+  </data>
+  <data name="목적지 스테이션 변경" xml:space="preserve">
+    <value>목적지
+스테이션 변경</value>
+  </data>
+  <data name="로딩" xml:space="preserve">
+    <value>로딩</value>
+  </data>
+  <data name="언로딩" xml:space="preserve">
+    <value>언로딩</value>
+  </data>
+  <data name="렉간반송" xml:space="preserve">
+    <value>렉간반송</value>
+  </data>
+  <data name="스테이션이동" xml:space="preserve">
+    <value>스테이션이동</value>
+  </data>
+  <data name="렉변경" xml:space="preserve">
+    <value>렉변경</value>
+  </data>
+  <data name="스테이션변경" xml:space="preserve">
+    <value>스테이션변경</value>
+  </data>
+  <data name="Sticky 명령" xml:space="preserve">
+    <value>Sticky 명령</value>
+  </data>
+  <data name="수행중" xml:space="preserve">
+    <value>수행중</value>
+  </data>
+  <data name="중지" xml:space="preserve">
+    <value>중지</value>
+  </data>
+  <data name="지령수신" xml:space="preserve">
+    <value>지령수신</value>
+  </data>
+  <data name="From 위치로 이동 중" xml:space="preserve">
+    <value>From 위치로 이동 중</value>
+  </data>
+  <data name="From 위치 도착" xml:space="preserve">
+    <value>From 위치 도착</value>
+  </data>
+  <data name="From 위치에서 포크진입" xml:space="preserve">
+    <value>From 위치에서 포크진입</value>
+  </data>
+  <data name="From 위치에서 캐리지상승" xml:space="preserve">
+    <value>From 위치에서 캐리지상승</value>
+  </data>
+  <data name="From 위치에서 포크복귀" xml:space="preserve">
+    <value>From 위치에서 포크복귀</value>
+  </data>
+  <data name="To 위치로 이동 중" xml:space="preserve">
+    <value>To 위치로 이동 중</value>
+  </data>
+  <data name="To 위치 도착" xml:space="preserve">
+    <value>To 위치 도착</value>
+  </data>
+  <data name="To 위치에서 포크진입" xml:space="preserve">
+    <value>To 위치에서 포크진입</value>
+  </data>
+  <data name="To 위치에서 캐리지하강" xml:space="preserve">
+    <value>To 위치에서 캐리지하강</value>
+  </data>
+  <data name="To 위치에서 포크복귀" xml:space="preserve">
+    <value>To 위치에서 포크복귀</value>
+  </data>
+  <data name="화물 적재 완료" xml:space="preserve">
+    <value>화물 적재 완료</value>
+  </data>
+  <data name="화물 이재 완료" xml:space="preserve">
+    <value>화물 이재 완료</value>
+  </data>
+  <data name="Sticky From 위치로 이동중" xml:space="preserve">
+    <value>Sticky From 위치로 이동중</value>
+  </data>
+  <data name="Sticky From 위치 도착" xml:space="preserve">
+    <value>Sticky From 위치 도착</value>
+  </data>
+  <data name="Sticky From 위치에서 포크진입" xml:space="preserve">
+    <value>Sticky From 위치에서 포크진입</value>
+  </data>
+  <data name="Sticky From 위치에서 캐리지 상승" xml:space="preserve">
+    <value>Sticky From 위치에서 캐리지 상승</value>
+  </data>
+  <data name="Sticky From 위치에서 캐리지 하강" xml:space="preserve">
+    <value>Sticky From 위치에서 캐리지 하강</value>
+  </data>
+  <data name="Sticky From 위치에서 포크복귀" xml:space="preserve">
+    <value>Sticky From 위치에서 포크복귀</value>
+  </data>
+  <data name="Sticky 동작 완료" xml:space="preserve">
+    <value>Sticky 동작 완료</value>
+  </data>
+  <data name="위치로 이동중" xml:space="preserve">
+    <value>위치로 이동중</value>
+  </data>
+  <data name="위치 도착" xml:space="preserve">
+    <value>위치 도착</value>
+  </data>
+  <data name="Loading 포크진입" xml:space="preserve">
+    <value>Loading 포크진입</value>
+  </data>
+  <data name="Loading 캐리지상승" xml:space="preserve">
+    <value>Loading 캐리지상승</value>
+  </data>
+  <data name="Loading 포크복귀" xml:space="preserve">
+    <value>Loading 포크복귀</value>
+  </data>
+  <data name="Unloading 포크진입" xml:space="preserve">
+    <value>Unloading 포크진입</value>
+  </data>
+  <data name="Unloading 캐리지하강" xml:space="preserve">
+    <value>Unloading 캐리지하강</value>
+  </data>
+  <data name="Unloading 포크복귀" xml:space="preserve">
+    <value>Unloading 포크복귀</value>
+  </data>
+  <data name="시작가능" xml:space="preserve">
+    <value>시작가능</value>
+  </data>
+  <data name="주행 원점 미확인" xml:space="preserve">
+    <value>주행 원점 미확인</value>
+  </data>
+  <data name="승강 원점 미확인" xml:space="preserve">
+    <value>승강 원점 미확인</value>
+  </data>
+  <data name="포크 원점 미확인" xml:space="preserve">
+    <value>포크 원점 미확인</value>
+  </data>
+  <data name="크레인 통신 상태 확인" xml:space="preserve">
+    <value>크레인 통신 상태 확인</value>
+  </data>
+  <data name="동작 중" xml:space="preserve">
+    <value>동작 중</value>
+  </data>
+  <data name="장치가 현재 홈 위치에 있습니다" xml:space="preserve">
+    <value>장치가 현재 홈 위치에 있습니다</value>
+  </data>
+  <data name="장치가 현재 동작 중 입니다" xml:space="preserve">
+    <value>장치가 현재 동작 중 입니다</value>
+  </data>
+  <data name="홈복귀 동작을 진행하시겠습니까?" xml:space="preserve">
+    <value>홈복귀 동작을 진행하시겠습니까?</value>
+  </data>
+  <data name="크레인 자동모드가 아닙니다" xml:space="preserve">
+    <value>크레인 자동모드가 아닙니다</value>
+  </data>
+  <data name="실패" xml:space="preserve">
+    <value>실패</value>
+  </data>
+  <data name="OFFLINE 으로 변경하시겠습니까?" xml:space="preserve">
+    <value>OFFLINE 으로 변경하시겠습니까?</value>
+  </data>
+  <data name="OFFLINE" xml:space="preserve">
+    <value>OFFLINE</value>
+  </data>
+  <data name="장치 이상을 해제해 주십시오" xml:space="preserve">
+    <value>장치 이상을 해제해 주십시오</value>
+  </data>
+  <data name="장치이상" xml:space="preserve">
+    <value>장치이상</value>
+  </data>
+  <data name="장치 시작가능 상태가 아닙니다" xml:space="preserve">
+    <value>장치 시작가능 상태가 아닙니다</value>
+  </data>
+  <data name="시작불가" xml:space="preserve">
+    <value>시작불가</value>
+  </data>
+  <data name="수동 작업완료 처리 대기 중 입니다\n취소하고 작업을 시작하시겠습니까?" xml:space="preserve">
+    <value>수동 작업완료 처리 대기 중 입니다\n취소하고 작업을 시작하시겠습니까?</value>
+  </data>
+  <data name="수동 작업삭제 처리 대기 중 입니다\n취소하고 작업을 시작하시겠습니까?" xml:space="preserve">
+    <value>수동 작업삭제 처리 대기 중 입니다\n취소하고 작업을 시작하시겠습니까?</value>
+  </data>
+  <data name="SRM 작업이 존재합니다. 아래 작업을 수행하시겠습니까?\nSRM작업: " xml:space="preserve">
+    <value>SRM 작업이 존재합니다. 아래 작업을 수행하시겠습니까?\nSRM작업: </value>
+  </data>
+  <data name="미처리 작업(목적지변경)을 전송하시겠습니까? - 작업번호: " xml:space="preserve">
+    <value>미처리 작업(목적지변경)을 전송하시겠습니까? - 작업번호: </value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="미처리 작업을 수행합니다 - 작업번호: " xml:space="preserve">
+    <value>미처리 작업을 수행합니다 - 작업번호: </value>
+  </data>
+  <data name="ONLINE 으로 변경하시겠습니까?" xml:space="preserve">
+    <value>ONLINE 으로 변경하시겠습니까?</value>
+  </data>
+  <data name="ONLINE" xml:space="preserve">
+    <value>ONLINE</value>
+  </data>
+  <data name="현재 작업을 완료처리 하시겠습니까?" xml:space="preserve">
+    <value>현재 작업을 완료처리 하시겠습니까?</value>
+  </data>
+  <data name="작업을 삭제하시겠습니까?" xml:space="preserve">
+    <value>작업을 삭제하시겠습니까?</value>
+  </data>
+  <data name="SRM Left 모니터 컬럼 카운트 오류" xml:space="preserve">
+    <value>SRM Left 모니터 컬럼 카운트 오류</value>
+  </data>
+  <data name="변경확인" xml:space="preserve">
+    <value>변경확인</value>
+  </data>
+  <data name="SRM Center 모니터 컬럼 카운트 오류" xml:space="preserve">
+    <value>SRM Center 모니터 컬럼 카운트 오류</value>
+  </data>
+  <data name="WCS TO 모니터 컬럼 카운트 오류" xml:space="preserve">
+    <value>WCS TO 모니터 컬럼 카운트 오류</value>
+  </data>
+  <data name="작업 포크를 선택해주세요" xml:space="preserve">
+    <value>작업 포크를 선택해주세요</value>
+  </data>
+  <data name="미처리 작업이 존재합니다.\r\n처리 후 진행해주세요." xml:space="preserve">
+    <value>미처리 작업이 존재합니다.\r\n처리 후 진행해주세요.</value>
+  </data>
+  <data name="크레인에 작업이 존재합니다.\r\n시작 ON시 해당 명령이 수행됩니다." xml:space="preserve">
+    <value>크레인에 작업이 존재합니다.\r\n시작 ON시 해당 명령이 수행됩니다.</value>
+  </data>
+  <data name="크레인이 동작 중 입니다.\r\n동작 완료 후 시도해주세요." xml:space="preserve">
+    <value>크레인이 동작 중 입니다.\r\n동작 완료 후 시도해주세요.</value>
+  </data>
+  <data name="반자동 명령을 전송하시겠습니까?" xml:space="preserve">
+    <value>반자동 명령을 전송하시겠습니까?</value>
+  </data>
+  <data name="작업을 선택해주세요" xml:space="preserve">
+    <value>작업을 선택해주세요</value>
+  </data>
+  <data name="실패:데이터 이상(" xml:space="preserve">
+    <value>실패:데이터 이상(</value>
+  </data>
+  <data name="입력 데이터를 확인해주세요" xml:space="preserve">
+    <value>입력 데이터를 확인해주세요</value>
+  </data>
+  <data name="모드 / 시작 상태를 확인해주세요" xml:space="preserve">
+    <value>모드 / 시작 상태를 확인해주세요</value>
+  </data>
+  <data name="포크1 우측진출가능" xml:space="preserve">
+    <value>포크1 우측진출가능</value>
+  </data>
+  <data name="포크1 좌측진출가능" xml:space="preserve">
+    <value>포크1 좌측진출가능</value>
+  </data>
+  <data name="포크2 우측진출가능" xml:space="preserve">
+    <value>포크2 우측진출가능</value>
+  </data>
+  <data name="포크2 좌측진출가능" xml:space="preserve">
+    <value>포크2 좌측진출가능</value>
+  </data>
+  <data name="포크1 현재 STATION" xml:space="preserve">
+    <value>포크1 현재 STATION</value>
+  </data>
+  <data name="포크1 현재 BAY" xml:space="preserve">
+    <value>포크1 현재 BAY</value>
+  </data>
+  <data name="포크1 현재 LEVEL" xml:space="preserve">
+    <value>포크1 현재 LEVEL</value>
+  </data>
+  <data name="포크1 현재 위치번호" xml:space="preserve">
+    <value>포크1 현재 위치번호</value>
+  </data>
+  <data name="포크1 우 승강하위치" xml:space="preserve">
+    <value>포크1 우 승강하위치</value>
+  </data>
+  <data name="포크1 우 승강상위치" xml:space="preserve">
+    <value>포크1 우 승강상위치</value>
+  </data>
+  <data name="포크1 우 주행정위치" xml:space="preserve">
+    <value>포크1 우 주행정위치</value>
+  </data>
+  <data name="포크1 좌 승강하위치" xml:space="preserve">
+    <value>포크1 좌 승강하위치</value>
+  </data>
+  <data name="포크1 좌 승강상위치" xml:space="preserve">
+    <value>포크1 좌 승강상위치</value>
+  </data>
+  <data name="포크1 좌 주행정위치" xml:space="preserve">
+    <value>포크1 좌 주행정위치</value>
+  </data>
+  <data name="포크1 우 정위치3" xml:space="preserve">
+    <value>포크1 우 정위치3</value>
+  </data>
+  <data name="포크1 우 정위치2" xml:space="preserve">
+    <value>포크1 우 정위치2</value>
+  </data>
+  <data name="포크1 우 정위치1" xml:space="preserve">
+    <value>포크1 우 정위치1</value>
+  </data>
+  <data name="포크1 좌 정위치3" xml:space="preserve">
+    <value>포크1 좌 정위치3</value>
+  </data>
+  <data name="포크1 좌 정위치2" xml:space="preserve">
+    <value>포크1 좌 정위치2</value>
+  </data>
+  <data name="포크1 좌 정위치1" xml:space="preserve">
+    <value>포크1 좌 정위치1</value>
+  </data>
+  <data name="포크1 중심정위치" xml:space="preserve">
+    <value>포크1 중심정위치</value>
+  </data>
+  <data name="포크1 목적 스테이션" xml:space="preserve">
+    <value>포크1 목적 스테이션</value>
+  </data>
+  <data name="포크1 목적 ROW" xml:space="preserve">
+    <value>포크1 목적 ROW</value>
+  </data>
+  <data name="포크1 목적 BAY" xml:space="preserve">
+    <value>포크1 목적 BAY</value>
+  </data>
+  <data name="포크1 목적 LEVEL" xml:space="preserve">
+    <value>포크1 목적 LEVEL</value>
+  </data>
+  <data name="포크1 화물적재" xml:space="preserve">
+    <value>포크1 화물적재</value>
+  </data>
+  <data name="포크1 정위치" xml:space="preserve">
+    <value>포크1 정위치</value>
+  </data>
+  <data name="포크1 이동방향" xml:space="preserve">
+    <value>포크1 이동방향</value>
+  </data>
+  <data name="포크1 감속중" xml:space="preserve">
+    <value>포크1 감속중</value>
+  </data>
+  <data name="포크1 가속중" xml:space="preserve">
+    <value>포크1 가속중</value>
+  </data>
+  <data name="포크1 동작중" xml:space="preserve">
+    <value>포크1 동작중</value>
+  </data>
+  <data name="포크1 부하 튜닝중" xml:space="preserve">
+    <value>포크1 부하 튜닝중</value>
+  </data>
+  <data name="포크1 무부하 튜닝중" xml:space="preserve">
+    <value>포크1 무부하 튜닝중</value>
+  </data>
+  <data name="포크1 원점확인" xml:space="preserve">
+    <value>포크1 원점확인</value>
+  </data>
+  <data name="포크1 인버터 알람" xml:space="preserve">
+    <value>포크1 인버터 알람</value>
+  </data>
+  <data name="포크1 인버터 접속" xml:space="preserve">
+    <value>포크1 인버터 접속</value>
+  </data>
+  <data name="포크1 화물타입" xml:space="preserve">
+    <value>포크1 화물타입</value>
+  </data>
+  <data name="포크1 현재위치" xml:space="preserve">
+    <value>포크1 현재위치</value>
+  </data>
+  <data name="포크1 현재속도" xml:space="preserve">
+    <value>포크1 현재속도</value>
+  </data>
+  <data name="포크1 목표위치" xml:space="preserve">
+    <value>포크1 목표위치</value>
+  </data>
+  <data name="포크1 목표속도" xml:space="preserve">
+    <value>포크1 목표속도</value>
+  </data>
+  <data name="포크2 현재 STATION" xml:space="preserve">
+    <value>포크2 현재 STATION</value>
+  </data>
+  <data name="포크2 현재 BAY" xml:space="preserve">
+    <value>포크2 현재 BAY</value>
+  </data>
+  <data name="포크2 현재 LEVEL" xml:space="preserve">
+    <value>포크2 현재 LEVEL</value>
+  </data>
+  <data name="포크2 현재 위치번호" xml:space="preserve">
+    <value>포크2 현재 위치번호</value>
+  </data>
+  <data name="포크2 우 승강하위치" xml:space="preserve">
+    <value>포크2 우 승강하위치</value>
+  </data>
+  <data name="포크2 우 승강상위치" xml:space="preserve">
+    <value>포크2 우 승강상위치</value>
+  </data>
+  <data name="포크2 우 주행정위치" xml:space="preserve">
+    <value>포크2 우 주행정위치</value>
+  </data>
+  <data name="포크2 좌 승강하위치" xml:space="preserve">
+    <value>포크2 좌 승강하위치</value>
+  </data>
+  <data name="포크2 좌 승강상위치" xml:space="preserve">
+    <value>포크2 좌 승강상위치</value>
+  </data>
+  <data name="포크2 좌 주행정위치" xml:space="preserve">
+    <value>포크2 좌 주행정위치</value>
+  </data>
+  <data name="포크2 우 정위치3" xml:space="preserve">
+    <value>포크2 우 정위치3</value>
+  </data>
+  <data name="포크2 우 정위치2" xml:space="preserve">
+    <value>포크2 우 정위치2</value>
+  </data>
+  <data name="포크2 우 정위치1" xml:space="preserve">
+    <value>포크2 우 정위치1</value>
+  </data>
+  <data name="포크2 좌 정위치3" xml:space="preserve">
+    <value>포크2 좌 정위치3</value>
+  </data>
+  <data name="포크2 좌 정위치2" xml:space="preserve">
+    <value>포크2 좌 정위치2</value>
+  </data>
+  <data name="포크2 좌 정위치1" xml:space="preserve">
+    <value>포크2 좌 정위치1</value>
+  </data>
+  <data name="포크2 중심정위치" xml:space="preserve">
+    <value>포크2 중심정위치</value>
+  </data>
+  <data name="포크2 목적 스테이션" xml:space="preserve">
+    <value>포크2 목적 스테이션</value>
+  </data>
+  <data name="포크2 목적 ROW" xml:space="preserve">
+    <value>포크2 목적 ROW</value>
+  </data>
+  <data name="포크2 목적 BAY" xml:space="preserve">
+    <value>포크2 목적 BAY</value>
+  </data>
+  <data name="포크2 목적 LEVEL" xml:space="preserve">
+    <value>포크2 목적 LEVEL</value>
+  </data>
+  <data name="포크2 화물적재" xml:space="preserve">
+    <value>포크2 화물적재</value>
+  </data>
+  <data name="포크2 정위치" xml:space="preserve">
+    <value>포크2 정위치</value>
+  </data>
+  <data name="포크2 이동방향" xml:space="preserve">
+    <value>포크2 이동방향</value>
+  </data>
+  <data name="포크2 감속중" xml:space="preserve">
+    <value>포크2 감속중</value>
+  </data>
+  <data name="포크2 가속중" xml:space="preserve">
+    <value>포크2 가속중</value>
+  </data>
+  <data name="포크2 동작중" xml:space="preserve">
+    <value>포크2 동작중</value>
+  </data>
+  <data name="포크2 부하 튜닝중" xml:space="preserve">
+    <value>포크2 부하 튜닝중</value>
+  </data>
+  <data name="포크2 무부하 튜닝중" xml:space="preserve">
+    <value>포크2 무부하 튜닝중</value>
+  </data>
+  <data name="포크2 원점확인" xml:space="preserve">
+    <value>포크2 원점확인</value>
+  </data>
+  <data name="포크2 인버터 알람" xml:space="preserve">
+    <value>포크2 인버터 알람</value>
+  </data>
+  <data name="포크2 인버터 접속" xml:space="preserve">
+    <value>포크2 인버터 접속</value>
+  </data>
+  <data name="포크2 화물타입" xml:space="preserve">
+    <value>포크2 화물타입</value>
+  </data>
+  <data name="포크2 현재위치" xml:space="preserve">
+    <value>포크2 현재위치</value>
+  </data>
+  <data name="포크2 현재속도" xml:space="preserve">
+    <value>포크2 현재속도</value>
+  </data>
+  <data name="포크2 목표위치" xml:space="preserve">
+    <value>포크2 목표위치</value>
+  </data>
+  <data name="포크2 목표속도" xml:space="preserve">
+    <value>포크2 목표속도</value>
+  </data>
+  <data name="반송 작업번호" xml:space="preserve">
+    <value>반송 작업번호</value>
+  </data>
+  <data name="반송 태스크번호" xml:space="preserve">
+    <value>반송 태스크번호</value>
+  </data>
+  <data name="반송 출발 스테이션" xml:space="preserve">
+    <value>반송 출발 스테이션</value>
+  </data>
+  <data name="반송 출발 ROW" xml:space="preserve">
+    <value>반송 출발 ROW</value>
+  </data>
+  <data name="반송 출발 BAY" xml:space="preserve">
+    <value>반송 출발 BAY</value>
+  </data>
+  <data name="반송 출발 LEVEL" xml:space="preserve">
+    <value>반송 출발 LEVEL</value>
+  </data>
+  <data name="반송 목적 스테이션" xml:space="preserve">
+    <value>반송 목적 스테이션</value>
+  </data>
+  <data name="반송 목적 ROW" xml:space="preserve">
+    <value>반송 목적 ROW</value>
+  </data>
+  <data name="반송 목적 BAY" xml:space="preserve">
+    <value>반송 목적 BAY</value>
+  </data>
+  <data name="반송 목적 LEVEL" xml:space="preserve">
+    <value>반송 목적 LEVEL</value>
+  </data>
+  <data name="반송 지령코드" xml:space="preserve">
+    <value>반송 지령코드</value>
+  </data>
+  <data name="반송 처리상태" xml:space="preserve">
+    <value>반송 처리상태</value>
+  </data>
+  <data name="반송 처리단계" xml:space="preserve">
+    <value>반송 처리단계</value>
+  </data>
+  <data name="이동 작업번호" xml:space="preserve">
+    <value>이동 작업번호</value>
+  </data>
+  <data name="이동 목적 스테이션" xml:space="preserve">
+    <value>이동 목적 스테이션</value>
+  </data>
+  <data name="이동 목적 ROW" xml:space="preserve">
+    <value>이동 목적 ROW</value>
+  </data>
+  <data name="이동 목적 BAY" xml:space="preserve">
+    <value>이동 목적 BAY</value>
+  </data>
+  <data name="이동 목적 LEVEL" xml:space="preserve">
+    <value>이동 목적 LEVEL</value>
+  </data>
+  <data name="이동 처리상태" xml:space="preserve">
+    <value>이동 처리상태</value>
+  </data>
+  <data name="이동 처리단계" xml:space="preserve">
+    <value>이동 처리단계</value>
+  </data>
+  <data name="주행 설정 속도" xml:space="preserve">
+    <value>주행 설정 속도</value>
+  </data>
+  <data name="승강 설정 속도" xml:space="preserve">
+    <value>승강 설정 속도</value>
+  </data>
+  <data name="포크1 설정 속도" xml:space="preserve">
+    <value>포크1 설정 속도</value>
+  </data>
+  <data name="포크2 설정 속도" xml:space="preserve">
+    <value>포크2 설정 속도</value>
+  </data>
+  <data name="주행 설정 가속도" xml:space="preserve">
+    <value>주행 설정 가속도</value>
+  </data>
+  <data name="승강 설정 가속도" xml:space="preserve">
+    <value>승강 설정 가속도</value>
+  </data>
+  <data name="포크1 설정 가속도" xml:space="preserve">
+    <value>포크1 설정 가속도</value>
+  </data>
+  <data name="포크2 설정 가속도" xml:space="preserve">
+    <value>포크2 설정 가속도</value>
+  </data>
+  <data name="주행 설정 감속도" xml:space="preserve">
+    <value>주행 설정 감속도</value>
+  </data>
+  <data name="승강 설정 감속도" xml:space="preserve">
+    <value>승강 설정 감속도</value>
+  </data>
+  <data name="포크1 설정 감속도" xml:space="preserve">
+    <value>포크1 설정 감속도</value>
+  </data>
+  <data name="포크2 설정 감속도" xml:space="preserve">
+    <value>포크2 설정 감속도</value>
+  </data>
+  <data name="주행 설정 저크" xml:space="preserve">
+    <value>주행 설정 저크</value>
+  </data>
+  <data name="승강 설정 저크" xml:space="preserve">
+    <value>승강 설정 저크</value>
+  </data>
+  <data name="포크1 설정 저크" xml:space="preserve">
+    <value>포크1 설정 저크</value>
+  </data>
+  <data name="포크2 설정 저크" xml:space="preserve">
+    <value>포크2 설정 저크</value>
+  </data>
+  <data name="로딩 전 이동 지연시간" xml:space="preserve">
+    <value>로딩 전 이동 지연시간</value>
+  </data>
+  <data name="로딩 후 이동 지연시간" xml:space="preserve">
+    <value>로딩 후 이동 지연시간</value>
+  </data>
+  <data name="로딩 전 포크 전개 지연시간" xml:space="preserve">
+    <value>로딩 전 포크 전개 지연시간</value>
+  </data>
+  <data name="로딩 후 포크 전개 지연시간" xml:space="preserve">
+    <value>로딩 후 포크 전개 지연시간</value>
+  </data>
+  <data name="로딩 전 포크 승강 지연시간" xml:space="preserve">
+    <value>로딩 전 포크 승강 지연시간</value>
+  </data>
+  <data name="로딩 후 포크 승강 지연시간" xml:space="preserve">
+    <value>로딩 후 포크 승강 지연시간</value>
+  </data>
+  <data name="로딩 전 포크 후진 지연시간" xml:space="preserve">
+    <value>로딩 전 포크 후진 지연시간</value>
+  </data>
+  <data name="로딩 후 포크 후진 지연시간" xml:space="preserve">
+    <value>로딩 후 포크 후진 지연시간</value>
+  </data>
+  <data name="언로딩 전 이동 지연시간" xml:space="preserve">
+    <value>언로딩 전 이동 지연시간</value>
+  </data>
+  <data name="언로딩 후 이동 지연시간" xml:space="preserve">
+    <value>언로딩 후 이동 지연시간</value>
+  </data>
+  <data name="언로딩 전 포크 전개 지연시간" xml:space="preserve">
+    <value>언로딩 전 포크 전개 지연시간</value>
+  </data>
+  <data name="언로딩 후 포크 전개 지연시간" xml:space="preserve">
+    <value>언로딩 후 포크 전개 지연시간</value>
+  </data>
+  <data name="언로딩 전 포크 승강 지연시간" xml:space="preserve">
+    <value>언로딩 전 포크 승강 지연시간</value>
+  </data>
+  <data name="언로딩 후 포크 승강 지연시간" xml:space="preserve">
+    <value>언로딩 후 포크 승강 지연시간</value>
+  </data>
+  <data name="언로딩 전 포크 후진 지연시간" xml:space="preserve">
+    <value>언로딩 전 포크 후진 지연시간</value>
+  </data>
+  <data name="언로딩 후 포크 후진 지연시간" xml:space="preserve">
+    <value>언로딩 후 포크 후진 지연시간</value>
+  </data>
+  <data name="주행 모터 토크" xml:space="preserve">
+    <value>주행 모터 토크</value>
+  </data>
+  <data name="승강 모터 토크" xml:space="preserve">
+    <value>승강 모터 토크</value>
+  </data>
+  <data name="포크1 모터 토크" xml:space="preserve">
+    <value>포크1 모터 토크</value>
+  </data>
+  <data name="포크2 모터 토크" xml:space="preserve">
+    <value>포크2 모터 토크</value>
+  </data>
+  <data name="총 동작 시간" xml:space="preserve">
+    <value>총 동작 시간</value>
+  </data>
+  <data name="주행 동작 시간" xml:space="preserve">
+    <value>주행 동작 시간</value>
+  </data>
+  <data name="승강 동작 시간" xml:space="preserve">
+    <value>승강 동작 시간</value>
+  </data>
+  <data name="포크1 동작 시간" xml:space="preserve">
+    <value>포크1 동작 시간</value>
+  </data>
+  <data name="포크2 동작 시간" xml:space="preserve">
+    <value>포크2 동작 시간</value>
+  </data>
+  <data name="주행 브레이크 해제 횟수" xml:space="preserve">
+    <value>주행 브레이크 해제 횟수</value>
+  </data>
+  <data name="승강 브레이크 해제 횟수" xml:space="preserve">
+    <value>승강 브레이크 해제 횟수</value>
+  </data>
+  <data name="포크1 브레이크 해제 횟수" xml:space="preserve">
+    <value>포크1 브레이크 해제 횟수</value>
+  </data>
+  <data name="포크2 브레이크 해제 횟수" xml:space="preserve">
+    <value>포크2 브레이크 해제 횟수</value>
+  </data>
+  <data name="스테이션설정" xml:space="preserve">
+    <value>스테이션설정</value>
+  </data>
+  <data name="포크2 작업" xml:space="preserve">
+    <value>포크2
+작업</value>
+  </data>
+  <data name="C/V 인터록무시 조건이 켜져있습니다, 진행하시겠습니까?" xml:space="preserve">
+    <value>C/V 인터록무시 조건이 켜져있습니다,
+진행하시겠습니까?</value>
+  </data>
+  <data name="셋업 모드" xml:space="preserve">
+    <value>셋업 모드</value>
+  </data>
+  <data name="강제 모드" xml:space="preserve">
+    <value>강제 모드</value>
+  </data>
+  <data name="수동 모드" xml:space="preserve">
+    <value>수동 모드</value>
+  </data>
+  <data name="자동 모드" xml:space="preserve">
+    <value>자동 모드</value>
+  </data>
+  <data name="작업 요구" xml:space="preserve">
+    <value>작업 요구</value>
+  </data>
+  <data name="인버터 접속 상태" xml:space="preserve">
+    <value>인버터 접속 상태</value>
+  </data>
+  <data name="이상 상태" xml:space="preserve">
+    <value>이상 상태</value>
+  </data>
+  <data name="경고 상태" xml:space="preserve">
+    <value>경고 상태</value>
+  </data>
+  <data name="비상 정지" xml:space="preserve">
+    <value>비상 정지</value>
+  </data>
+  <data name="시작 상태" xml:space="preserve">
+    <value>시작 상태</value>
+  </data>
+  <data name="시작 가능" xml:space="preserve">
+    <value>시작 가능</value>
+  </data>
+  <data name="비상스위치 상태" xml:space="preserve">
+    <value>비상스위치 상태</value>
+  </data>
+  <data name="자동/수동 스위치" xml:space="preserve">
+    <value>자동/수동 스위치</value>
+  </data>
+  <data name="보수 위치" xml:space="preserve">
+    <value>보수 위치</value>
+  </data>
+  <data name="홈 위치" xml:space="preserve">
+    <value>홈 위치</value>
+  </data>
+  <data name="장비 동작코드" xml:space="preserve">
+    <value>장비 동작코드</value>
+  </data>
+  <data name="에러 코드" xml:space="preserve">
+    <value>에러 코드</value>
+  </data>
+  <data name="경고 코드" xml:space="preserve">
+    <value>경고 코드</value>
+  </data>
+  <data name="서브 코드" xml:space="preserve">
+    <value>서브 코드</value>
+  </data>
+  <data name="작업 스텝" xml:space="preserve">
+    <value>작업 스텝</value>
+  </data>
+  <data name="주행 홈복귀" xml:space="preserve">
+    <value>주행 홈복귀</value>
+  </data>
+  <data name="주행 정위치" xml:space="preserve">
+    <value>주행 정위치</value>
+  </data>
+  <data name="주행 이동방향" xml:space="preserve">
+    <value>주행 이동방향</value>
+  </data>
+  <data name="주행 감속중" xml:space="preserve">
+    <value>주행 감속중</value>
+  </data>
+  <data name="주행 가속중" xml:space="preserve">
+    <value>주행 가속중</value>
+  </data>
+  <data name="주행 동작중" xml:space="preserve">
+    <value>주행 동작중</value>
+  </data>
+  <data name="주행 부하 튜닝중" xml:space="preserve">
+    <value>주행 부하 튜닝중</value>
+  </data>
+  <data name="주행 무부하 튜닝중" xml:space="preserve">
+    <value>주행 무부하 튜닝중</value>
+  </data>
+  <data name="주행 원점확인" xml:space="preserve">
+    <value>주행 원점확인</value>
+  </data>
+  <data name="주행 인버터 알람" xml:space="preserve">
+    <value>주행 인버터 알람</value>
+  </data>
+  <data name="주행 인버터 접속" xml:space="preserve">
+    <value>주행 인버터 접속</value>
+  </data>
+  <data name="주행 전진감속번호" xml:space="preserve">
+    <value>주행 전진감속번호</value>
+  </data>
+  <data name="주행 후진감속번호" xml:space="preserve">
+    <value>주행 후진감속번호</value>
+  </data>
+  <data name="주행 현재위치" xml:space="preserve">
+    <value>주행 현재위치</value>
+  </data>
+  <data name="주행 현재속도" xml:space="preserve">
+    <value>주행 현재속도</value>
+  </data>
+  <data name="주행 목표위치" xml:space="preserve">
+    <value>주행 목표위치</value>
+  </data>
+  <data name="주행 목표속도" xml:space="preserve">
+    <value>주행 목표속도</value>
+  </data>
+  <data name="승강 홈복귀" xml:space="preserve">
+    <value>승강 홈복귀</value>
+  </data>
+  <data name="승강 정위치" xml:space="preserve">
+    <value>승강 정위치</value>
+  </data>
+  <data name="승강 이동방향" xml:space="preserve">
+    <value>승강 이동방향</value>
+  </data>
+  <data name="승강 감속중" xml:space="preserve">
+    <value>승강 감속중</value>
+  </data>
+  <data name="승강 가속중" xml:space="preserve">
+    <value>승강 가속중</value>
+  </data>
+  <data name="승강 동작중" xml:space="preserve">
+    <value>승강 동작중</value>
+  </data>
+  <data name="승강 부하 튜닝중" xml:space="preserve">
+    <value>승강 부하 튜닝중</value>
+  </data>
+  <data name="승강 무부하 튜닝중" xml:space="preserve">
+    <value>승강 무부하 튜닝중</value>
+  </data>
+  <data name="승강 원점확인" xml:space="preserve">
+    <value>승강 원점확인</value>
+  </data>
+  <data name="승강 인버터 알람" xml:space="preserve">
+    <value>승강 인버터 알람</value>
+  </data>
+  <data name="승강 인버터 접속" xml:space="preserve">
+    <value>승강 인버터 접속</value>
+  </data>
+  <data name="승강 상승감속번호" xml:space="preserve">
+    <value>승강 상승감속번호</value>
+  </data>
+  <data name="승강 하강감속번호" xml:space="preserve">
+    <value>승강 하강감속번호</value>
+  </data>
+  <data name="승강 현재위치" xml:space="preserve">
+    <value>승강 현재위치</value>
+  </data>
+  <data name="승강 현재속도" xml:space="preserve">
+    <value>승강 현재속도</value>
+  </data>
+  <data name="승강 목표위치" xml:space="preserve">
+    <value>승강 목표위치</value>
+  </data>
+  <data name="승강 목표속도" xml:space="preserve">
+    <value>승강 목표속도</value>
+  </data>
+  <data name="타입없음" xml:space="preserve">
+    <value>타입없음</value>
+  </data>
+  <data name="입출고" xml:space="preserve">
+    <value>입출고</value>
+  </data>
+  <data name="가상스테이션" xml:space="preserve">
+    <value>가상스테이션</value>
+  </data>
+  <data name="모든 화물 허용 안함" xml:space="preserve">
+    <value>모든 화물 허용 안함</value>
+  </data>
+  <data name="1종" xml:space="preserve">
+    <value>1종</value>
+  </data>
+  <data name="2종" xml:space="preserve">
+    <value>2종</value>
+  </data>
+  <data name="3종" xml:space="preserve">
+    <value>3종</value>
+  </data>
+  <data name="4종" xml:space="preserve">
+    <value>4종</value>
+  </data>
+  <data name="5종" xml:space="preserve">
+    <value>5종</value>
+  </data>
+  <data name="6종" xml:space="preserve">
+    <value>6종</value>
+  </data>
+  <data name="7종" xml:space="preserve">
+    <value>7종</value>
+  </data>
+  <data name="8종" xml:space="preserve">
+    <value>8종</value>
+  </data>
+  <data name="스테이션 정보요청 버튼 Click" xml:space="preserve">
+    <value>스테이션 정보요청 버튼 Click</value>
+  </data>
+  <data name="미송신 작업 전송대기" xml:space="preserve">
+    <value>미송신 작업 전송대기</value>
+  </data>
+  <data name="시작 시 명령전송" xml:space="preserve">
+    <value>시작 시 명령전송</value>
+  </data>
+  <data name="미완료 작업 실행대기" xml:space="preserve">
+    <value>미완료 작업 실행대기</value>
+  </data>
+  <data name="시작 시 명령실행" xml:space="preserve">
+    <value>시작 시 명령실행</value>
+  </data>
+  <data name="SRM에 삭제되지 않은 작업이 남아 있습니다" xml:space="preserve">
+    <value>SRM에 삭제되지 않은
+작업이 남아 있습니다.</value>
+  </data>
+  <data name="광모뎀 에러 사용" xml:space="preserve">
+    <value>광모뎀 에러 사용</value>
+  </data>
+  <data name="현재" xml:space="preserve">
+    <value>현재</value>
+  </data>
+  <data name="다음" xml:space="preserve">
+    <value>다음</value>
+  </data>
+  <data name="목적" xml:space="preserve">
+    <value>목적</value>
+  </data>
+  <data name="닫기" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="Access Code" xml:space="preserve">
+    <value>접근 코드</value>
+  </data>
+  <data name="logo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+</root>

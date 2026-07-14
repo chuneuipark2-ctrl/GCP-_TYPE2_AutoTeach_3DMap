@@ -1,0 +1,17 @@
+{
+  "assyId": "Carriage_Assy",
+  "label": "Carriage_Assy",
+  "stpCanonicalBase": "Carriage_Assy",
+  "excludeStpNamePatterns": [],
+  "manifest": {
+    "matchPriority": ["stp_occurrence", "solid_edge_io_define"],
+    "sensorPartNamePatterns": [],
+    "useIoStpSensorMap": false,
+    "allowSensorPartSeq": false,
+    "defaultRadiusMm": 20
+  },
+  "viewer": {
+    "skipSurfaceSnapPatterns": ["^LiDAR[12]_"],
+    "deoverlapGapMm": 6
+  }
+}

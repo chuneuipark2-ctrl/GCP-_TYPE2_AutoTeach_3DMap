@@ -1,0 +1,29 @@
+# SOLID_EDGE_IO_DEFINE — SCP
+# Solid Edge PathFinder occurrence(배치) 이름
+# 한 줄: plc_signalKey<TAB>occurrence_name
+# occurrence_name 비우면 plc_signalKey 와 동일해야 함 (STP 자동매칭)
+#
+Lift_Out_Limit_Sensor_E	
+Lift_Out_Limit_Sensor_H	
+Lift_Brake_MMS_FLT	
+Panel_EMO_SW	
+Auto_Key_SW	
+Maint_Key_SW	
+Panel_Reset_SW	
+Over_Temp_Sensor	
+GOV	
+Safety_Relay_Alarm	
+INV_MDR_Ready	
+INV_MDR_MC_FeedBack	
+INV_Inhibit	
+INV_Reset	
+Tower_Lamp_RED	
+Tower_Lamp_Yellow	
+Tower_Lamp_Green	
+Tower_Lamp_White	
+Tower_Lamp_Blue	
+Tower_Lamp_Buzzer	
+M_Cage_EMS	
+M_Cage_Key_SW	
+M_Cage_Error	
+M_Cage_Door_SW	

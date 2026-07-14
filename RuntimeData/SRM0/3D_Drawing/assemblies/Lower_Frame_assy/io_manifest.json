@@ -1,0 +1,269 @@
+{
+  "assyId": "Lower_Frame_assy",
+  "assyIoProfile": "Lower_Frame_assy",
+  "stpFile": "LOWER_FRAME_ASSY.stp",
+  "glbFile": "LOWER_FRAME_ASSY.glb",
+  "stpSource": {
+    "file": "LOWER_FRAME_ASSY.stp",
+    "mtimeMs": 1783575664084.3284,
+    "sizeBytes": 40951458,
+    "checkedAt": "2026-07-09T05:52:41.075Z"
+  },
+  "generatedAt": "2026-07-09T05:52:41.077Z",
+  "linearDeflection": null,
+  "coordsOnly": true,
+  "source": "stp",
+  "coordinateSystem": "solid_edge_z_up_mm",
+  "_note": "형체=GLB. 센서=STP 배치이름(occurrence)+배치좌표 우선, part파일명은 보조.",
+  "occurrenceCount": 992,
+  "sensorOccurrenceCount": 21,
+  "cadReference": {
+    "center": [
+      -931.6356878264077,
+      -347.4567650857033,
+      939.6572329421118
+    ],
+    "zUp": true,
+    "unit": "mm"
+  },
+  "assemblyBBox": {
+    "center": [
+      -897.606312160276,
+      -376.0000000006955,
+      856.7269952633255
+    ],
+    "min": [
+      -1043.18021116113,
+      -433.000000000698,
+      100.324999999721
+    ],
+    "max": [
+      -752.032413159422,
+      -319.000000000693,
+      1613.12899052693
+    ],
+    "zUp": true,
+    "unit": "mm"
+  },
+  "assemblyOrigin": [
+    0,
+    0,
+    0
+  ],
+  "points": {
+    "Travel_Limit_Sensor_H": {
+      "x": -812.000000000057,
+      "y": -433.000000000697,
+      "z": 295.038043354608,
+      "occurrenceName": "Travel_Limit_Sensor_H",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Travel_Limit_Sensor_H",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Travel_Limit_Sensor_E": {
+      "x": -812.000000000057,
+      "y": -433.000000000698,
+      "z": 188.524999999715,
+      "occurrenceName": "Travel_Limit_Sensor_E",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Travel_Limit_Sensor_E",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Travel_DEC": {
+      "x": -846.700000000063,
+      "y": -384.000000000693,
+      "z": 100.324999999721,
+      "occurrenceName": "Travel_DEC",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Travel_DEC",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Travel_Home_Position": {
+      "x": -752.032413159422,
+      "y": -319.000000000693,
+      "z": 100.324999999725,
+      "occurrenceName": "Travel_Home_Position",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Travel_Home_Position",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Modem_Fault": {
+      "x": -875.000000000119,
+      "y": -386.000000000714,
+      "z": 518.524999999701,
+      "occurrenceName": "Modem_Fault",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Modem_Fault",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Station_Ready_1": {
+      "x": -1043.18021116113,
+      "y": -333.849504174765,
+      "z": 703.128990526932,
+      "occurrenceName": "Station_Ready_1",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Station_Ready_1",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Station_Ready_2": {
+      "x": -1043.18021116113,
+      "y": -333.849504174765,
+      "z": 833.128990526932,
+      "occurrenceName": "Station_Ready_2",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Station_Ready_2",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Station_Ready_3": {
+      "x": -1043.18021116113,
+      "y": -333.849504174765,
+      "z": 963.128990526932,
+      "occurrenceName": "Station_Ready_3",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Station_Ready_3",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Station_Ready_4": {
+      "x": -1043.18021116113,
+      "y": -333.849504174765,
+      "z": 1093.12899052693,
+      "occurrenceName": "Station_Ready_4",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Station_Ready_4",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Station_Ready_5": {
+      "x": -1043.18021116113,
+      "y": -333.849504174765,
+      "z": 1223.12899052693,
+      "occurrenceName": "Station_Ready_5",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Station_Ready_5",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Station_Ready_6": {
+      "x": -1043.18021116113,
+      "y": -333.849504174765,
+      "z": 1353.12899052693,
+      "occurrenceName": "Station_Ready_6",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Station_Ready_6",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Station_Ready_7": {
+      "x": -1043.18021116113,
+      "y": -333.849504174765,
+      "z": 1483.12899052693,
+      "occurrenceName": "Station_Ready_7",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Station_Ready_7",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Station_Ready_8": {
+      "x": -1043.18021116113,
+      "y": -333.849504174765,
+      "z": 1613.12899052693,
+      "occurrenceName": "Station_Ready_8",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Station_Ready_8",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Station_Stop_1": {
+      "x": -890.146917738254,
+      "y": -333.849504174769,
+      "z": 703.128990526927,
+      "occurrenceName": "Station_Stop_1",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Station_Stop_1",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Station_Stop_2": {
+      "x": -890.146917738246,
+      "y": -333.849504174769,
+      "z": 833.128990526927,
+      "occurrenceName": "Station_Stop_2",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Station_Stop_2",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Station_Stop_3": {
+      "x": -890.146917738238,
+      "y": -333.849504174769,
+      "z": 963.128990526927,
+      "occurrenceName": "Station_Stop_3",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Station_Stop_3",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Station_Stop_4": {
+      "x": -890.146917738229,
+      "y": -333.849504174769,
+      "z": 1093.12899052693,
+      "occurrenceName": "Station_Stop_4",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Station_Stop_4",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Station_Stop_5": {
+      "x": -890.146917738221,
+      "y": -333.849504174769,
+      "z": 1223.12899052693,
+      "occurrenceName": "Station_Stop_5",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Station_Stop_5",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Station_Stop_6": {
+      "x": -890.146917738213,
+      "y": -333.849504174769,
+      "z": 1353.12899052693,
+      "occurrenceName": "Station_Stop_6",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Station_Stop_6",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Station_Stop_7": {
+      "x": -890.146917738204,
+      "y": -333.849504174769,
+      "z": 1483.12899052693,
+      "occurrenceName": "Station_Stop_7",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Station_Stop_7",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    },
+    "Station_Stop_8": {
+      "x": -890.146917738196,
+      "y": -333.849504174769,
+      "z": 1613.12899052693,
+      "occurrenceName": "Station_Stop_8",
+      "partName": "LOWER_FRAME_ASSY",
+      "sourceMesh": "Station_Stop_8",
+      "matchMode": "stp_occurrence",
+      "radiusMm": 20
+    }
+  },
+  "matchCount": 21,
+  "signalCount": 23,
+  "meshCount": 0,
+  "_meshNameSample": []
+}

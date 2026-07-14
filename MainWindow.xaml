@@ -1,0 +1,590 @@
+﻿<Window x:Class="gcp_Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gcp_Wpf"
+        xmlns:lx="clr-namespace:gcp_Wpf"
+        mc:Ignorable="d" d:DesignWidth="1344"
+        Title="GCP" Height="1000" Width="1344" Closing="Window_Closing" Closed="Window_Closed" WindowState="Maximized" Activated="Window_Activated" PreviewMouseDown="Window_PreviewMouseDown">
+    <Window.Resources>
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="/Resources/Background.png"  Stretch="Fill" />
+    </Window.Background>
+    <DockPanel LastChildFill="True">
+        <DockPanel LastChildFill="True" DockPanel.Dock="Top" Height="65" Grid.IsSharedSizeScope="True" Panel.ZIndex="2" Background="#33000000">
+            <Border x:Name="Brd_AdminMode" DockPanel.Dock="Right" BorderBrush="#FFB8D8FC" BorderThickness="2" CornerRadius="5" Margin="0,2,4,2" Padding="3" Visibility="Collapsed">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.8*"/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="test" Content="" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="130" Foreground="White" Height="18" Padding="3,3,3,3" VerticalAlignment="Center" HorizontalAlignment="Right" MouseLeftButtonDown="Logo_Click">
+                        <Label.Background>
+                            <ImageBrush ImageSource="/Resources/logo.png"/>
+                        </Label.Background>
+                    </Label>
+                    <Label x:Name="lbl_buildDate" Content="-" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" FontSize="12" Grid.Row="1" Margin="0,0,0,0"/>
+                </Grid>
+            </Border>
+            <Grid DockPanel.Dock="Right" Margin="0,2,0,0" x:Name="Grid_LogoNormal">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="0.8*"/>
+                </Grid.RowDefinitions>
+                <Label x:Name="test_normal" Content="" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="130" Foreground="White" Height="30" HorizontalAlignment="Right" Margin="0,0,4,0" MouseLeftButtonDown="Logo_Click" UseLayoutRounding="False">
+                    <Label.Background>
+                        <ImageBrush ImageSource="/Resources/logo2.png" Stretch="Uniform"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="lbl_buildDate_normal" Content="-" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" VerticalAlignment="Top" FontSize="12" Grid.Row="1" Margin="0,0,4,0"/>
+            </Grid>
+            <ComboBox x:Name="Combo_srmNum" HorizontalAlignment="Right" Margin="10,5,5,5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="151" Background="{x:Null}" FontSize="20" Foreground="White" FontWeight="Bold" SelectionChanged="Combo_srmNum_SelectionChanged" Visibility="Collapsed" >
+                <ComboBox.Style>
+                    <Style TargetType="{x:Type ComboBox}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ComboBox}">
+                                    <Border BorderThickness="1,1,1,1" BorderBrush="#FFB8D8FC" CornerRadius="5,5,5,5" Background="#FF22B9AF">
+                                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="3,3,3,3">
+                                            <ToggleButton x:Name="ToggleButton" Grid.Column="2" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                            ClickMode="Press" Background="#02000000" BorderThickness="0"/>
+                                            <ContentPresenter x:Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="Auto" Height="Auto" Grid.ColumnSpan="1"/>
+                                            <TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3,3,23,3" Focusable="True" Background="Transparent" Visibility="Hidden"
+                                            IsReadOnly="{TemplateBinding IsReadOnly}" />
+                                            <Popup x:Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
+                                                <Grid x:Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                                    <Border x:Name="DropDownBorder" Background="#FF22B9AF" BorderThickness="1" BorderBrush="Black" />
+                                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                                    </ScrollViewer>
+                                                </Grid>
+                                            </Popup>
+                                        </Grid>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ComboBox.Style>
+            </ComboBox>
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="60*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" BorderBrush="#FF22B9AF" BorderThickness="1" CornerRadius="5,5,5,5" Margin="5,5,0,5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10*"/>
+                                <RowDefinition Height="10*"/>
+                            </Grid.RowDefinitions>
+                            <Button x:Name="SRM_COM" Background="#02DDDDDD" Foreground="White" BorderBrush="{x:Null}" FontWeight="Bold" FontSize="14" Click="SRM_COM_Click" Grid.RowSpan="2" Panel.ZIndex="1">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="border" Property="Background" Value="#20FFFFFF"/>
+                                                        </Trigger>
+                                                        <Trigger Property="IsPressed" Value="True">
+                                                            <Setter TargetName="border" Property="Background" Value="#40FFFFFF"/>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="SRM" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" Background="{x:Null}"/>
+                                <Label x:Name="lbl_SRMComm" Grid.Column="1" FontWeight="Bold" Foreground="#FFADADAD" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="2,2,2,2">
+                                    <Label.Background>
+                                        <ImageBrush ImageSource="/Resources/disconnected.png"/>
+                                    </Label.Background>
+                                </Label>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label x:Name="SRM_TX"  Grid.Column="0" Content="  TX" Foreground="#7F36CC7B" FontWeight="Bold" Background="{x:Null}"/>
+                                <Label x:Name="SRM_RX" Grid.Column="1" Content=" RX" Foreground="#7FD56A2B" FontWeight="Bold" Background="{x:Null}"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10*"/>
+                                <RowDefinition Height="10*"/>
+                            </Grid.RowDefinitions>
+                            <Button x:Name="DIO_COM" Background="#02DDDDDD" Foreground="White" BorderBrush="{x:Null}" FontWeight="Bold" FontSize="14" Click="DIO_COM_Click" Grid.RowSpan="2" Panel.ZIndex="1">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="border" Property="Background" Value="#20FFFFFF"/>
+                                                        </Trigger>
+                                                        <Trigger Property="IsPressed" Value="True">
+                                                            <Setter TargetName="border" Property="Background" Value="#40FFFFFF"/>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="DIO" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" Background="{x:Null}"/>
+                                <Label x:Name="lbl_DIOComm" Grid.Column="1" FontWeight="Bold" Foreground="#FFADADAD" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="2,2,2,2">
+                                    <Label.Background>
+                                        <ImageBrush ImageSource="/Resources/disconnected.png"/>
+                                    </Label.Background>
+                                </Label>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label x:Name="DIO_TX" Grid.Column="0" Content="  TX" Foreground="#7F36CC7B" FontWeight="Bold" Background="{x:Null}"/>
+                                <Label x:Name="DIO_RX" Grid.Column="1" Content=" RX" Foreground="#7FD56A2B" FontWeight="Bold" Background="{x:Null}"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10*"/>
+                                <RowDefinition Height="10*"/>
+                            </Grid.RowDefinitions>
+                            <Button x:Name="WCS_COM" Background="#02DDDDDD" Foreground="White" BorderBrush="{x:Null}" FontWeight="Bold" FontSize="14" Click="WCS_COM_Click" Grid.RowSpan="2" Panel.ZIndex="1">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="border" Property="Background" Value="#20FFFFFF"/>
+                                                        </Trigger>
+                                                        <Trigger Property="IsPressed" Value="True">
+                                                            <Setter TargetName="border" Property="Background" Value="#40FFFFFF"/>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="WCS" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold" Background="{x:Null}"/>
+                                <Label x:Name="lbl_WCSComm" Grid.Column="1" FontWeight="Bold" Foreground="#FFADADAD" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="2,2,2,2">
+                                    <Label.Background>
+                                        <ImageBrush ImageSource="/Resources/disconnected.png"/>
+                                    </Label.Background>
+                                </Label>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label x:Name="WCS_TX" Grid.Column="0" Content="  TX" Foreground="#7F36CC7B" FontWeight="Bold" Background="{x:Null}"/>
+                                <Label x:Name="WCS_RX" Grid.Column="1" Content=" RX" Foreground="#7FD56A2B" FontWeight="Bold" Background="{x:Null}"/>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Column="3">
+                            <Button x:Name="OP_LOG" Content="JOBLOG" VerticalContentAlignment="Center" Background="#02DDDDDD" Foreground="White" BorderBrush="{x:Null}" FontWeight="Bold" FontSize="14" Click="OP_LOG_Click" Grid.RowSpan="2">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter TargetName="border" Property="Background" Value="#20FFFFFF"/>
+                                                        </Trigger>
+                                                        <Trigger Property="IsPressed" Value="True">
+                                                            <Setter TargetName="border" Property="Background" Value="#40FFFFFF"/>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Border>
+                <Grid Grid.Column="1" Panel.ZIndex="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="lbl_errCode" Grid.Column="0" HorizontalAlignment="Stretch" Content="00-00" VerticalAlignment="Stretch" Foreground="Green" FontSize="36" Grid.RowSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                    <Border Grid.Column="1" Grid.RowSpan="2" ClipToBounds="True" Background="Transparent">
+                        <Canvas x:Name="MarqueeCanvas" VerticalAlignment="Center" Height="30">
+                            <TextBlock x:Name="ErrorText" FontSize="18" Foreground="White" VerticalAlignment="Center" Text=""/>
+                        </Canvas>
+                    </Border>
+                </Grid>
+            </Grid>
+        </DockPanel>
+        <DockPanel LastChildFill="True" Grid.IsSharedSizeScope="True" HorizontalAlignment="Stretch" DockPanel.Dock="Bottom">
+            <DockPanel LastChildFill="True" DockPanel.Dock="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Stretch" Height="60">
+                <DockPanel LastChildFill="True" DockPanel.Dock="Right" Width="453">
+                    <Grid DockPanel.Dock="Right">
+                        <Button x:Name="Btn_Setting" Content="{lx:Loc 설정}" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#02000000" BorderBrush="#FFB8D8FC" Height="42" Width="92" FontWeight="Bold" Margin="50,0,0,0" Click="Btn_Setting_Click">
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="3"/>
+                                </Style>
+                            </Button.Resources>
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Foreground" Value="#FFB8D8FC"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Foreground" Value="DarkBlue"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button x:Name="Btn_IO" Content="{lx:Loc 모니터}" HorizontalAlignment="Left" Margin="150,0,0,0" VerticalAlignment="Center" Background="#02000000" BorderBrush="#FFB8D8FC" Height="42" Width="92" FontWeight="Bold" Click="Btn_IO_Click">
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="3"/>
+                                </Style>
+                            </Button.Resources>
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Foreground" Value="#FFB8D8FC"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Foreground" Value="DarkBlue"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button x:Name="btn_log" Content="{lx:Loc 로그}" HorizontalAlignment="Left" Margin="250,0,0,0" VerticalAlignment="Center" Background="#02000000" BorderBrush="#FFB8D8FC" Height="42" Width="92" FontWeight="Bold" Click="btn_log_Click">
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="3"/>
+                                </Style>
+                            </Button.Resources>
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Foreground" Value="#FFB8D8FC"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Foreground" Value="DarkBlue"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button Content="{lx:Loc 종료}" Click="Exit_Click" HorizontalAlignment="Left" Margin="353,0,0,0" VerticalAlignment="Center" Background="#02000000" BorderBrush="#FFB8D8FC" Height="42" Width="92" FontWeight="Bold">
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="3"/>
+                                </Style>
+                            </Button.Resources>
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Foreground" Value="#FFB8D8FC"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Foreground" Value="DarkBlue"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Grid>
+                </DockPanel>
+                <DockPanel LastChildFill="True" DockPanel.Dock="Left">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="Btn_Lang" Grid.Column="0" Width="50" Height="50" Margin="5,5,5,5" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#02000000" BorderBrush="#FFB8D8FC" BorderThickness="1" Click="Btn_Lang_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Foreground" Value="#FFB8D8FC"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Foreground" Value="DarkBlue"/>
+                                            <Setter Property="Background" Value="#33B8D8FC"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <TextBlock Text="🌐" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Button.ContextMenu>
+                                <ContextMenu x:Name="LangContextMenu" Background="#99000000" BorderBrush="#FFB8D8FC" BorderThickness="1" MinWidth="150">
+                                    <ContextMenu.Resources>
+                                        <Style TargetType="MenuItem">
+                                            <Setter Property="Padding" Value="15,10,15,10"/>
+                                            <Setter Property="FontSize" Value="16"/>
+                                            <Setter Property="FontWeight" Value="Bold"/>
+                                            <Setter Property="MinHeight" Value="40"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#33B8D8FC"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ContextMenu.Resources>
+                                    <MenuItem Header="한국어" Click="LangMenuItem_Click" Tag="0" Foreground="White"/>
+                                    <MenuItem Header="English" Click="LangMenuItem_Click" Tag="1" Foreground="White"/>
+                                    <MenuItem Header="中文" Click="LangMenuItem_Click" Tag="2" Foreground="White"/>
+                                </ContextMenu>
+                            </Button.ContextMenu>
+                        </Button>
+                        <Border Grid.Column="1" BorderBrush="#FF22B9AF" BorderThickness="1" CornerRadius="5,5,5,5" Margin="0,5,0,5">
+                            <Grid x:Name="grid_Main" Margin="0,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition x:Name="GridTest1" Width="*"/>
+                                    <ColumnDefinition x:Name="GridTest2" Width="*"/>
+                                    <ColumnDefinition x:Name="GridTest3" Width="*"/>
+                                    <ColumnDefinition x:Name="GridTest4" Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <ToggleButton Content="{lx:Loc 메인}" x:Name="Btn_Main" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="18" FontWeight="Bold" Background="#02000000" BorderBrush="{x:Null}" BorderThickness="1,1,1,1" Grid.Column="0">
+                                    <ToggleButton.Style>
+                                        <Style TargetType="{x:Type ToggleButton}">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                        <Border x:Name="border" CornerRadius ="15" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter TargetName="border" Property="Background" Value="#FFB6D8FB" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Foreground" Value="#7FC8C8C8"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsChecked" Value="True">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ToggleButton.Style>
+                                </ToggleButton>
+                                <ToggleButton Content="{lx:Loc 자동}" x:Name="Btn_Auto" FontSize="14" FontWeight="Bold" Background="#02000000" BorderBrush="{x:Null}" BorderThickness="1,1,1,1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1">
+                                    <ToggleButton.Style>
+                                        <Style TargetType="{x:Type ToggleButton}">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                        <Border x:Name="border" CornerRadius ="15" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter TargetName="border" Property="Background" Value="#FFB6D8FB" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Foreground" Value="#7FC8C8C8"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsChecked" Value="True">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ToggleButton.Style>
+                                </ToggleButton>
+                                <ToggleButton Content="{lx:Loc 수동}" x:Name="Btn_Manual" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="14" FontWeight="Bold" Background="#02000000" BorderBrush="{x:Null}" Grid.Column="2">
+                                    <ToggleButton.Style>
+                                        <Style TargetType="{x:Type ToggleButton}">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                        <Border x:Name="border" CornerRadius ="15" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter TargetName="border" Property="Background" Value="#FFB6D8FB" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Foreground" Value="#7FC8C8C8"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsChecked" Value="True">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ToggleButton.Style>
+                                </ToggleButton>
+                                <ToggleButton Content="{lx:Loc 반자동}" x:Name="Btn_SemiAuto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="14" FontWeight="Bold" Background="#02000000" BorderBrush="{x:Null}" Grid.Column="3">
+                                    <ToggleButton.Style>
+                                        <Style TargetType="{x:Type ToggleButton}">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                        <Border x:Name="border" CornerRadius ="15" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter TargetName="border" Property="Background" Value="#FFB6D8FB" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Foreground" Value="#7FC8C8C8"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsChecked" Value="True">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ToggleButton.Style>
+                                </ToggleButton>
+                                <ToggleButton Content="{lx:Loc 오토티칭}" x:Name="Btn_AutoTeaching" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="14" FontWeight="Bold" Background="#02000000" BorderBrush="{x:Null}" Grid.Column="4">
+                                    <ToggleButton.Style>
+                                        <Style TargetType="{x:Type ToggleButton}">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                        <Border x:Name="border" CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter TargetName="border" Property="Background" Value="#FFB6D8FB" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Foreground" Value="#7FC8C8C8"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsChecked" Value="True">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ToggleButton.Style>
+                                </ToggleButton>
+                                <ToggleButton Content="{lx:Loc 테스트}" x:Name="btn_test1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="14" FontWeight="Bold" Background="#02000000" BorderBrush="{x:Null}" Grid.Column="5">
+                                    <ToggleButton.Style>
+                                        <Style TargetType="{x:Type ToggleButton}">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                        <Border x:Name="border" CornerRadius ="15" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter TargetName="border" Property="Background" Value="#FFB6D8FB" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Foreground" Value="#7FC8C8C8"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsChecked" Value="True">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ToggleButton.Style>
+                                </ToggleButton>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </DockPanel>
+            </DockPanel>
+        </DockPanel>
+        <DockPanel LastChildFill="True" DockPanel.Dock="Left" Grid.IsSharedSizeScope="True" HorizontalAlignment="Stretch">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="33*"/>
+                    <ColumnDefinition Width="66*"/>
+                </Grid.ColumnDefinitions>
+                <Frame x:Name="Frm_Page" Grid.Column="2" NavigationUIVisibility="Hidden" Panel.ZIndex="1" Background="#33000000"/>
+                <Frame x:Name="Bg_Page" Grid.Column="2" NavigationUIVisibility="Hidden" Background="#33000000"/>
+                <Label x:Name="lbl_blockMode" Grid.Column="2" Content="" Panel.ZIndex="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="40" Foreground="#FFB44545" FontWeight="Bold" Background="#CC000000"/>
+                <Border x:Name="Brd_State" Grid.Column="0" BorderBrush="#33000000" BorderThickness="1" Margin="0,0,0,0" CornerRadius="5,5,5,5" Background="#33000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Panel.ZIndex="1">
+                    <Frame  x:Name="Frm_State" NavigationUIVisibility="Hidden"/>
+                </Border>
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</Window>

@@ -1,0 +1,377 @@
+{
+  "assyId": "Lower_Frame_assy",
+  "stpFile": "LOWER_FRAME_ASSY.stp",
+  "glbFile": "LOWER_FRAME_ASSY.glb",
+  "generatedAt": "2026-07-08T00:07:31.807Z",
+  "linearDeflection": 0.2,
+  "coordsOnly": false,
+  "source": "stp",
+  "coordinateSystem": "solid_edge_z_up_mm",
+  "_note": "형체=GLB. 센서=STP 배치이름(occurrence)+배치좌표 우선, part파일명은 보조.",
+  "occurrenceCount": 1461,
+  "sensorOccurrenceCount": 21,
+  "cadReference": {
+    "center": [
+      -2979.6027053729217,
+      48.46921212915721,
+      13305.510628721422
+    ],
+    "zUp": true,
+    "unit": "mm"
+  },
+  "assemblyBBox": {
+    "center": [
+      -3050,
+      76.3771743774414,
+      14675.324608802795
+    ],
+    "min": [
+      -5450.5,
+      -465.89186096191406,
+      75.32499885559082
+    ],
+    "max": [
+      -649.5,
+      618.6462097167969,
+      29275.32421875
+    ],
+    "zUp": true,
+    "unit": "mm"
+  },
+  "assemblyOrigin": [
+    0,
+    0,
+    0
+  ],
+  "points": {
+    "Travel_Limit_Sensor_H": {
+      "x": -846.700000000063,
+      "y": -384.000000000693,
+      "z": 100.324999999721,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 1,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        4.5,
+        12
+      ]
+    },
+    "Travel_Limit_Sensor_E": {
+      "x": -752.032413159422,
+      "y": -319.000000000693,
+      "z": 100.324999999725,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 2,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        34.641021728515625,
+        34.641014099121094
+      ]
+    },
+    "Travel1_Brake_MMS_FLT": {
+      "x": -812.000000000057,
+      "y": -433.000000000697,
+      "z": 188.524999999714,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 3,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        34.641021728515625,
+        34.64100646972656
+      ]
+    },
+    "Travel2_Brake_MMS_FLT": {
+      "x": -875.000000000119,
+      "y": -386.000000000714,
+      "z": 518.524999999701,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 4,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        34.641021728515625,
+        34.641021728515625
+      ]
+    },
+    "Travel_DEC": {
+      "x": -1006.6635644497,
+      "y": -396.000000000711,
+      "z": 641.559312052755,
+      "sourceMesh": "8BIT_SENSOR",
+      "stpListNo": 5,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 40,
+      "bboxSizeMm": [
+        60,
+        20,
+        80
+      ]
+    },
+    "Travel_Home_Position": {
+      "x": -890.146917738254,
+      "y": -333.849504174769,
+      "z": 703.128990526927,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 6,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        34.641021728515625,
+        34.64105224609375
+      ]
+    },
+    "Modem_Fault": {
+      "x": -1043.18021116113,
+      "y": -333.849504174765,
+      "z": 703.128990526932,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 7,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        34.641021728515625,
+        34.64105224609375
+      ]
+    },
+    "Station_Ready_1": {
+      "x": -890.146917738246,
+      "y": -333.849504174769,
+      "z": 833.128990526927,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 8,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        34.641021728515625,
+        34.64105224609375
+      ]
+    },
+    "Station_Ready_2": {
+      "x": -1043.18021116113,
+      "y": -333.849504174765,
+      "z": 833.128990526932,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 9,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        34.641021728515625,
+        34.64105224609375
+      ]
+    },
+    "Station_Ready_3": {
+      "x": -890.146917738238,
+      "y": -333.849504174769,
+      "z": 963.128990526927,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 10,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        34.641021728515625,
+        34.64105224609375
+      ]
+    },
+    "Station_Ready_4": {
+      "x": -1043.18021116113,
+      "y": -333.849504174765,
+      "z": 963.128990526932,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 11,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        34.641021728515625,
+        34.64105224609375
+      ]
+    },
+    "Station_Ready_5": {
+      "x": -890.146917738229,
+      "y": -333.849504174769,
+      "z": 1093.12899052693,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 12,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        34.641021728515625,
+        34.6409912109375
+      ]
+    },
+    "Station_Ready_6": {
+      "x": -1043.18021116113,
+      "y": -333.849504174765,
+      "z": 1093.12899052693,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 13,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        34.641021728515625,
+        34.6409912109375
+      ]
+    },
+    "Station_Ready_7": {
+      "x": -890.146917738221,
+      "y": -333.849504174769,
+      "z": 1223.12899052693,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 14,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        34.641021728515625,
+        34.6409912109375
+      ]
+    },
+    "Station_Ready_8": {
+      "x": -1043.18021116113,
+      "y": -333.849504174765,
+      "z": 1223.12899052693,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 15,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        34.641021728515625,
+        34.6409912109375
+      ]
+    },
+    "Station_Stop_1": {
+      "x": -890.146917738213,
+      "y": -333.849504174769,
+      "z": 1353.12899052693,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 16,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        34.641021728515625,
+        34.6409912109375
+      ]
+    },
+    "Station_Stop_2": {
+      "x": -1043.18021116113,
+      "y": -333.849504174765,
+      "z": 1353.12899052693,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 17,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        34.641021728515625,
+        34.6409912109375
+      ]
+    },
+    "Station_Stop_3": {
+      "x": -890.146917738204,
+      "y": -333.849504174769,
+      "z": 1483.12899052693,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 18,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        34.641021728515625,
+        34.6409912109375
+      ]
+    },
+    "Station_Stop_4": {
+      "x": -1043.18021116113,
+      "y": -333.849504174765,
+      "z": 1483.12899052693,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 19,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        34.641021728515625,
+        34.6409912109375
+      ]
+    },
+    "Station_Stop_5": {
+      "x": -890.146917738196,
+      "y": -333.849504174769,
+      "z": 1613.12899052693,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 20,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        34.641021728515625,
+        34.6409912109375
+      ]
+    },
+    "Station_Stop_6": {
+      "x": -1043.18021116113,
+      "y": -333.849504174765,
+      "z": 1613.12899052693,
+      "sourceMesh": "GDFL_SENSOR",
+      "stpListNo": 21,
+      "matchMode": "io_stp_sensor_map",
+      "radiusMm": 20,
+      "bboxSizeMm": [
+        40,
+        34.641021728515625,
+        34.6409912109375
+      ]
+    }
+  },
+  "matchCount": 21,
+  "signalCount": 23,
+  "meshCount": 2192,
+  "_meshNameSample": [
+    "75032203",
+    "75032203_3",
+    "75032203_1",
+    "75032203_2",
+    "75032203_4",
+    "¤±400x400x9t0",
+    "135x75x16t",
+    "75024496",
+    "75024500",
+    "75034996",
+    "75034997",
+    "75034998",
+    "75035000",
+    "75034999",
+    "75024498",
+    "HOLDING PLATE",
+    "75032205",
+    "75024501",
+    "75032206",
+    "75024506",
+    "75032207",
+    "75032208",
+    "¡à350x350x9T",
+    "75024507",
+    "70000001-UPPER FRAME-H01",
+    "70000001-UPPER FRAME-H02",
+    "70000001-UPPER FRAME-H06",
+    "70000001-UPPER FRAME-H07",
+    "70000001-UPPER FRAME-H03",
+    "70000001-UPPER FRAME-H04"
+  ]
+}

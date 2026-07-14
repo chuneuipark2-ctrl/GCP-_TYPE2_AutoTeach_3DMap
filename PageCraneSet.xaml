@@ -1,0 +1,192 @@
+<Page x:Class="gcp_Wpf.PageCraneSet"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:gcp_Wpf"
+      xmlns:lx="clr-namespace:gcp_Wpf"
+      mc:Ignorable="d" d:DesignWidth="800"
+      Title="PageCraneSet">
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="89*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="11*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="{lx:Loc 크레인 정보}" Margin="9,0,9,0" Height="34" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" HorizontalAlignment="Left" VerticalAlignment="Stretch" FontSize="16"/>
+                    <Button Grid.Column="1" x:Name="btn_Load" Content="{lx:Loc 불러오기}" BorderBrush="#FFB8D8FC" FontWeight="Bold" Click="Request_Click" Margin="10,5,10,5">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="LightBlue"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="LightCoral"/>
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Foreground" Value="#7FC8C8C8"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button x:Name="btn_Save" Content="{lx:Loc 저장}" Grid.Column="2" VerticalAlignment="Stretch" BorderBrush="#FFB8D8FC" FontWeight="Bold" Margin="10,5,10,5" Click="Button_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="LightBlue"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="LightCoral"/>
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Foreground" Value="#7FC8C8C8"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid>
+                <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Height="2" Margin="0,0,0,0" VerticalAlignment="Top"/>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="14*"/>
+                    </Grid.ColumnDefinitions>
+                    <GridSplitter Grid.Column="2" HorizontalAlignment="Stretch" Width="2" Margin="0,0,0,0" VerticalAlignment="Stretch" Grid.RowSpan="11"/>
+                    <Label Content="{lx:Loc 크레인 타입}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label Content="{lx:Loc 포크개수}" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label Content="{lx:Loc 포크타입}" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label Content="{lx:Loc 크레인 No}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label Content="{lx:Loc 열 (ROW)}" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label Content="{lx:Loc 행 (BAY)}" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label Content="{lx:Loc 단 (Level)}" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label Content="주행 방향 반전" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label Content="-" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label Content="-" Grid.Row="9" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label Content="-" Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <TextBox x:Name="edit_srmType1" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="0" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" BorderThickness="0" Foreground="White" Background="{x:Null}" Height="34" IsReadOnly="True" IsHitTestVisible="False">
+                    </TextBox>
+                    <Label x:Name="lbl_forkCnt" Grid.Row="2" Grid.Column="1" Content="-" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#FFB8D8FC" Background="{x:Null}" Height="33" FontSize="16"/>
+                    <Label x:Name="lbl_forkType" Grid.Row="3" Grid.Column="1" Content="-" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#FFB8D8FC" Background="{x:Null}" Height="33" FontSize="16"/>
+                    <TextBox x:Name="edit_srmID1" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Text="0" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" BorderBrush="#FFB8D8FC" Foreground="White" Background="{x:Null}" PreviewTextInput="NumberTextBox_PreviewTextInput" CaretBrush="{x:Null}" Height="34" PreviewMouseDown="Click_OpenNumpad">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="3"/>
+                            </Style>
+                            <Style TargetType="TextBox">
+                                <Setter Property="CaretBrush" Value="Red" />
+                                <!-- Set the desired color for the caret -->
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <TextBox x:Name="edit_srmRow1" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Text="0" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" BorderThickness="0" Foreground="White" Background="{x:Null}" Height="34" IsReadOnly="True" IsHitTestVisible="False">
+                    </TextBox>
+                    <TextBox x:Name="edit_srmBay1" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Text="0" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" BorderThickness="0" Foreground="White" Background="{x:Null}" Height="34" IsReadOnly="True" IsHitTestVisible="False">
+                    </TextBox>
+                    <TextBox x:Name="edit_srmLev1" Grid.Row="6" Grid.Column="1" TextWrapping="Wrap" Text="0" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" BorderThickness="0" Foreground="White" Background="{x:Null}" Height="34" IsReadOnly="True" IsHitTestVisible="False">
+                    </TextBox>
+                    <CheckBox x:Name="chk_travDirectionReverse" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14" IsEnabled="False">
+                        <CheckBox.Style>
+                            <Style TargetType="CheckBox">
+                                <Setter Property="Foreground" Value="White"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Foreground" Value="#7FC8C8C8"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
+                    <TextBox x:Name="edit_offsetUp" Grid.Row="8" Grid.Column="1" TextWrapping="Wrap" Text="0" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" BorderThickness="0" Foreground="White" Background="{x:Null}" Height="34" IsReadOnly="True" IsHitTestVisible="False">
+                    </TextBox>
+                    <TextBox x:Name="edit_offsetDown" Grid.Row="9" Grid.Column="1" TextWrapping="Wrap" Text="0" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" BorderThickness="0" Foreground="White" Background="{x:Null}" Height="34" IsReadOnly="True" IsHitTestVisible="False">
+                    </TextBox>
+                    <TextBox x:Name="edit_srmStn1" Grid.Row="10" Grid.Column="1" TextWrapping="Wrap" Text="0" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" BorderThickness="0" Foreground="White" Background="{x:Null}" Height="34" IsReadOnly="True" IsHitTestVisible="False">
+                    </TextBox>
+                    <Label x:Name="lbl_Station1" Grid.Row="11" Grid.Column="1" Content="-" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#FFB8D8FC" Background="{x:Null}" Height="33" FontSize="16"/>
+                    <Label Content="{lx:Loc 프로젝트 No}" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label Content="{lx:Loc 그룹 No}" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label Content="{lx:Loc 호기 No}" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label Content="{lx:Loc 펌웨어 버젼}" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label Content="{lx:Loc 프로토콜 버전}" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label Content="{lx:Loc 장비시간}" Grid.Row="5" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label x:Name="lbl_utcTime" Content="-" Grid.Row="5" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Button x:Name="btn_DeviceTimeSync" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2" Content="{lx:Loc 장비시간 동기화}" BorderBrush="#FFB8D8FC" FontWeight="Bold" Click="Btn_DeviceTimeSync_Click" Margin="5,2" Height="28">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="LightBlue"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="LightCoral"/>
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Foreground" Value="#7FC8C8C8"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Label Content="Vision IP" Grid.Row="7" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" Height="34"/>
+                    <TextBox x:Name="edit_VisionIP1" Grid.Row="7" Grid.Column="4" Tag="IP" Text="127.0.0.1" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" BorderBrush="#FFB8D8FC" Foreground="White" Background="{x:Null}" Height="34" PreviewMouseDown="Click_OpenNumpad">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="3"/>
+                            </Style>
+                            <Style TargetType="TextBox">
+                                <Setter Property="CaretBrush" Value="Red" />
+                                <!-- Set the desired color for the caret -->
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <Label Content="Vision Port" Grid.Row="8" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Bold" Height="34"/>
+                    <TextBox x:Name="edit_VisionPort1" Grid.Row="8" Grid.Column="4" Text="3080" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" BorderBrush="#FFB8D8FC" Foreground="White" Background="{x:Null}" PreviewTextInput="NumberTextBox_PreviewTextInput" Height="34" PreviewMouseDown="Click_OpenNumpad">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="3"/>
+                            </Style>
+                            <Style TargetType="TextBox">
+                                <Setter Property="CaretBrush" Value="Red" />
+                                <!-- Set the desired color for the caret -->
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <Label x:Name="lbl_projNo" Content="-" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label x:Name="lbl_groupNo" Content="-" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label x:Name="lbl_srmNo" Content="-" Grid.Row="2" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label x:Name="lbl_firmVerNo" Content="-" Grid.Row="3" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                    <Label x:Name="lbl_protoVerNo" Content="-" Grid.Row="4" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" RenderTransformOrigin="0.519,0.501" Height="34"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

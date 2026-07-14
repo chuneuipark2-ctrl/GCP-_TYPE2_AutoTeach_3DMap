@@ -1,0 +1,27 @@
+# IO_SIGNAL_LABELS — 3D MAP 센서 호버 설명
+# 한 줄: plc_signalKey<TAB>표시명
+#
+Panel_EMO_SW	패널 비상정지 스위치
+Auto_Key_SW	패널 Auto 모드 전환
+Maint_Key_SW	패널 Maintenence 모드 전환
+Panel_Reset_SW	패널 Safety reset
+Over_Temp_Sensor	온도 과부하
+GOV	거버너 센서
+Safety_Relay_Alarm	세이프티 릴레이 이상
+INV_MDR_Ready	MDR ready
+INV_MDR_MC_FeedBack	INV MDR MC FeedBack
+INV_Inhibit	INV Inhibit
+INV_Reset	INV Reset
+Tower_Lamp_RED	타워램프 RED
+Tower_Lamp_Yellow	타워램프 Yellow
+Tower_Lamp_Green	타워램프 Green
+Tower_Lamp_White	타워램프 White
+Tower_Lamp_Blue	타워램프 Blue
+Tower_Lamp_Buzzer	타워램프 Buzzer
+M_Cage_EMS	메인터넌스 케이지 Emergency switch
+M_Cage_Key_SW	메인터넌스 케이지 Key switch
+M_Cage_Error	메인터넌스 케이지 에러
+M_Cage_Door_SW	메인터넌스 케이지 도어스위치
+Lift_Out_Limit_Sensor_H	Lift Out Limit Sensor-H
+Lift_Out_Limit_Sensor_E	Lift Out Limit Sensor-E
+Lift_Brake_MMS_FLT	Lift Brake MMS FLT

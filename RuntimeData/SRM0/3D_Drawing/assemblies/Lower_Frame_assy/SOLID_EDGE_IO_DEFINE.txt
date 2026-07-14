@@ -1,0 +1,28 @@
+# SOLID_EDGE_IO_DEFINE — Lower_Frame_assy
+# Solid Edge PathFinder occurrence(배치) 이름
+# 한 줄: plc_signalKey<TAB>occurrence_name
+# occurrence_name 비우면 plc_signalKey 와 동일해야 함 (STP 자동매칭)
+#
+Travel_Limit_Sensor_H	
+Travel_Limit_Sensor_E	
+Travel1_Brake_MMS_FLT	
+Travel2_Brake_MMS_FLT	
+Travel_DEC	
+Travel_Home_Position	
+Modem_Fault	
+Station_Ready_1	
+Station_Ready_2	
+Station_Ready_3	
+Station_Ready_4	
+Station_Ready_5	
+Station_Ready_6	
+Station_Ready_7	
+Station_Ready_8	
+Station_Stop_1	
+Station_Stop_2	
+Station_Stop_3	
+Station_Stop_4	
+Station_Stop_5	
+Station_Stop_6	
+Station_Stop_7	
+Station_Stop_8	
