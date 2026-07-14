@@ -1055,6 +1055,16 @@ class OrbitControls extends EventDispatcher {
 
 		}
 
+		/** 커스텀 CAD 회전 종료 후 — 남은 pointer FSM 을 비워 pan/zoom 이 다시 먹게 함 */
+		this.cancelInteraction = function () {
+
+			pointers.splice( 0, pointers.length );
+			state = STATE.NONE;
+			scope.domElement.removeEventListener( 'pointermove', onPointerMove );
+			scope.domElement.removeEventListener( 'pointerup', onPointerUp );
+
+		};
+
 		function onMouseDown( event ) {
 
 			let mouseAction;

@@ -36,7 +36,7 @@ const loadPct = document.getElementById('loadPct');
 const loadBar = document.getElementById('loadBar');
 const diagEl = document.getElementById('diag');
 
-const VIEWER_BUILD = '20250709touch-hold-rot';
+const VIEWER_BUILD = '20260714nav-unlock';
 /** STP manifest 좌표 → 형체 표면 스냅 최대 거리 (mm). 0=비활성(기본) — 원점/표면 자동 끌어당김 금지 */
 const IO_STP_SURFACE_SNAP_MAX_MM_DEFAULT = 0;
 /** snap/겹침 분리 후 인접 I/O 구체 최소 간격 (mm) — ASSY 프로필로 덮어씀 */
@@ -190,6 +190,8 @@ const ioStates = {};
 let highlightedMarker = null;
 /** 중클릭 커스텀 드래그 — rotate | pan */
 let customDragMode = null;
+/** 커스텀 드래그를 시작한 pointerId (button 검사 없이 종료하기 위함) */
+let customDragPointerId = null;
 let lastPointerX = 0;
 let lastPointerY = 0;
 /** 터치 PC — 한 손가락 2초 홀드 후 드래그 회전 */
@@ -549,6 +551,8 @@ function orbitRotateByPixels(dx, dy) {
 
   camera.up.applyAxisAngle(_camUp, -dx * speed);
   camera.up.applyAxisAngle(_camRight, -dy * speed);
+  if (camera.up.lengthSq() > 1e-12) camera.up.normalize();
+  else camera.up.set(0, 1, 0);
   controls.target.copy(_pivot);
   camera.lookAt(_pivot);
   controls.update();
@@ -577,6 +581,8 @@ function rotateViewInPlane(angleRad) {
   _orbitDelta.subVectors(camera.position, target).applyAxisAngle(_camFwd, angleRad);
   camera.position.copy(target).add(_orbitDelta);
   camera.up.applyAxisAngle(_camFwd, angleRad);
+  if (camera.up.lengthSq() > 1e-12) camera.up.normalize();
+  else camera.up.set(0, 1, 0);
   camera.lookAt(target);
   controls.update();
 }
@@ -611,6 +617,8 @@ function armTouchHoldRotate(domElement, e) {
   lastPointerY = e.clientY;
   const root = getActiveModelRoot();
   if (root) syncOrbitTargetToScreenCenter(root);
+  // 홀드 전에 OrbitControls 가 잡은 TOUCH_* state 해제 → 회전 중/후에도 줌·팬 가능
+  if (typeof controls.cancelInteraction === 'function') controls.cancelInteraction();
   try {
     domElement.setPointerCapture(e.pointerId);
   } catch (_) {
@@ -686,14 +694,15 @@ function setupTouchHoldRotate(domElement) {
       } catch (_) {
         /* noop */
       }
+      // stopPropagation 하면 OrbitControls pointerup 이 안 와서
+      // state 가 TOUCH_* 에 잠기고 휠 줌/팬이 사망한다 → 전파는 살린다
+      if (typeof controls.cancelInteraction === 'function') controls.cancelInteraction();
       e.preventDefault();
-      e.stopPropagation();
     }
   };
 
   domElement.addEventListener('pointerup', endTouchHoldRotate, true);
   domElement.addEventListener('pointercancel', endTouchHoldRotate, true);
-  domElement.addEventListener('pointerleave', endTouchHoldRotate, true);
 }
 
 /** Solid Edge / CAD — 중클릭 회전(무한), 우클릭·Shift+중클릭 이동, 휠 줌 */
@@ -713,10 +722,27 @@ function setupCadNavigation(ctrl, domElement) {
 
   domElement.addEventListener('contextmenu', (e) => e.preventDefault());
 
+  const releaseCustomDrag = (pointerId) => {
+    if (customDragMode == null && customDragPointerId == null) return;
+    customDragMode = null;
+    const pid = pointerId ?? customDragPointerId;
+    customDragPointerId = null;
+    if (pid != null) {
+      try {
+        domElement.releasePointerCapture(pid);
+      } catch (_) {
+        /* noop */
+      }
+    }
+    // 중클릭 회전 중 OrbitControls FSM 이 남아 있으면 휠 줌이 막힘
+    if (typeof ctrl.cancelInteraction === 'function') ctrl.cancelInteraction();
+  };
+
   domElement.addEventListener(
     'pointerdown',
     (e) => {
       if (e.button !== 1) return;
+      customDragPointerId = e.pointerId;
       customDragMode = e.shiftKey ? 'pan' : 'rotate';
       lastPointerX = e.clientX;
       lastPointerY = e.clientY;
@@ -724,7 +750,11 @@ function setupCadNavigation(ctrl, domElement) {
         const root = getActiveModelRoot();
         if (root) syncOrbitTargetToScreenCenter(root);
       }
-      domElement.setPointerCapture(e.pointerId);
+      try {
+        domElement.setPointerCapture(e.pointerId);
+      } catch (_) {
+        /* noop */
+      }
       e.preventDefault();
       e.stopPropagation();
     },
@@ -735,6 +765,7 @@ function setupCadNavigation(ctrl, domElement) {
     'pointermove',
     (e) => {
       if (!customDragMode) return;
+      if (customDragPointerId != null && e.pointerId !== customDragPointerId) return;
       const dx = e.clientX - lastPointerX;
       const dy = e.clientY - lastPointerY;
       lastPointerX = e.clientX;
@@ -742,19 +773,20 @@ function setupCadNavigation(ctrl, domElement) {
       if (customDragMode === 'rotate') orbitRotateByPixels(dx, dy);
       else orbitPanByPixels(dx, dy);
       e.preventDefault();
+      e.stopPropagation();
     },
     true
   );
 
   const endCustomDrag = (e) => {
-    if (e.button !== 1) return;
-    customDragMode = null;
-    try {
-      domElement.releasePointerCapture(e.pointerId);
-    } catch (_) { /* noop */ }
+    if (customDragPointerId == null) return;
+    if (e.pointerId !== customDragPointerId) return;
+    // pointercancel 은 button=0 인 경우가 많음 — button===1 검사 금지
+    releaseCustomDrag(e.pointerId);
   };
   domElement.addEventListener('pointerup', endCustomDrag, true);
   domElement.addEventListener('pointercancel', endCustomDrag, true);
+  domElement.addEventListener('lostpointercapture', endCustomDrag, true);
 
   setupTouchHoldRotate(domElement);
 
