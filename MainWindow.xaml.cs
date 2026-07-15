@@ -112,6 +112,7 @@ namespace gcp_Wpf
         PageSemiAuto pageSemiAuto;
         PageAlarmLog pageAlarmLog;
         PageDIO pageDio;
+        Page3DMap page3DMap;
         PageMonitorJOB pageToWcs;
         PageMonitorFromWCS pageFromWcs;
         PageMonitorSRM pageMonitorSrm;
@@ -593,6 +594,7 @@ namespace gcp_Wpf
             pageSemiAuto = new PageSemiAuto(this);
             pageAlarmLog = new PageAlarmLog();
             pageDio = new PageDIO();
+            page3DMap = new Page3DMap();
             pageToWcs = new PageMonitorJOB(this);
             pageFromWcs = new PageMonitorFromWCS();
             pageMonitorSrm = new PageMonitorSRM();
@@ -1894,6 +1896,9 @@ namespace gcp_Wpf
                     case cConstDefine.PAGE_DIO:
                         pageDio.Dio_Change();
                         Frm_Page.Content = pageDio;
+                        break;
+                    case cConstDefine.PAGE_3DMAP:
+                        Frm_Page.Content = page3DMap;
                         break;
                     case cConstDefine.PAGE_TOWCS:
                         Frm_Page.Content = pageToWcs;

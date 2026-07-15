@@ -6,18 +6,19 @@
         xmlns:local="clr-namespace:gcp_Wpf.MenuWindow"
         xmlns:lx="clr-namespace:gcp_Wpf"
         Deactivated="Window_Deactivated" Title="Menu_Setting" WindowStyle="None" AllowsTransparency="True"
-        Background="#CC000000" HorizontalAlignment="Left" VerticalAlignment="Top" Width="440" Height="60"
+        Background="#CC000000" HorizontalAlignment="Left" VerticalAlignment="Top" Width="550" Height="60"
         BorderBrush="White" Foreground="{x:Null}">
-  <Grid>
+  <Grid x:Name="MenuGrid">
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="1*"/>
-      <ColumnDefinition Width="1*"/>
-      <ColumnDefinition Width="1*"/>
-      <ColumnDefinition Width="1*"/>
+      <ColumnDefinition Width="1*" x:Name="Col0"/>
+      <ColumnDefinition Width="1*" x:Name="Col1"/>
+      <ColumnDefinition Width="1*" x:Name="Col2"/>
+      <ColumnDefinition Width="1*" x:Name="Col3"/>
+      <ColumnDefinition Width="1*" x:Name="Col4"/>
     </Grid.ColumnDefinitions>
-                    <Button Click="Btn_Menu_Click" x:Name="Btn_Menu1" Content="{lx:Loc 지상반설정}" Grid.Column="0"
+    <Button Click="Btn_Menu_Click" x:Name="Btn_Menu1" Content="{lx:Loc 지상반설정}" Grid.Column="0"
             HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#02000000"
-            BorderBrush="#FFB8D8FC" Height="50" Width="100" FontWeight="Bold" Margin="5,5,5,5">
+            BorderBrush="#FFB8D8FC" Height="50" FontWeight="Bold" Margin="5,5,5,5">
       <FrameworkElement.Resources>
         <Style TargetType="{x:Type Border}">
           <Setter Property="Border.CornerRadius" Value="3"/>
@@ -34,9 +35,9 @@
         </Style>
       </FrameworkElement.Style>
     </Button>
-                    <Button Click="Btn_Menu_Click" x:Name="Btn_Menu2" Content="{lx:Loc 크레인정보}" Grid.Column="1"
+    <Button Click="Btn_Menu_Click" x:Name="Btn_Menu2" Content="{lx:Loc 크레인정보}" Grid.Column="1"
             HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#02000000"
-            BorderBrush="#FFB8D8FC" Height="50" Width="100" FontWeight="Bold" Margin="5,5,5,5">
+            BorderBrush="#FFB8D8FC" Height="50" FontWeight="Bold" Margin="5,5,5,5">
       <FrameworkElement.Resources>
         <Style TargetType="{x:Type Border}">
           <Setter Property="Border.CornerRadius" Value="3"/>
@@ -53,9 +54,9 @@
         </Style>
       </FrameworkElement.Style>
     </Button>
-                    <Button Click="Btn_Menu_Click" x:Name="Btn_Menu3" Content="{lx:Loc 스테이션설정}" Grid.Column="2"
+    <Button Click="Btn_Menu_Click" x:Name="Btn_Menu3" Content="{lx:Loc 스테이션설정}" Grid.Column="2"
             HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#02000000"
-            BorderBrush="#FFB8D8FC" Height="50" Width="100" FontWeight="Bold" Margin="5,5,5,5">
+            BorderBrush="#FFB8D8FC" Height="50" FontWeight="Bold" Margin="5,5,5,5">
       <FrameworkElement.Resources>
         <Style TargetType="{x:Type Border}">
           <Setter Property="Border.CornerRadius" Value="3"/>
@@ -72,9 +73,29 @@
         </Style>
       </FrameworkElement.Style>
     </Button>
-                    <Button Click="Btn_Menu_Click" x:Name="Btn_Menu4" Content="{lx:Loc 금지랙설정}" Grid.Column="3"
+    <Button Click="Btn_Menu_Click" x:Name="Btn_Menu4" Content="{lx:Loc 금지랙설정}" Grid.Column="3"
             HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#02000000"
-            BorderBrush="#FFB8D8FC" Height="50" Width="100" FontWeight="Bold" Margin="5,5,5,5">
+            BorderBrush="#FFB8D8FC" Height="50" FontWeight="Bold" Margin="5,5,5,5">
+      <FrameworkElement.Resources>
+        <Style TargetType="{x:Type Border}">
+          <Setter Property="Border.CornerRadius" Value="3"/>
+        </Style>
+      </FrameworkElement.Resources>
+      <FrameworkElement.Style>
+        <Style TargetType="{x:Type Button}">
+          <Setter Property="Control.Foreground" Value="#FFB8D8FC"/>
+          <Style.Triggers>
+            <Trigger Property="UIElement.IsMouseOver" Value="True">
+              <Setter Property="Control.Foreground" Value="DarkBlue"/>
+            </Trigger>
+          </Style.Triggers>
+        </Style>
+      </FrameworkElement.Style>
+    </Button>
+    <Button Click="Btn_Menu_Click" x:Name="Btn_Menu5" Content="3D Map" Grid.Column="4"
+            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#02000000"
+            BorderBrush="#FFB8D8FC" Height="50" FontWeight="Bold" Margin="5,5,5,5"
+            Visibility="Collapsed">
       <FrameworkElement.Resources>
         <Style TargetType="{x:Type Border}">
           <Setter Property="Border.CornerRadius" Value="3"/>

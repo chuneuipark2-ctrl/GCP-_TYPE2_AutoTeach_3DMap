@@ -199,6 +199,20 @@ namespace gcp_Wpf.Controls
           return;
         }
 
+        if (type == "poseSnap")
+        {
+          string msg = root.TryGetProperty("message", out var pm) ? pm.GetString() : "";
+          string pose = root.TryGetProperty("pose", out var pe) ? pe.GetString() : "";
+          Dispatcher.Invoke(() =>
+          {
+            TxtStatus.Text = string.IsNullOrEmpty(msg) ? ("포즈: " + pose) : msg;
+            TxtStatus.Foreground = new System.Windows.Media.SolidColorBrush(
+                System.Windows.Media.Color.FromRgb(0xFF, 0xE0, 0x82));
+          });
+          Console.WriteLine("[3D pose] " + pose);
+          return;
+        }
+
         if (type == "markerClick"
             && root.TryGetProperty("signalKey", out var keyEl))
         {

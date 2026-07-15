@@ -23,6 +23,27 @@
     #hud { position: absolute; left: 8px; top: 8px; color: #ccc; font-size: 12px; pointer-events: none; text-shadow: 0 1px 2px #000; z-index: 2; }
     #perf { position: absolute; right: 8px; bottom: 8px; color: #888; font-size: 11px; pointer-events: none; z-index: 2; }
     #hint { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); color: #aaa; font-size: 11px; pointer-events: none; z-index: 2; white-space: nowrap; }
+    #poseHud {
+      position: absolute; left: 8px; right: 8px; bottom: 36px;
+      color: #b8f0c8; font-size: 11px; line-height: 1.4;
+      font-family: Consolas, 'Courier New', monospace;
+      pointer-events: none; z-index: 4;
+      text-shadow: 0 1px 2px #000;
+      white-space: pre-wrap;
+      background: rgba(0, 0, 0, 0.45);
+      padding: 6px 8px;
+      border-radius: 3px;
+      display: none;
+    }
+    #poseCopyBox {
+      display: none;
+      position: absolute; left: 8px; right: 8px; bottom: 120px;
+      z-index: 6; height: 72px;
+      font-family: Consolas, 'Courier New', monospace;
+      font-size: 12px; color: #111; background: #ffe082;
+      border: 2px solid #ff9800; border-radius: 4px;
+      padding: 6px; resize: none;
+    }
     #diag {
       position: absolute; left: 8px; bottom: 28px; max-width: 92%;
       color: #ffcc66; font-size: 12px; line-height: 1.45;
@@ -32,8 +53,11 @@
     }
     #viewToolbar {
       position: absolute; right: 8px; top: 8px; z-index: 5;
-      display: flex; flex-wrap: wrap; gap: 4px; max-width: 280px;
+      display: flex; flex-wrap: wrap; gap: 4px; max-width: 320px;
       justify-content: flex-end;
+    }
+    #toolbarFreeNav, #toolbarFixedViews {
+      display: flex; flex-wrap: wrap; gap: 4px; justify-content: flex-end;
     }
     #viewToolbar button {
       background: rgba(30, 30, 30, 0.92);
@@ -87,11 +111,22 @@
   </div>
   <div id="hud">3D MAP</div>
   <div id="viewToolbar">
-    <button type="button" data-view="front" title="정면뷰">정면</button>
-    <button type="button" data-rotate="ccw90" title="90° 반시계방향 회전">↺</button>
-    <button type="button" data-rotate="cw90" title="90° 시계방향 회전">↻</button>
-    <button type="button" data-rotate="flip" title="상하 반전">⇅</button>
+    <div id="toolbarFreeNav">
+      <button type="button" data-view="front" title="정면뷰">정면</button>
+      <button type="button" data-rotate="ccw90" title="90° 반시계방향 회전">↺</button>
+      <button type="button" data-rotate="cw90" title="90° 시계방향 회전">↻</button>
+      <button type="button" data-rotate="flip" title="상하 반전">⇅</button>
+      <button type="button" data-pose-copy="1" title="현재 좌표를 노란 상자에 표시">포즈복사</button>
+    </div>
+    <div id="toolbarFixedViews" style="display:none">
+      <button type="button" data-fixed-view="0" title="1번뷰">1번뷰</button>
+      <button type="button" data-fixed-view="1" title="2번뷰">2번뷰</button>
+      <button type="button" data-fixed-view="2" title="3번뷰">3번뷰</button>
+      <button type="button" data-fixed-view="3" title="4번뷰">4번뷰</button>
+    </div>
   </div>
+  <div id="poseHud"></div>
+  <textarea id="poseCopyBox" readonly title="이 글 전체를 드래그하거나 Ctrl+C"></textarea>
   <div id="diag"></div>
   <div id="hint">중클릭:회전 · 우클릭:이동 · 터치 2초길게누른뒤 드래그:회전 · 2손가락:이동</div>
   <div id="perf"></div>

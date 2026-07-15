@@ -61,22 +61,6 @@
         </Trigger>
       </Style.Triggers>
     </Style>
-    <Style x:Key="DioTabItemStyle" TargetType="{x:Type TabItem}">
-      <Setter Property="Background" Value="#00808080"/>
-      <Setter Property="Foreground" Value="White"/>
-      <Setter Property="FontSize" Value="14"/>
-      <Setter Property="FontWeight" Value="Bold"/>
-      <Setter Property="Padding" Value="12,6"/>
-      <Setter Property="Margin" Value="2,0,2,0"/>
-      <Setter Property="BorderBrush" Value="#FFB8D8FC"/>
-      <Setter Property="BorderThickness" Value="1"/>
-      <Style.Triggers>
-        <Trigger Property="IsSelected" Value="True">
-          <Setter Property="Background" Value="#FFB6D8FB"/>
-          <Setter Property="Foreground" Value="Black"/>
-        </Trigger>
-      </Style.Triggers>
-    </Style>
   </FrameworkElement.Resources>
     <Grid Margin="5,0,0,0">
         <Grid.ColumnDefinitions>
@@ -270,88 +254,76 @@
                   VerticalAlignment="Top"/>
     <Grid x:Name="Grid_SrmIO" Row="1" Column="2" Margin="0,5,0,5" RowSpan="2" Background="#FF1F1F1F"
           Panel.ZIndex="2">
-      <TabControl x:Name="TabSrmIoView" Background="#FF1F1F1F" BorderThickness="0"
-                  SelectionChanged="TabSrmIoView_SelectionChanged">
-        <TabControl.Resources>
-          <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource DioTabItemStyle}"/>
-        </TabControl.Resources>
-        <TabItem Header="LIST">
-          <Grid>
-            <Grid.RowDefinitions>
-              <RowDefinition Height="1*"/>
-              <RowDefinition Height="9*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="5*"/>
-              <ColumnDefinition Width="5*"/>
-            </Grid.ColumnDefinitions>
-            <Label x:Name="lbl_Left" FontWeight="Bold" Foreground="White" FontSize="17"
-                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0"
-                   Content="Left"/>
-            <Label x:Name="lbl_Right" FontWeight="Bold" Foreground="White" FontSize="17"
-                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1"
-                   Content="Right"/>
-            <Grid x:Name="grid_SrmIO" Grid.Row="1" Grid.ColumnSpan="2">
-              <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-              </Grid.RowDefinitions>
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="*"/>
-              </Grid.ColumnDefinitions>
-            </Grid>
-            <!-- LIST I/O 페이지만 덮음 — 탭헤더/3D MAP은 가로채지 않음 -->
-            <Button Click="Btn_Right_Click" x:Name="Btn_Right" Content="&gt;" Grid.Row="1" Grid.ColumnSpan="2"
-                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,5,0,0" FontSize="150"
-                    FontWeight="Bold" Background="Transparent" Panel.ZIndex="1" Cursor="Hand">
-              <FrameworkElement.Resources>
-                <SolidColorBrush x:Key="HoverColor" Color="Transparent"/>
-                <SolidColorBrush x:Key="NormalForeground" Color="#CC925555"/>
-                <SolidColorBrush x:Key="HoverBackground" Color="Transparent"/>
-                <Style TargetType="{x:Type Button}">
-                  <Setter Property="Control.Foreground" Value="#7F925555"/>
-                  <Setter Property="Control.Background" Value="{StaticResource HoverColor}"/>
-                </Style>
-              </FrameworkElement.Resources>
-              <Control.Template>
-                <ControlTemplate TargetType="{x:Type Button}">
-                  <Border Name="border" Background="{TemplateBinding Control.Background}"
-                          BorderBrush="{TemplateBinding Control.BorderBrush}"
-                          BorderThickness="{TemplateBinding Control.BorderThickness}"
-                          Padding="{TemplateBinding Control.Padding}">
-                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                  </Border>
-                  <ControlTemplate.Triggers>
-                    <Trigger Property="ButtonBase.IsPressed" Value="True">
-                      <Setter Value="{StaticResource NormalForeground}" Property="Control.Foreground"/>
-                    </Trigger>
-                  </ControlTemplate.Triggers>
-                </ControlTemplate>
-              </Control.Template>
-            </Button>
-          </Grid>
-        </TabItem>
-        <TabItem Header="3D MAP">
-          <Grid x:Name="grid3dHost" Background="#FF1F1F1F"/>
-        </TabItem>
-      </TabControl>
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="1*"/>
+          <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="5*"/>
+          <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lbl_Left" FontWeight="Bold" Foreground="White" FontSize="17"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="0"
+               Content="Left"/>
+        <Label x:Name="lbl_Right" FontWeight="Bold" Foreground="White" FontSize="17"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1"
+               Content="Right"/>
+        <Grid x:Name="grid_SrmIO" Grid.Row="1" Grid.ColumnSpan="2">
+          <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+        </Grid>
+        <Button Click="Btn_Right_Click" x:Name="Btn_Right" Content="&gt;" Grid.Row="1" Grid.ColumnSpan="2"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,5,0,0" FontSize="150"
+                FontWeight="Bold" Background="Transparent" Panel.ZIndex="1" Cursor="Hand">
+          <FrameworkElement.Resources>
+            <SolidColorBrush x:Key="HoverColor" Color="Transparent"/>
+            <SolidColorBrush x:Key="NormalForeground" Color="#CC925555"/>
+            <SolidColorBrush x:Key="HoverBackground" Color="Transparent"/>
+            <Style TargetType="{x:Type Button}">
+              <Setter Property="Control.Foreground" Value="#7F925555"/>
+              <Setter Property="Control.Background" Value="{StaticResource HoverColor}"/>
+            </Style>
+          </FrameworkElement.Resources>
+          <Control.Template>
+            <ControlTemplate TargetType="{x:Type Button}">
+              <Border Name="border" Background="{TemplateBinding Control.Background}"
+                      BorderBrush="{TemplateBinding Control.BorderBrush}"
+                      BorderThickness="{TemplateBinding Control.BorderThickness}"
+                      Padding="{TemplateBinding Control.Padding}">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+              </Border>
+              <ControlTemplate.Triggers>
+                <Trigger Property="ButtonBase.IsPressed" Value="True">
+                  <Setter Value="{StaticResource NormalForeground}" Property="Control.Foreground"/>
+                </Trigger>
+              </ControlTemplate.Triggers>
+            </ControlTemplate>
+          </Control.Template>
+        </Button>
+      </Grid>
     </Grid>
     <Grid x:Name="grid_StatusIO" Row="1" Column="2" RowSpan="3" ZIndex="-1" Background="#FF1F1F1F"
           Margin="0,5,0,5">

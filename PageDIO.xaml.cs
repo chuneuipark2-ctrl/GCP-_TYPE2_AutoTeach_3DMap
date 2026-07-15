@@ -17,7 +17,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Xml;
-using gcp_Wpf.Controls;
 using gcp_Wpf.MenuWindow;
 
 
@@ -82,9 +81,6 @@ namespace gcp_Wpf
         private int stateIndex;
         private Timer dioTimer = new Timer();
         private singletonClass gClass;
-        private Dio3DViewer _dio3dViewer;
-        private bool _dio3dViewerLoading;
-        private string _currentAssyId3d;
 
         public PageDIO()
         {
@@ -273,75 +269,6 @@ namespace gcp_Wpf
             lbl_Right.Content = "OUT";
             Dio_Change();
             dioTimer.Start();
-        }
-
-        private async Task EnsureDio3DViewerAsync()
-        {
-            if (_dio3dViewer != null)
-            {
-                if (!_dio3dViewer.IsInitialized)
-                    await _dio3dViewer.InitializeViewerAsync();
-                return;
-            }
-            if (_dio3dViewerLoading) return;
-
-            _dio3dViewerLoading = true;
-            try
-            {
-                _dio3dViewer = new Dio3DViewer();
-                _dio3dViewer.AssyEntered += Dio3dViewer_AssyEntered;
-                _dio3dViewer.AssyExited += Dio3dViewer_AssyExited;
-                grid3dHost.Children.Add(_dio3dViewer);
-                await _dio3dViewer.InitializeViewerAsync();
-            }
-            catch (Exception ex)
-            {
-                cIniAccess.SaveExLog(gClass.srmNum, "DIO 3D viewer load: " + ex.Message);
-            }
-            finally
-            {
-                _dio3dViewerLoading = false;
-            }
-        }
-
-        private async void TabSrmIoView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (TabSrmIoView.SelectedItem is not TabItem selected) return;
-
-            string header = selected.Header?.ToString() ?? "";
-            if (header == "3D MAP")
-            {
-                lbl_ioSeq.Content = "3D MAP";
-                await EnsureDio3DViewerAsync();
-            }
-        }
-
-        // 260714 PCE — 3D MAP I/O 연동 (기존 LIST 로직 비침범)
-        private void Dio3dViewer_AssyEntered(object sender, string assyId)
-        {
-            _currentAssyId3d = assyId;
-            Push3DViewerIoUpdates();
-        }
-
-        private void Dio3dViewer_AssyExited(object sender, EventArgs e)
-        {
-            _currentAssyId3d = null;
-        }
-
-        private void Push3DViewerIoUpdates()
-        {
-            if (_dio3dViewer == null || string.IsNullOrEmpty(_currentAssyId3d))
-                return;
-            try
-            {
-                var states = _3DMap.Build(_currentAssyId3d, ref gClass.str.SRMIO[gClass.srmNum]);
-                if (states != null && states.Count > 0)
-                    _dio3dViewer.PostUpdateIo(_currentAssyId3d, states);
-            }
-            catch (Exception ex)
-            {
-                cIniAccess.SaveExLog(gClass.srmNum, "DIO 3D PushIo: " + ex.Message);
-            }
         }
 
         private void InitializeGridButtonLayout()
@@ -985,8 +912,6 @@ namespace gcp_Wpf
                             monitorList[index].lbl_value.FontSize = 12.0;
                         }
                     }
-                    // 260714 PCE — 3D MAP 마커 갱신
-                    Push3DViewerIoUpdates();
                 }
                 catch (Exception ex)
                 {

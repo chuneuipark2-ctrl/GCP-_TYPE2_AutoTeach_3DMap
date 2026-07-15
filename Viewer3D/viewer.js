@@ -35,8 +35,12 @@ const loadText = document.getElementById('loadText');
 const loadPct = document.getElementById('loadPct');
 const loadBar = document.getElementById('loadBar');
 const diagEl = document.getElementById('diag');
+const poseHudEl = document.getElementById('poseHud');
+const poseCopyBox = document.getElementById('poseCopyBox');
+const toolbarFreeNav = document.getElementById('toolbarFreeNav');
+const toolbarFixedViews = document.getElementById('toolbarFixedViews');
 
-const VIEWER_BUILD = '20260714nav-unlock';
+const VIEWER_BUILD = '20260714field-touch-panzoom';
 /** STP manifest 좌표 → 형체 표면 스냅 최대 거리 (mm). 0=비활성(기본) — 원점/표면 자동 끌어당김 금지 */
 const IO_STP_SURFACE_SNAP_MAX_MM_DEFAULT = 0;
 /** snap/겹침 분리 후 인접 I/O 구체 최소 간격 (mm) — ASSY 프로필로 덮어씀 */
@@ -48,32 +52,122 @@ const IO_TEST_BLINK_ASSY_IDS = new Set(['Lower_Frame_assy', 'SCP', 'Carriage_Ass
 const IO_TEST_BLINK_MS = 400;
 /** STP manifest 없을 때만 io_layout 수동 좌표 허용 */
 const IO_LAYOUT_FALLBACK = false;
+/**
+ * 1 = 개발자 자유항법(정면/회전/중클릭·터치) + 하단 좌표 HUD
+ * 0 = 현장 — 자유항법 숨김, ASSY별 고정 뷰만
+ */
+const DEV_FREE_NAV = 0;
+/**
+ * ASSY별 고정 뷰 (1~4). pos/target/up = Three.js world.
+ * 미입력 슬롯은 null — 버튼 숨김.
+ */
+const FIXED_VIEWS_BY_ASSY = {
+  SCP: [
+    {
+      name: '1번뷰',
+      pos: [-82.92, 120.069, -30.087],
+      target: [-35.977, 44.749, 20.289],
+      up: [0.3, 0.954, -0.023],
+    },
+    null,
+    null,
+    null,
+  ],
+  /** SCP / Standing_Control_Panel 동일 */
+  Lower_Frame_assy: [
+    {
+      name: '1번뷰',
+      pos: [37.598, 22.508, 53.79],
+      target: [9.286, 3.683, 14.195],
+      up: [-0.114, 0.926, -0.359],
+    },
+    null,
+    null,
+    null,
+  ],
+  Carriage_Assy: [
+    {
+      name: '1번뷰',
+      pos: [72.979, -60.016, -48.342],
+      target: [-8.286, -32.159, -9.264],
+      up: [-0.268, 0.43, -0.863],
+    },
+    {
+      name: '2번뷰',
+      pos: [89.54, 35.676, -63.372],
+      target: [16.275, -34.824, -12.491],
+      up: [-0.667, 0.17, -0.725],
+    },
+    {
+      name: '3번뷰',
+      pos: [-87.898, 41.101, -52.513],
+      target: [14.418, 21.432, -2.138],
+      up: [0.263, -0.589, -0.764],
+    },
+    {
+      name: '4번뷰',
+      pos: [-62.802, -62.51, -53.248],
+      target: [-32.669, 3.084, -7.728],
+      up: [0.39, 0.397, -0.831],
+    },
+  ],
+};
+
+function resolveFixedViewAssyKey(assyId) {
+  if (!assyId) return null;
+  const lower = String(assyId).toLowerCase();
+  if (lower.includes('standing') || lower === 'scp') return 'SCP';
+  if (lower.includes('lower')) return 'Lower_Frame_assy';
+  if (lower.includes('carriage')) return 'Carriage_Assy';
+  if (Array.isArray(FIXED_VIEWS_BY_ASSY[assyId])) return assyId;
+  return assyId;
+}
+
+function getFixedViewsForAssy(assyId = currentAssyId3d) {
+  const key = resolveFixedViewAssyKey(assyId);
+  if (!key) return [];
+  const raw = FIXED_VIEWS_BY_ASSY[key];
+  return Array.isArray(raw) ? raw : [];
+}
+
+function isFixedViewFilled(v) {
+  return !!(v && v.pos && v.target && v.up);
+}
 const DEFAULT_DETAIL_VIEW = 'fit';
 /** 모델 최대변을 scene에서 이 길이로 맞춤 */
 const MODEL_SCENE_SIZE = 60;
-/** 화면에 모델이 차지하는 비율 목표 (1.0=가장자리, 0.85=여유 있게 전체) */
+/** 화면에 모델이 차지하는 비율 목표 (1.0=가장자리, 0.85=여유 있게 전체) — ASSY detail */
 const FIT_SCREEN_TARGET = 0.85;
 /** 이 값 넘으면 "잘림" — 카메라를 더 뒤로 */
 const FIT_SCREEN_MAX = 0.94;
-
+/** srm_overview 전용 — 전체 담기되 약간 확대(화면 채움) */
+const OVERVIEW_FIT_SCREEN_TARGET = 0.62;
+const OVERVIEW_FIT_SCREEN_MAX = 0.78;
+/** overview fit 후 추가 후퇴 배율 (↓ = 더 확대) */
+const OVERVIEW_DIST_EXTRA = 1.18;
 /**
  * ★ 맞춤(F) 직후 UI 여백 pan — fitCameraSimple에서 refRadius 비율로 스케일 적용
  * X+ → 모델이 화면에서 왼쪽으로 (오른쪽 잘림 줄일 때 X 키움)
  */
 const VIEW_FOCUS_OFFSET = { x: 40, y: 0, z: 0 };
-/** I/O 램프 색 — 어두운 녹과 연두 중간 */
-const IO_LAMP_COLOR_ON = 0x44d86a;
-const IO_LAMP_COLOR_OFF = 0x2a7a42;
-const IO_LAMP_COLOR_TEST_BRIGHT = 0x52e878;
-const IO_LAMP_COLOR_TEST_DIM = 0x1e6b38;
+/**
+ * overview — Y 음수 쪽: 하단 여유 / 양수: 상단 여유.
+ * -70(하단 과다) → 35(상단 과다) 대신 -30 근처로 절충
+ */
+const OVERVIEW_VIEW_FOCUS_OFFSET = { x: 25, y: -30, z: 0 };
+/** I/O 램프 색 — 밝게 (현장 가시성) */
+const IO_LAMP_COLOR_ON = 0x7dff9a;
+const IO_LAMP_COLOR_OFF = 0x4aab60;
+const IO_LAMP_COLOR_TEST_BRIGHT = 0xa8ffb8;
+const IO_LAMP_COLOR_TEST_DIM = 0x3d8a4e;
 /** 타워램프 — signalKey 색상명 기준 점멸/ON 색 (그 외 센서는 녹색 유지) */
 const TOWER_LAMP_PALETTE = {
-  red: { bright: 0xff4040, dim: 0x701818, on: 0xff5252, off: 0x4a1515 },
-  yellow: { bright: 0xffe040, dim: 0x806000, on: 0xffeb3b, off: 0x5c4a00 },
-  green: { bright: 0x40ff60, dim: 0x186028, on: 0x44d86a, off: 0x2a7a42 },
-  white: { bright: 0xffffff, dim: 0x909090, on: 0xf5f5f5, off: 0x606060 },
-  blue: { bright: 0x4090ff, dim: 0x183060, on: 0x5599ff, off: 0x1a3050 },
-  buzzer: { bright: 0xd8d8d8, dim: 0x505050, on: 0xe8e8e8, off: 0x404040 },
+  red: { bright: 0xff7070, dim: 0xa03030, on: 0xff5555, off: 0x803030 },
+  yellow: { bright: 0xfff060, dim: 0xb09020, on: 0xffeb3b, off: 0x8a7000 },
+  green: { bright: 0x70ff90, dim: 0x309050, on: 0x7dff9a, off: 0x4aab60 },
+  white: { bright: 0xffffff, dim: 0xc0c0c0, on: 0xffffff, off: 0x909090 },
+  blue: { bright: 0x70b0ff, dim: 0x3060a0, on: 0x5599ff, off: 0x3a5080 },
+  buzzer: { bright: 0xf0f0f0, dim: 0x808080, on: 0xe8e8e8, off: 0x606060 },
 };
 /** 개별 I/O — 타워램프 팔레트 재사용 */
 const IO_SIGNAL_COLOR_PALETTE = {
@@ -467,22 +561,22 @@ function panCameraAndTarget(delta) {
   controls.update();
 }
 
-function hasViewFocusOffset() {
-  return VIEW_FOCUS_OFFSET.x !== 0 || VIEW_FOCUS_OFFSET.y !== 0 || VIEW_FOCUS_OFFSET.z !== 0;
+function hasViewFocusOffset(offset = VIEW_FOCUS_OFFSET) {
+  return offset.x !== 0 || offset.y !== 0 || offset.z !== 0;
 }
 
-/** 맞춤(F) 직후 — VIEW_FOCUS_OFFSET × (모델반경/MODEL_SCENE_SIZE). 좌표계·센서는 건드리지 않음 */
-function applyViewFocusOffsetPan(refRadius = MODEL_SCENE_SIZE * 0.5) {
-  if (!hasViewFocusOffset()) return;
+/** 맞춤(F) 직후 — offset × (모델반경/MODEL_SCENE_SIZE). 좌표계·센서는 건드리지 않음 */
+function applyViewFocusOffsetPan(refRadius = MODEL_SCENE_SIZE * 0.5, offset = VIEW_FOCUS_OFFSET) {
+  if (!hasViewFocusOffset(offset)) return;
   const k = Math.max(refRadius, 0.5) / MODEL_SCENE_SIZE;
   camera.updateMatrixWorld(true);
   _camRight.setFromMatrixColumn(camera.matrix, 0);
   _camUp.setFromMatrixColumn(camera.matrix, 1);
   camera.getWorldDirection(_camFwd);
   _orbitDelta.set(0, 0, 0);
-  _orbitDelta.addScaledVector(_camRight, VIEW_FOCUS_OFFSET.x * k);
-  _orbitDelta.addScaledVector(_camUp, VIEW_FOCUS_OFFSET.y * k);
-  _orbitDelta.addScaledVector(_camFwd, VIEW_FOCUS_OFFSET.z * k);
+  _orbitDelta.addScaledVector(_camRight, offset.x * k);
+  _orbitDelta.addScaledVector(_camUp, offset.y * k);
+  _orbitDelta.addScaledVector(_camFwd, offset.z * k);
   panCameraAndTarget(_orbitDelta);
 }
 
@@ -610,6 +704,132 @@ function clearTouchHoldRotate() {
   touchHoldRotate = null;
 }
 
+function isDevFreeNav() {
+  return DEV_FREE_NAV !== 0;
+}
+
+function fmtPoseNum(n) {
+  return (Math.round(n * 1000) / 1000).toFixed(3);
+}
+
+function applyNavModeUi() {
+  if (toolbarFreeNav) toolbarFreeNav.style.display = isDevFreeNav() ? 'flex' : 'none';
+  if (poseHudEl) {
+    poseHudEl.style.display = isDevFreeNav() ? 'block' : 'none';
+    poseHudEl.style.color = '#b8f0c8';
+  }
+  if (poseCopyBox && !isDevFreeNav()) poseCopyBox.style.display = 'none';
+  if (diagEl) diagEl.style.bottom = isDevFreeNav() ? '110px' : '28px';
+  if (hint) {
+    hint.style.display = '';
+    if (isDevFreeNav()) {
+      hint.textContent = `${NAV_HINT_DEFAULT} · F:맞춤 · 우측「포즈복사」· ${VIEWER_BUILD}`;
+    } else {
+      hint.textContent = `1손가락:이동 · 2손가락:확대/축소 · 우클릭:이동 · 휠:줌 · ${VIEWER_BUILD}`;
+    }
+  }
+  // 현장/개발 공통 — 이동·줌 허용. 회전(중클릭/터치홀드)만 개발자 모드
+  controls.enablePan = true;
+  controls.enableZoom = true;
+  controls.enableRotate = false;
+  refreshFixedViewToolbar();
+}
+
+/** 현장모드(DEV_FREE_NAV=0)에서만 1~4 고정뷰 버튼 표시. 개발모드에서는 숨김. */
+function refreshFixedViewToolbar() {
+  if (!toolbarFixedViews) return;
+  if (isDevFreeNav()) {
+    toolbarFixedViews.style.display = 'none';
+    return;
+  }
+  const views = getFixedViewsForAssy();
+  let any = false;
+  toolbarFixedViews.querySelectorAll('button[data-fixed-view]').forEach((btn) => {
+    const i = Number(btn.dataset.fixedView);
+    const ok = isFixedViewFilled(views[i]);
+    btn.style.display = ok ? '' : 'none';
+    btn.disabled = !ok;
+    if (ok) any = true;
+  });
+  toolbarFixedViews.style.display = any ? 'flex' : 'none';
+}
+
+function updatePoseHud() {
+  if (!isDevFreeNav() || !poseHudEl) return;
+  // 포즈복사 직후 노란 상자가 떠 있으면 HUD 덮어쓰지 않음
+  if (poseCopyBox && poseCopyBox.style.display === 'block') return;
+  const p = camera.position;
+  const t = controls.target;
+  const u = camera.up;
+  _orbitDelta.subVectors(p, t);
+  const r = Math.max(_orbitDelta.length(), 1e-6);
+  const yawDeg = (Math.atan2(_orbitDelta.x, _orbitDelta.z) * 180) / Math.PI;
+  const pitchDeg = (Math.asin(THREE.MathUtils.clamp(_orbitDelta.y / r, -1, 1)) * 180) / Math.PI;
+  poseHudEl.textContent =
+    `DEV  pos[${fmtPoseNum(p.x)}, ${fmtPoseNum(p.y)}, ${fmtPoseNum(p.z)}]  ` +
+    `tgt[${fmtPoseNum(t.x)}, ${fmtPoseNum(t.y)}, ${fmtPoseNum(t.z)}]  ` +
+    `up[${fmtPoseNum(u.x)}, ${fmtPoseNum(u.y)}, ${fmtPoseNum(u.z)}]\n` +
+    `yaw ${yawDeg.toFixed(1)}°  pitch ${pitchDeg.toFixed(1)}°  dist ${fmtPoseNum(r)}\n` +
+    `{ pos: [${fmtPoseNum(p.x)}, ${fmtPoseNum(p.y)}, ${fmtPoseNum(p.z)}], ` +
+    `target: [${fmtPoseNum(t.x)}, ${fmtPoseNum(t.y)}, ${fmtPoseNum(t.z)}], ` +
+    `up: [${fmtPoseNum(u.x)}, ${fmtPoseNum(u.y)}, ${fmtPoseNum(u.z)}] }`;
+}
+
+function buildPoseLine() {
+  return (
+    `{ pos: [${fmtPoseNum(camera.position.x)}, ${fmtPoseNum(camera.position.y)}, ${fmtPoseNum(camera.position.z)}], ` +
+    `target: [${fmtPoseNum(controls.target.x)}, ${fmtPoseNum(controls.target.y)}, ${fmtPoseNum(controls.target.z)}], ` +
+    `up: [${fmtPoseNum(camera.up.x)}, ${fmtPoseNum(camera.up.y)}, ${fmtPoseNum(camera.up.z)}] }`
+  );
+}
+
+function snapPoseToDiag() {
+  if (!isDevFreeNav()) return;
+  updatePoseHud();
+  const line = buildPoseLine();
+  if (diagEl) diagEl.textContent = 'POSE COPY (노란 상자 글 복사 → 채팅에 붙여넣기)\n' + line;
+  if (poseHudEl) {
+    poseHudEl.style.color = '#ffe082';
+    poseHudEl.textContent = '★ 포즈 고정됨 — 노란 상자 글 전부 선택 후 Ctrl+C 또는 눈으로 보고 채팅에 전달\n' + line;
+  }
+  if (poseCopyBox) {
+    poseCopyBox.style.display = 'block';
+    poseCopyBox.value = line;
+    poseCopyBox.focus();
+    poseCopyBox.select();
+  }
+  console.log('[POSE]', line);
+  postToHost({ type: 'poseSnap', message: '포즈복사: ' + line, pose: line });
+  try {
+    if (navigator.clipboard?.writeText) navigator.clipboard.writeText(line);
+  } catch (_) {
+    /* WebView2 에선 자주 실패 — 노란 상자 사용 */
+  }
+}
+
+function applyFixedView(index) {
+  const views = getFixedViewsForAssy();
+  const v = views[index];
+  if (!isFixedViewFilled(v)) return false;
+  camera.position.set(v.pos[0], v.pos[1], v.pos[2]);
+  camera.up.set(v.up[0], v.up[1], v.up[2]);
+  if (camera.up.lengthSq() > 1e-12) camera.up.normalize();
+  else camera.up.set(0, 1, 0);
+  controls.target.set(v.target[0], v.target[1], v.target[2]);
+  camera.lookAt(controls.target);
+  controls.update();
+  document.querySelectorAll('#toolbarFixedViews button[data-fixed-view]').forEach((btn) => {
+    btn.classList.toggle('active', Number(btn.dataset.fixedView) === index);
+  });
+  return true;
+}
+
+/** 로드/핏 직후 — 현장모드는 1번뷰로 덮음 */
+function afterCameraSettledForMode() {
+  refreshFixedViewToolbar();
+  if (!isDevFreeNav()) applyFixedView(0);
+}
+
 function armTouchHoldRotate(domElement, e) {
   if (!touchHoldRotate || touchHoldRotate.pointerId !== e.pointerId) return;
   touchHoldRotate.armed = true;
@@ -631,6 +851,7 @@ function setupTouchHoldRotate(domElement) {
   domElement.addEventListener(
     'pointerdown',
     (e) => {
+      if (!isDevFreeNav()) return;
       if (e.pointerType !== 'touch' || e.button !== 0) return;
       activeTouchPointerIds.add(e.pointerId);
       if (activeTouchPointerIds.size > 1) {
@@ -705,15 +926,22 @@ function setupTouchHoldRotate(domElement) {
   domElement.addEventListener('pointercancel', endTouchHoldRotate, true);
 }
 
-/** Solid Edge / CAD — 중클릭 회전(무한), 우클릭·Shift+중클릭 이동, 휠 줌 */
+/** Solid Edge / CAD — 중클릭 회전은 개발자만. 팬·줌은 현장/개발 공통(터치·휠) */
 function setupCadNavigation(ctrl, domElement) {
   ctrl.enableDamping = true;
   ctrl.dampingFactor = 0.1;
   ctrl.enableRotate = false;
+  ctrl.enablePan = true;
+  ctrl.enableZoom = true;
   ctrl.panSpeed = 1.0;
   ctrl.zoomSpeed = 0.55;
   ctrl.zoomToCursor = false;
   ctrl.screenSpacePanning = true;
+  // 1손가락=이동, 2손가락=핀치줌+이동 (회전 없음)
+  ctrl.touches = {
+    ONE: THREE.TOUCH.PAN,
+    TWO: THREE.TOUCH.DOLLY_PAN,
+  };
   ctrl.mouseButtons = {
     LEFT: -1,
     MIDDLE: -1,
@@ -741,6 +969,7 @@ function setupCadNavigation(ctrl, domElement) {
   domElement.addEventListener(
     'pointerdown',
     (e) => {
+      if (!isDevFreeNav()) return;
       if (e.button !== 1) return;
       customDragPointerId = e.pointerId;
       customDragMode = e.shiftKey ? 'pan' : 'rotate';
@@ -764,6 +993,7 @@ function setupCadNavigation(ctrl, domElement) {
   domElement.addEventListener(
     'pointermove',
     (e) => {
+      if (!isDevFreeNav()) return;
       if (!customDragMode) return;
       if (customDragPointerId != null && e.pointerId !== customDragPointerId) return;
       const dx = e.clientX - lastPointerX;
@@ -794,6 +1024,7 @@ function setupCadNavigation(ctrl, domElement) {
   domElement.addEventListener(
     'wheel',
     () => {
+      // 현장/개발 공통 휠 줌 — OrbitControls enableZoom 사용
       clearTimeout(zoomPivotTimer);
       zoomPivotTimer = setTimeout(() => {
         const root = getActiveModelRoot();
@@ -815,6 +1046,17 @@ function setupViewToolbar() {
   const bar = document.getElementById('viewToolbar');
   if (!bar) return;
   bar.addEventListener('click', (e) => {
+    const poseBtn = e.target.closest('button[data-pose-copy]');
+    if (poseBtn) {
+      snapPoseToDiag();
+      return;
+    }
+    const fixedBtn = e.target.closest('button[data-fixed-view]');
+    if (fixedBtn) {
+      applyFixedView(Number(fixedBtn.dataset.fixedView));
+      return;
+    }
+    if (!isDevFreeNav()) return;
     const rotBtn = e.target.closest('button[data-rotate]');
     if (rotBtn) {
       applyViewRotateAction(rotBtn.dataset.rotate);
@@ -1584,6 +1826,11 @@ function fitCameraSimple(object, viewId = DEFAULT_DETAIL_VIEW) {
   const box = getFitClusterBox(object) || getMeshesBox(object);
   if (!box || box.isEmpty()) return null;
 
+  const isOverview = object === overviewRoot;
+  const fitTarget = isOverview ? OVERVIEW_FIT_SCREEN_TARGET : FIT_SCREEN_TARGET;
+  const fitMax = isOverview ? OVERVIEW_FIT_SCREEN_MAX : FIT_SCREEN_MAX;
+  const focusOff = isOverview ? OVERVIEW_VIEW_FOCUS_OFFSET : VIEW_FOCUS_OFFSET;
+
   const cfg = CAD_VIEWS[viewId] || CAD_VIEWS.fit;
   let fitCenter = getFitCenter(box);
   const sphere = box.getBoundingSphere(new THREE.Sphere());
@@ -1618,10 +1865,10 @@ function fitCameraSimple(object, viewId = DEFAULT_DETAIL_VIEW) {
       if (scr.meshOnScreen === 0) break;
     }
 
-    if (scr.ext > FIT_SCREEN_MAX) {
-      dist *= scr.ext / FIT_SCREEN_TARGET;
-    } else if (scr.ext < FIT_SCREEN_TARGET * 0.82) {
-      dist *= Math.max(scr.ext / FIT_SCREEN_TARGET, 0.45);
+    if (scr.ext > fitMax) {
+      dist *= scr.ext / fitTarget;
+    } else if (scr.ext < fitTarget * 0.82) {
+      dist *= Math.max(scr.ext / fitTarget, 0.45);
     } else {
       break;
     }
@@ -1633,6 +1880,12 @@ function fitCameraSimple(object, viewId = DEFAULT_DETAIL_VIEW) {
     camera.updateMatrixWorld(true);
   }
 
+  if (isOverview) {
+    dist = Math.min(Math.max(dist * OVERVIEW_DIST_EXTRA, minDist), maxDist);
+    applyCameraPose(fitCenter, dist, viewDir, viewUp);
+    camera.updateMatrixWorld(true);
+  }
+
   controls.enableDamping = true;
 
   const camSaved = camera.position.clone();
@@ -1640,8 +1893,8 @@ function fitCameraSimple(object, viewId = DEFAULT_DETAIL_VIEW) {
   const beforeUi = measureOnScreen(object);
 
   syncOrbitTargetToScreenCenter(object, dist);
-  if (hasViewFocusOffset() && beforeUi.meshOnScreen > 0 && beforeUi.ext >= FIT_SCREEN_TARGET * 0.35) {
-    applyViewFocusOffsetPan(sphere.radius);
+  if (hasViewFocusOffset(focusOff) && beforeUi.meshOnScreen > 0 && beforeUi.ext >= fitTarget * 0.35) {
+    applyViewFocusOffsetPan(sphere.radius, focusOff);
   }
 
   let final = measureOnScreen(object);
@@ -1652,11 +1905,11 @@ function fitCameraSimple(object, viewId = DEFAULT_DETAIL_VIEW) {
     controls.update();
     final = beforeUi;
   }
-  if (final.ext < FIT_SCREEN_TARGET * 0.55) {
+  if (final.ext < fitTarget * 0.55) {
     const fb = getFitClusterBox(object) || getMeshesBox(object);
     if (fb && !fb.isEmpty()) {
       fitCenter = getFitCenter(fb);
-      dist = Math.min(Math.max(dist * Math.max(final.ext / FIT_SCREEN_TARGET, 0.4), minDist), maxDist);
+      dist = Math.min(Math.max(dist * Math.max(final.ext / fitTarget, 0.4), minDist), maxDist);
       applyCameraPose(fitCenter, dist, viewDir, viewUp);
       panCameraToScreenCenter(object, dist, measureOnScreen(object));
       final = measureOnScreen(object);
@@ -1668,13 +1921,14 @@ function fitCameraSimple(object, viewId = DEFAULT_DETAIL_VIEW) {
   }
 
   let screenMsg = '화면: 전체 들어옴';
-  if (final.ext > FIT_SCREEN_MAX) screenMsg = '화면: 아직 잘림 (F키 또는 맞춤 다시)';
-  else if (final.ext < FIT_SCREEN_TARGET * 0.5) screenMsg = '화면: 너무 작음 (휠로 확대)';
+  if (final.ext > fitMax) screenMsg = '화면: 아직 잘림 (F키 또는 맞춤 다시)';
+  else if (final.ext < fitTarget * 0.5) screenMsg = '화면: 너무 작음 (휠로 확대)';
   else if (Math.abs(final.cx) > 0.1 || Math.abs(final.cy) > 0.1) {
     screenMsg = '화면: 한쪽으로 치우침 (우클릭 드래그로 이동)';
   }
 
   perfEl.textContent = `화면 ${Math.round(final.ext * 100)}% · ${VIEWER_BUILD}`;
+  afterCameraSettledForMode();
   return { ...final, dist, screenMsg };
 }
 
@@ -2553,20 +2807,20 @@ function applyIoMarkerMaterial(mat, on, litTest = false, signalKey = null) {
   const colorHex = getIoLampColorHex(signalKey, { litTest: litTest || false, on });
   if (litTest) {
     mat.transparent = true;
-    mat.opacity = litTest === 'bright' ? (isBasic ? 1 : 0.92) : isBasic ? 0.35 : 0.28;
+    mat.opacity = litTest === 'bright' ? 1 : isBasic ? 0.55 : 0.45;
     mat.color.setHex(colorHex);
     if (!isBasic && mat.emissive) {
-      mat.emissive.setHex(litTest === 'bright' ? colorHex : 0x000000);
-      mat.emissiveIntensity = litTest === 'bright' ? 0.85 : 0;
+      mat.emissive.setHex(litTest === 'bright' ? colorHex : 0x153020);
+      mat.emissiveIntensity = litTest === 'bright' ? 1.8 : 0.35;
     }
     return;
   }
   mat.transparent = true;
-  mat.opacity = on ? (isBasic ? 1 : 0.92) : isBasic ? 0.45 : 0.32;
+  mat.opacity = on ? 1 : isBasic ? 0.7 : 0.55;
   mat.color.setHex(colorHex);
   if (!isBasic && mat.emissive) {
-    mat.emissive.setHex(on ? colorHex : 0x000000);
-    mat.emissiveIntensity = on ? 0.45 : 0;
+    mat.emissive.setHex(on ? colorHex : colorHex);
+    mat.emissiveIntensity = on ? 1.55 : 0.45;
   }
 }
 
@@ -2886,6 +3140,8 @@ async function enterAssyDetail(assyId) {
   if (!assy.detailModel) {
     setLoadStatus('Detail 모델 미설정 — I/O 마커만', 100);
   }
+  refreshFixedViewToolbar();
+  if (!isDevFreeNav()) applyFixedView(0);
 }
 
 async function exitAssyDetail() {
@@ -2907,6 +3163,7 @@ async function exitAssyDetail() {
     fitCameraToObject(overviewRoot);
   }
   hud.textContent = '3D MAP — Overview';
+  refreshFixedViewToolbar();
 }
 
 function onPointerClick(ev) {
@@ -2960,6 +3217,10 @@ window.addEventListener('keydown', (ev) => {
   if (ev.key === 'f' || ev.key === 'F') {
     fitActiveView();
   }
+  if (isDevFreeNav() && (ev.key === 'p' || ev.key === 'P')) {
+    snapPoseToDiag();
+    ev.preventDefault();
+  }
 });
 
 window.enterAssy = (assyId) => enterAssyDetail(assyId);
@@ -2989,7 +3250,7 @@ window.highlightMarker = (signalKey) => {
 };
 
 async function boot() {
-  if (hint) hint.textContent = `${NAV_HINT_DEFAULT} · F:맞춤 · ${VIEWER_BUILD}`;
+  applyNavModeUi();
   setupViewToolbar();
   postToHost({ type: 'loadStatus', message: 'Three.js 시작', percent: 2 });
   setLoadStatus('설정 파일 로드 중...', 5);
@@ -3026,12 +3287,17 @@ function startAnimate() {
 function animate() {
   requestAnimationFrame(animate);
   controls.update();
+  updatePoseHud();
   updateIoTestBlink(performance.now());
   renderer.render(scene, camera);
   frameCount++;
   const now = performance.now();
   if (now - lastFpsTime > 1000) {
-    perfEl.textContent = frameCount + ' fps · ' + VIEWER_BUILD;
+    if (perfEl && !isDevFreeNav()) {
+      perfEl.textContent = frameCount + ' fps · ' + VIEWER_BUILD;
+    } else if (perfEl) {
+      perfEl.textContent = frameCount + ' fps · DEV · ' + VIEWER_BUILD;
+    }
     frameCount = 0;
     lastFpsTime = now;
   }

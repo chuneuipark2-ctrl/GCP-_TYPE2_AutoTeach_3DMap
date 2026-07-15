@@ -63,6 +63,7 @@ namespace gcp_Wpf
         public const int PAGE_SRMIO = 12;
         public const int PAGE_CRANE_OPERATE = 13;
         public const int PAGE_AUTOTEACHING = 14;
+        public const int PAGE_3DMAP = 15;
 
         // 통신 DATA 바이트 사이즈
         public const int DATACOUNT_0X10 = 89;  // 118-29(reserved 제외)  

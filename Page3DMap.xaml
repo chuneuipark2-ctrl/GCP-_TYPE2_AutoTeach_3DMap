@@ -1,0 +1,23 @@
+<Page x:Class="gcp_Wpf.Page3DMap"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      Title="Page3DMap"
+      Background="#FF1F1F1F"
+      Loaded="Page_Loaded"
+      Unloaded="Page_Unloaded">
+  <Grid Margin="5,0,0,0">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Border Grid.Row="0" Margin="0,0,0,4" Background="#FF2A2A2A" Padding="8,4">
+      <Label x:Name="lbl_Title" Content="3D MAP" Foreground="White"
+             FontWeight="Bold" FontSize="16"
+             HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+    </Border>
+    <Grid x:Name="grid3dHost" Grid.Row="1" Background="#FF1F1F1F"/>
+  </Grid>
+</Page>

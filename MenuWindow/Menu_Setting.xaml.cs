@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace gcp_Wpf.MenuWindow
 {
@@ -31,6 +22,7 @@ namespace gcp_Wpf.MenuWindow
         {
             pMain = parent;
             InitializeComponent();
+            // Owner / 클램프 쓰지 않음 — Left 가 좌측으로 튕기는 원인
         }
 
         public void Open_RelativeMenu(Point btnPos, Point parentPos, int type)
@@ -43,22 +35,37 @@ namespace gcp_Wpf.MenuWindow
                 Btn_Menu2.Content = cConstDefine.tr("크레인정보");
                 Btn_Menu3.Content = cConstDefine.tr("스테이션설정");
                 Btn_Menu4.Content = cConstDefine.tr("금지랙설정");
-                //Btn_Menu4.Visibility = Visibility.Visible;
+                Btn_Menu5.Visibility = Visibility.Collapsed;
+                Col4.Width = new GridLength(0);
+                Width = 440;
             }
             else
             {
+                // Monitor: I/O | 3D Map | SRM 상태 | JOB Monitor | Ext Monitor
                 Btn_Menu1.Content = "I/O";
-                Btn_Menu2.Content = cConstDefine.tr("SRM 상태");
-                Btn_Menu3.Content = "JOB" + "\nMonitor";
-                Btn_Menu4.Content = "Ext\nMonitor";
-                //Btn_Menu4.Visibility= Visibility.Collapsed;
+                Btn_Menu2.Content = "3D Map";
+                Btn_Menu3.Content = cConstDefine.tr("SRM 상태");
+                Btn_Menu4.Content = "JOB" + "\nMonitor";
+                Btn_Menu5.Content = "Ext\nMonitor";
+                Btn_Menu5.Visibility = Visibility.Visible;
+                Col4.Width = new GridLength(1, GridUnitType.Star);
+                Width = 550;
             }
 
-            double dpiX = VisualTreeHelper.GetDpi(this).PixelsPerInchX;
-            double dpiY = VisualTreeHelper.GetDpi(this).PixelsPerInchY;
+            // MainWindow 와 동일한 GetDpi 환산 (수년간 설정 메뉴에 쓰던 방식)
+            Visual dpiSrc = pMain != null ? (Visual)pMain : this;
+            double dpiX = VisualTreeHelper.GetDpi(dpiSrc).PixelsPerInchX;
+            double dpiY = VisualTreeHelper.GetDpi(dpiSrc).PixelsPerInchY;
+            if (dpiX < 1) dpiX = 96;
+            if (dpiY < 1) dpiY = 96;
 
-            this.Left = btnPos.X / dpiX * 96.0 - 120;
-            this.Top = btnPos.Y / dpiY * 96.0 - 80;
+            double btnX = btnPos.X / dpiX * 96.0;
+            double btnY = btnPos.Y / dpiY * 96.0;
+
+            // 설정/모니터 동일 오프셋 — 5칸(550)은 기존 440대비 약간만 더 왼쪽
+            double leftOffset = (menuType == 1) ? 120 : 160;
+            this.Left = btnX - leftOffset;
+            this.Top = btnY - 80;
             this.Show();
         }
 
@@ -75,11 +82,11 @@ namespace gcp_Wpf.MenuWindow
 
             if (menuType == 1)       // Setting Page Init
             {
-                if(btn == Btn_Menu1)
+                if (btn == Btn_Menu1)
                 {
                     pMain.Page_Change(4);
                 }
-                else if(btn == Btn_Menu2)
+                else if (btn == Btn_Menu2)
                 {
                     pMain.Page_Change(5);
                 }
@@ -96,19 +103,23 @@ namespace gcp_Wpf.MenuWindow
             {
                 if (btn == Btn_Menu1)
                 {
-                    pMain.Page_Change(9);
+                    pMain.Page_Change(cConstDefine.PAGE_DIO);
                 }
                 else if (btn == Btn_Menu2)
                 {
-                    pMain.Page_Change(12);
+                    pMain.Page_Change(cConstDefine.PAGE_3DMAP);
                 }
                 else if (btn == Btn_Menu3)
                 {
-                    pMain.Page_Change(10);
+                    pMain.Page_Change(cConstDefine.PAGE_SRMIO);
                 }
                 else if (btn == Btn_Menu4)
                 {
-                    pMain.Page_Change(11);
+                    pMain.Page_Change(cConstDefine.PAGE_TOWCS);
+                }
+                else if (btn == Btn_Menu5)
+                {
+                    pMain.Page_Change(cConstDefine.PAGE_FROMWCS);
                 }
             }
         }
