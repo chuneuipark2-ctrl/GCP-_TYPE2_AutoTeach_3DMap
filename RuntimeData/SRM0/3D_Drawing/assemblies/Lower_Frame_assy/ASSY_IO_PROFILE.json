@@ -14,8 +14,7 @@
   "viewer": {
     "skipSurfaceSnapPatterns": [
       "^Travel_",
-      "^Modem_Fault$",
-      "^Station_(Ready|Stop)_\\d+$"
+      "^Modem_Fault$"
     ],
     "deoverlapGapMm": 6
   }

@@ -9,18 +9,19 @@ namespace gcp_Wpf.Services
 {
   public static class Dio3DDrawingPath
   {
-    // 3 ASSY 구조 (SCP / Lower_Frame_assy / Carriage_Assy) — 구 7분할 폴더는 시드 시 제거
+    // SCP / Lower_Frame / Carriage + 센서 전용 탭 (8bit / Lidar)
     public static readonly string[] CurrentAssemblyFolderNames =
     {
-      "SCP", "Lower_Frame_assy", "Carriage_Assy"
+      "SCP", "Lower_Frame_assy", "Carriage_Assy", "8bit_sensor", "Lidar"
     };
 
     private static readonly HashSet<string> LegacyAssemblyFolderNames =
         new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
-          "hoist", "fork", "travel", "panel", "station", "lidar", "mcage",
+          // 구 7분할 — 현재 Lidar/8bit_sensor 탭과 이름 충돌 주의 (lidar·LiDAR 제거함)
+          "hoist", "fork", "travel", "panel", "station", "mcage",
           "carriage", "lower_frame", "Hoist", "Fork", "Travel", "Panel",
-          "Station", "LiDAR", "Mcage", "Carriage", "Lower_Frame"
+          "Station", "Mcage", "Carriage", "Lower_Frame"
         };
     private const string ConfigIniRelative = "Config\\Config.ini";
     private const string PathSection = "PATH";

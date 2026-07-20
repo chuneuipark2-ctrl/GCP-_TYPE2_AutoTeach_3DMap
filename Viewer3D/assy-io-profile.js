@@ -12,12 +12,30 @@ export const ASSY_IO_PROFILE_DEFAULTS = {
     stpCanonicalBase: 'LOWER_FRAME_ASSY',
     excludeStpNamePatterns: ['ELEC_CONVERT'],
     viewer: {
-      skipSurfaceSnapPatterns: ['^Travel_', '^Modem_Fault$', '^Station_(Ready|Stop)_\\d+$'],
+      skipSurfaceSnapPatterns: ['^Travel_', '^Modem_Fault$'],
       deoverlapGapMm: 6,
       surfaceSnapMaxMm: 0,
     },
   },
   Carriage_Assy: {
+    stpCanonicalBase: 'Carriage_Assy',
+    excludeStpNamePatterns: [],
+    viewer: { skipSurfaceSnapPatterns: ['^LiDAR[12]_'], deoverlapGapMm: 6, surfaceSnapMaxMm: 0 },
+  },
+  /** Lower_Frame 형체 재사용 — Station(8BIT)만 표시 */
+  '8bit_sensor': {
+    stpCanonicalBase: '8bit_part_assy',
+    excludeStpNamePatterns: ['ELEC_CONVERT'],
+    viewer: {
+      markerShape: 'box',
+      markerBoxMm: [4, 4, 4],
+      skipSurfaceSnapPatterns: ['^Station_(Ready|Stop)_\\d+$'],
+      deoverlapGapMm: 0.5,
+      surfaceSnapMaxMm: 0,
+    },
+  },
+  /** Carriage 형체 재사용 — LiDAR만 표시 */
+  Lidar: {
     stpCanonicalBase: 'Carriage_Assy',
     excludeStpNamePatterns: [],
     viewer: { skipSurfaceSnapPatterns: ['^LiDAR[12]_'], deoverlapGapMm: 6, surfaceSnapMaxMm: 0 },

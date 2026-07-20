@@ -1,0 +1,24 @@
+{
+  "assyId": "8bit_sensor",
+  "label": "8bit_sensor",
+  "stpCanonicalBase": "8bit_part_assy",
+  "excludeStpNamePatterns": ["ELEC_CONVERT"],
+  "manifest": {
+    "matchPriority": ["stp_occurrence", "solid_edge_io_define"],
+    "sensorPartNamePatterns": [],
+    "useIoStpSensorMap": false,
+    "allowSensorPartSeq": false,
+    "defaultRadiusMm": 2,
+    "_note": "좌표=STP mesh center, 마커크기=bboxSizeMm(실측 4mm)"
+  },
+  "viewer": {
+    "markerShape": "box",
+    "markerBoxMm": [4, 4, 4],
+    "_markerBoxNote": "CAD Z-up mm — OCCT 실측 4mm 큐브. manifest bboxSizeMm 우선",
+    "skipSurfaceSnapPatterns": [
+      "^Station_(Ready|Stop)_\\d+$"
+    ],
+    "deoverlapGapMm": 0.5,
+    "surfaceSnapMaxMm": 0
+  }
+}

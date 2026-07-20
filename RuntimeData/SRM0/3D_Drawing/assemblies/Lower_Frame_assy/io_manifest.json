@@ -102,19 +102,20 @@
       "radiusMm": 20
     },
     "Station_Ready_1": {
-      "x": -1043.18021116113,
-      "y": -333.849504174765,
-      "z": 703.128990526932,
+      "x": -980,
+      "y": -360,
+      "z": 220,
       "occurrenceName": "Station_Ready_1",
       "partName": "LOWER_FRAME_ASSY",
       "sourceMesh": "Station_Ready_1",
       "matchMode": "stp_occurrence",
-      "radiusMm": 20
+      "radiusMm": 20,
+      "_note": "8bit — 형체 본체 상단열로 재배치 (기존 부유 컬럼 z703~1613)"
     },
     "Station_Ready_2": {
-      "x": -1043.18021116113,
-      "y": -333.849504174765,
-      "z": 833.128990526932,
+      "x": -980,
+      "y": -360,
+      "z": 350,
       "occurrenceName": "Station_Ready_2",
       "partName": "LOWER_FRAME_ASSY",
       "sourceMesh": "Station_Ready_2",
@@ -122,9 +123,9 @@
       "radiusMm": 20
     },
     "Station_Ready_3": {
-      "x": -1043.18021116113,
-      "y": -333.849504174765,
-      "z": 963.128990526932,
+      "x": -980,
+      "y": -360,
+      "z": 480,
       "occurrenceName": "Station_Ready_3",
       "partName": "LOWER_FRAME_ASSY",
       "sourceMesh": "Station_Ready_3",
@@ -132,9 +133,9 @@
       "radiusMm": 20
     },
     "Station_Ready_4": {
-      "x": -1043.18021116113,
-      "y": -333.849504174765,
-      "z": 1093.12899052693,
+      "x": -980,
+      "y": -360,
+      "z": 610,
       "occurrenceName": "Station_Ready_4",
       "partName": "LOWER_FRAME_ASSY",
       "sourceMesh": "Station_Ready_4",
@@ -142,9 +143,9 @@
       "radiusMm": 20
     },
     "Station_Ready_5": {
-      "x": -1043.18021116113,
-      "y": -333.849504174765,
-      "z": 1223.12899052693,
+      "x": -980,
+      "y": -360,
+      "z": 740,
       "occurrenceName": "Station_Ready_5",
       "partName": "LOWER_FRAME_ASSY",
       "sourceMesh": "Station_Ready_5",
@@ -152,9 +153,9 @@
       "radiusMm": 20
     },
     "Station_Ready_6": {
-      "x": -1043.18021116113,
-      "y": -333.849504174765,
-      "z": 1353.12899052693,
+      "x": -980,
+      "y": -360,
+      "z": 870,
       "occurrenceName": "Station_Ready_6",
       "partName": "LOWER_FRAME_ASSY",
       "sourceMesh": "Station_Ready_6",
@@ -162,9 +163,9 @@
       "radiusMm": 20
     },
     "Station_Ready_7": {
-      "x": -1043.18021116113,
-      "y": -333.849504174765,
-      "z": 1483.12899052693,
+      "x": -980,
+      "y": -360,
+      "z": 1000,
       "occurrenceName": "Station_Ready_7",
       "partName": "LOWER_FRAME_ASSY",
       "sourceMesh": "Station_Ready_7",
@@ -172,9 +173,9 @@
       "radiusMm": 20
     },
     "Station_Ready_8": {
-      "x": -1043.18021116113,
-      "y": -333.849504174765,
-      "z": 1613.12899052693,
+      "x": -980,
+      "y": -360,
+      "z": 1130,
       "occurrenceName": "Station_Ready_8",
       "partName": "LOWER_FRAME_ASSY",
       "sourceMesh": "Station_Ready_8",
@@ -182,9 +183,9 @@
       "radiusMm": 20
     },
     "Station_Stop_1": {
-      "x": -890.146917738254,
-      "y": -333.849504174769,
-      "z": 703.128990526927,
+      "x": -820,
+      "y": -360,
+      "z": 220,
       "occurrenceName": "Station_Stop_1",
       "partName": "LOWER_FRAME_ASSY",
       "sourceMesh": "Station_Stop_1",
@@ -192,9 +193,9 @@
       "radiusMm": 20
     },
     "Station_Stop_2": {
-      "x": -890.146917738246,
-      "y": -333.849504174769,
-      "z": 833.128990526927,
+      "x": -820,
+      "y": -360,
+      "z": 350,
       "occurrenceName": "Station_Stop_2",
       "partName": "LOWER_FRAME_ASSY",
       "sourceMesh": "Station_Stop_2",
@@ -202,9 +203,9 @@
       "radiusMm": 20
     },
     "Station_Stop_3": {
-      "x": -890.146917738238,
-      "y": -333.849504174769,
-      "z": 963.128990526927,
+      "x": -820,
+      "y": -360,
+      "z": 480,
       "occurrenceName": "Station_Stop_3",
       "partName": "LOWER_FRAME_ASSY",
       "sourceMesh": "Station_Stop_3",
@@ -212,9 +213,9 @@
       "radiusMm": 20
     },
     "Station_Stop_4": {
-      "x": -890.146917738229,
-      "y": -333.849504174769,
-      "z": 1093.12899052693,
+      "x": -820,
+      "y": -360,
+      "z": 610,
       "occurrenceName": "Station_Stop_4",
       "partName": "LOWER_FRAME_ASSY",
       "sourceMesh": "Station_Stop_4",
@@ -222,9 +223,9 @@
       "radiusMm": 20
     },
     "Station_Stop_5": {
-      "x": -890.146917738221,
-      "y": -333.849504174769,
-      "z": 1223.12899052693,
+      "x": -820,
+      "y": -360,
+      "z": 740,
       "occurrenceName": "Station_Stop_5",
       "partName": "LOWER_FRAME_ASSY",
       "sourceMesh": "Station_Stop_5",
@@ -232,9 +233,9 @@
       "radiusMm": 20
     },
     "Station_Stop_6": {
-      "x": -890.146917738213,
-      "y": -333.849504174769,
-      "z": 1353.12899052693,
+      "x": -820,
+      "y": -360,
+      "z": 870,
       "occurrenceName": "Station_Stop_6",
       "partName": "LOWER_FRAME_ASSY",
       "sourceMesh": "Station_Stop_6",
@@ -242,9 +243,9 @@
       "radiusMm": 20
     },
     "Station_Stop_7": {
-      "x": -890.146917738204,
-      "y": -333.849504174769,
-      "z": 1483.12899052693,
+      "x": -820,
+      "y": -360,
+      "z": 1000,
       "occurrenceName": "Station_Stop_7",
       "partName": "LOWER_FRAME_ASSY",
       "sourceMesh": "Station_Stop_7",
@@ -252,9 +253,9 @@
       "radiusMm": 20
     },
     "Station_Stop_8": {
-      "x": -890.146917738196,
-      "y": -333.849504174769,
-      "z": 1613.12899052693,
+      "x": -820,
+      "y": -360,
+      "z": 1130,
       "occurrenceName": "Station_Stop_8",
       "partName": "LOWER_FRAME_ASSY",
       "sourceMesh": "Station_Stop_8",

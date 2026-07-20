@@ -1,0 +1,365 @@
+{
+  "assyId": "8bit_sensor",
+  "assyIoProfile": "8bit_sensor",
+  "stpFile": "8bit_part_assy.stp",
+  "glbFile": "8bit_part_assy.glb",
+  "stpSource": {
+    "file": "8bit_part_assy.stp",
+    "mtimeMs": 1784529073037.1082,
+    "sizeBytes": 175006,
+    "checkedAt": "2026-07-20T06:43:15.192Z"
+  },
+  "generatedAt": "2026-07-20T06:43:15.194Z",
+  "linearDeflection": 0.2,
+  "coordsOnly": false,
+  "source": "stp",
+  "coordinateSystem": "solid_edge_z_up_mm",
+  "_note": "형체=GLB. 센서=STP 배치이름(occurrence)+배치좌표 우선, part파일명은 보조.",
+  "occurrenceCount": 17,
+  "sensorOccurrenceCount": 0,
+  "cadReference": {
+    "center": [
+      48.41467844450233,
+      0,
+      10.091675048139082
+    ],
+    "zUp": true,
+    "unit": "mm"
+  },
+  "assemblyBBox": {
+    "center": [
+      1.7082939147949219,
+      0,
+      17.300707817077637
+    ],
+    "min": [
+      -45.36949920654297,
+      -23,
+      10
+    ],
+    "max": [
+      48.78608703613281,
+      23,
+      24.601415634155273
+    ],
+    "zUp": true,
+    "unit": "mm"
+  },
+  "assemblyOrigin": [
+    0,
+    0,
+    0
+  ],
+  "points": {
+    "Station_Ready_1": {
+      "x": 24.63050079345703,
+      "y": -23,
+      "z": 24.601415634155273,
+      "occurrenceName": "Station Ready 1",
+      "partName": "8bit_part_assy_260715",
+      "sourceMesh": "Station Ready 1",
+      "matchMode": "stp_occurrence_mesh_center",
+      "occurrenceX": 20.8511284037812,
+      "occurrenceY": -25,
+      "occurrenceZ": 20,
+      "radiusMm": 2,
+      "bboxSizeMm": [
+        4,
+        4,
+        4
+      ]
+    },
+    "Station_Ready_2": {
+      "x": 14.630500793457031,
+      "y": -23,
+      "z": 24.601415634155273,
+      "occurrenceName": "Station Ready 2",
+      "partName": "8bit_part_assy_260715",
+      "sourceMesh": "Station Ready 2",
+      "matchMode": "stp_occurrence_mesh_center",
+      "occurrenceX": 10.8511284037812,
+      "occurrenceY": -25,
+      "occurrenceZ": 20,
+      "radiusMm": 2,
+      "bboxSizeMm": [
+        4,
+        4,
+        4
+      ]
+    },
+    "Station_Ready_3": {
+      "x": 4.630500793457031,
+      "y": -23,
+      "z": 24.601415634155273,
+      "occurrenceName": "Station Ready 3",
+      "partName": "8bit_part_assy_260715",
+      "sourceMesh": "Station Ready 3",
+      "matchMode": "stp_occurrence_mesh_center",
+      "occurrenceX": 0.851128403781248,
+      "occurrenceY": -25,
+      "occurrenceZ": 20,
+      "radiusMm": 2,
+      "bboxSizeMm": [
+        4,
+        4,
+        4
+      ]
+    },
+    "Station_Ready_4": {
+      "x": -5.369499206542969,
+      "y": -23,
+      "z": 24.601415634155273,
+      "occurrenceName": "Station Ready 4",
+      "partName": "8bit_part_assy_260715",
+      "sourceMesh": "Station Ready 4",
+      "matchMode": "stp_occurrence_mesh_center",
+      "occurrenceX": -9.14887159621875,
+      "occurrenceY": -25,
+      "occurrenceZ": 20,
+      "radiusMm": 2,
+      "bboxSizeMm": [
+        4,
+        4,
+        4
+      ]
+    },
+    "Station_Ready_5": {
+      "x": -15.369499206542969,
+      "y": -23,
+      "z": 24.601415634155273,
+      "occurrenceName": "Station Ready 5",
+      "partName": "8bit_part_assy_260715",
+      "sourceMesh": "Station Ready 5",
+      "matchMode": "stp_occurrence_mesh_center",
+      "occurrenceX": -19.1488715962187,
+      "occurrenceY": -25,
+      "occurrenceZ": 20,
+      "radiusMm": 2,
+      "bboxSizeMm": [
+        4,
+        4,
+        4
+      ]
+    },
+    "Station_Ready_6": {
+      "x": -25.36949920654297,
+      "y": -23,
+      "z": 24.601415634155273,
+      "occurrenceName": "Station Ready 6",
+      "partName": "8bit_part_assy_260715",
+      "sourceMesh": "Station Ready 6",
+      "matchMode": "stp_occurrence_mesh_center",
+      "occurrenceX": -29.1488715962187,
+      "occurrenceY": -25,
+      "occurrenceZ": 20,
+      "radiusMm": 2,
+      "bboxSizeMm": [
+        4,
+        4,
+        4
+      ]
+    },
+    "Station_Ready_7": {
+      "x": -35.36949920654297,
+      "y": -23,
+      "z": 24.601415634155273,
+      "occurrenceName": "Station Ready 7",
+      "partName": "8bit_part_assy_260715",
+      "sourceMesh": "Station Ready 7",
+      "matchMode": "stp_occurrence_mesh_center",
+      "occurrenceX": -39.1488715962188,
+      "occurrenceY": -25,
+      "occurrenceZ": 20,
+      "radiusMm": 2,
+      "bboxSizeMm": [
+        4,
+        4,
+        4
+      ]
+    },
+    "Station_Ready_8": {
+      "x": -45.36949920654297,
+      "y": -23,
+      "z": 24.601415634155273,
+      "occurrenceName": "Station Ready 8",
+      "partName": "8bit_part_assy_260715",
+      "sourceMesh": "Station Ready 8",
+      "matchMode": "stp_occurrence_mesh_center",
+      "occurrenceX": -49.1488715962188,
+      "occurrenceY": -25,
+      "occurrenceZ": 20,
+      "radiusMm": 2,
+      "bboxSizeMm": [
+        4,
+        4,
+        4
+      ]
+    },
+    "Station_Stop_1": {
+      "x": 24.63050079345703,
+      "y": 23,
+      "z": 24.601415634155273,
+      "occurrenceName": "Station Stop 1",
+      "partName": "8bit_part_assy_260715",
+      "sourceMesh": "Station Stop 1",
+      "matchMode": "stp_occurrence_mesh_center",
+      "occurrenceX": 28.4098729912347,
+      "occurrenceY": 25,
+      "occurrenceZ": 20,
+      "radiusMm": 2,
+      "bboxSizeMm": [
+        4,
+        4,
+        4
+      ]
+    },
+    "Station_Stop_2": {
+      "x": 14.630500793457031,
+      "y": 23,
+      "z": 24.601415634155273,
+      "occurrenceName": "Station Stop 2",
+      "partName": "8bit_part_assy_260715",
+      "sourceMesh": "Station Stop 2",
+      "matchMode": "stp_occurrence_mesh_center",
+      "occurrenceX": 18.4098729912347,
+      "occurrenceY": 25,
+      "occurrenceZ": 20,
+      "radiusMm": 2,
+      "bboxSizeMm": [
+        4,
+        4,
+        4
+      ]
+    },
+    "Station_Stop_3": {
+      "x": 4.630500793457031,
+      "y": 23,
+      "z": 24.601415634155273,
+      "occurrenceName": "Station Stop 3",
+      "partName": "8bit_part_assy_260715",
+      "sourceMesh": "Station Stop 3",
+      "matchMode": "stp_occurrence_mesh_center",
+      "occurrenceX": 8.40987299123473,
+      "occurrenceY": 25,
+      "occurrenceZ": 20,
+      "radiusMm": 2,
+      "bboxSizeMm": [
+        4,
+        4,
+        4
+      ]
+    },
+    "Station_Stop_4": {
+      "x": -5.369499206542969,
+      "y": 23,
+      "z": 24.601415634155273,
+      "occurrenceName": "Station Stop 4",
+      "partName": "8bit_part_assy_260715",
+      "sourceMesh": "Station Stop 4",
+      "matchMode": "stp_occurrence_mesh_center",
+      "occurrenceX": -1.59012700876526,
+      "occurrenceY": 25,
+      "occurrenceZ": 20,
+      "radiusMm": 2,
+      "bboxSizeMm": [
+        4,
+        4,
+        4
+      ]
+    },
+    "Station_Stop_5": {
+      "x": -15.369499206542969,
+      "y": 23,
+      "z": 24.601415634155273,
+      "occurrenceName": "Station Stop 5",
+      "partName": "8bit_part_assy_260715",
+      "sourceMesh": "Station Stop 5",
+      "matchMode": "stp_occurrence_mesh_center",
+      "occurrenceX": -19.1488715962187,
+      "occurrenceY": 25,
+      "occurrenceZ": 29.2028297019124,
+      "radiusMm": 2,
+      "bboxSizeMm": [
+        4,
+        4,
+        4
+      ]
+    },
+    "Station_Stop_6": {
+      "x": -25.36949920654297,
+      "y": 23,
+      "z": 24.601415634155273,
+      "occurrenceName": "Station Stop 6",
+      "partName": "8bit_part_assy_260715",
+      "sourceMesh": "Station Stop 6",
+      "matchMode": "stp_occurrence_mesh_center",
+      "occurrenceX": -21.5901270087653,
+      "occurrenceY": 25,
+      "occurrenceZ": 20,
+      "radiusMm": 2,
+      "bboxSizeMm": [
+        4,
+        4,
+        4
+      ]
+    },
+    "Station_Stop_7": {
+      "x": -35.36949920654297,
+      "y": 23,
+      "z": 24.601415634155273,
+      "occurrenceName": "Station Stop 7",
+      "partName": "8bit_part_assy_260715",
+      "sourceMesh": "Station Stop 7",
+      "matchMode": "stp_occurrence_mesh_center",
+      "occurrenceX": -31.5901270087653,
+      "occurrenceY": 25,
+      "occurrenceZ": 20,
+      "radiusMm": 2,
+      "bboxSizeMm": [
+        4,
+        4,
+        4
+      ]
+    },
+    "Station_Stop_8": {
+      "x": -45.36949920654297,
+      "y": 23,
+      "z": 24.601415634155273,
+      "occurrenceName": "Station Stop 8",
+      "partName": "8bit_part_assy_260715",
+      "sourceMesh": "Station Stop 8",
+      "matchMode": "stp_occurrence_mesh_center",
+      "occurrenceX": -41.5901270087653,
+      "occurrenceY": 25,
+      "occurrenceZ": 20,
+      "radiusMm": 2,
+      "bboxSizeMm": [
+        4,
+        4,
+        4
+      ]
+    }
+  },
+  "matchCount": 16,
+  "signalCount": 16,
+  "meshCount": 17,
+  "_meshNameSample": [
+    "8bit_Sensor_260715",
+    "Station Ready 1",
+    "Station Ready 3",
+    "Station Ready 8",
+    "Station Ready 4",
+    "Station Ready 5",
+    "Station Ready 7",
+    "Station Ready 6",
+    "Station Ready 2",
+    "Station Stop 2",
+    "Station Stop 3",
+    "Station Stop 4",
+    "Station Stop 5",
+    "Station Stop 6",
+    "Station Stop 7",
+    "Station Stop 8",
+    "Station Stop 1"
+  ]
+}

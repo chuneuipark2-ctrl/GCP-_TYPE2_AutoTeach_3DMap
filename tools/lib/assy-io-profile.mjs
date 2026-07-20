@@ -72,7 +72,6 @@ export const ASSY_IO_PROFILE_DEFAULTS = {
       skipSurfaceSnapPatterns: [
         '^Travel_',
         '^Modem_Fault$',
-        '^Station_(Ready|Stop)_\\d+$',
       ],
       deoverlapGapMm: 6,
       surfaceSnapMaxMm: 0,
@@ -81,6 +80,44 @@ export const ASSY_IO_PROFILE_DEFAULTS = {
   Carriage_Assy: {
     assyId: 'Carriage_Assy',
     label: 'Carriage_Assy',
+    stpCanonicalBase: 'Carriage_Assy',
+    excludeStpNamePatterns: [],
+    manifest: {
+      matchPriority: ['stp_occurrence', 'solid_edge_io_define'],
+      sensorPartNamePatterns: [],
+      useIoStpSensorMap: false,
+      allowSensorPartSeq: false,
+      defaultRadiusMm: 20,
+    },
+    viewer: {
+      skipSurfaceSnapPatterns: ['^LiDAR[12]_'],
+      deoverlapGapMm: 6,
+      surfaceSnapMaxMm: 0,
+    },
+  },
+  '8bit_sensor': {
+    assyId: '8bit_sensor',
+    label: '8bit_sensor',
+    stpCanonicalBase: '8bit_part_assy',
+    excludeStpNamePatterns: ['ELEC_CONVERT'],
+    manifest: {
+      matchPriority: ['stp_occurrence', 'solid_edge_io_define'],
+      sensorPartNamePatterns: [],
+      useIoStpSensorMap: false,
+      allowSensorPartSeq: false,
+      defaultRadiusMm: 5,
+    },
+    viewer: {
+      markerShape: 'box',
+      markerBoxMm: [4, 4, 4],
+      skipSurfaceSnapPatterns: ['^Station_(Ready|Stop)_\\d+$'],
+      deoverlapGapMm: 0.5,
+      surfaceSnapMaxMm: 0,
+    },
+  },
+  Lidar: {
+    assyId: 'Lidar',
+    label: 'Lidar',
     stpCanonicalBase: 'Carriage_Assy',
     excludeStpNamePatterns: [],
     manifest: {

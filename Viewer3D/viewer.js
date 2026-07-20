@@ -40,7 +40,7 @@ const poseCopyBox = document.getElementById('poseCopyBox');
 const toolbarFreeNav = document.getElementById('toolbarFreeNav');
 const toolbarFixedViews = document.getElementById('toolbarFixedViews');
 
-const VIEWER_BUILD = '20260714field-touch-panzoom';
+const VIEWER_BUILD = '20260720-8bit-mesh-center';
 /** STP manifest 좌표 → 형체 표면 스냅 최대 거리 (mm). 0=비활성(기본) — 원점/표면 자동 끌어당김 금지 */
 const IO_STP_SURFACE_SNAP_MAX_MM_DEFAULT = 0;
 /** snap/겹침 분리 후 인접 I/O 구체 최소 간격 (mm) — ASSY 프로필로 덮어씀 */
@@ -111,13 +111,38 @@ const FIXED_VIEWS_BY_ASSY = {
       up: [0.39, 0.397, -0.831],
     },
   ],
+  '8bit_sensor': [
+    {
+      name: '1번뷰',
+      pos: [-2.745, 103.849, -43.515],
+      target: [13.825, 4.285, -21.862],
+      up: [-0.987, -0.159, 0.023],
+    },
+    null,
+    null,
+    null,
+  ],
+  /** 라이다 첫화면 = Carriage_Assy 1번뷰와 동일 */
+  Lidar: [
+    {
+      name: '1번뷰',
+      pos: [72.979, -60.016, -48.342],
+      target: [-8.286, -32.159, -9.264],
+      up: [-0.268, 0.43, -0.863],
+    },
+    null,
+    null,
+    null,
+  ],
 };
 
 function resolveFixedViewAssyKey(assyId) {
   if (!assyId) return null;
   const lower = String(assyId).toLowerCase();
   if (lower.includes('standing') || lower === 'scp') return 'SCP';
+  if (lower.includes('8bit')) return '8bit_sensor';
   if (lower.includes('lower')) return 'Lower_Frame_assy';
+  if (lower.includes('lidar')) return 'Lidar';
   if (lower.includes('carriage')) return 'Carriage_Assy';
   if (Array.isArray(FIXED_VIEWS_BY_ASSY[assyId])) return assyId;
   return assyId;
@@ -303,14 +328,18 @@ let animStarted = false;
 const ASSY_COLORS = {
   SCP: 0x9b59b6,
   LOWER_FRAME_ASSY: 0x5cb85c,
+  '8bit_sensor': 0x3d9e6f,
   Carriage_Assy: 0xd9944a,
   CARRIAGE_ASSY: 0xd9944a,
+  Lidar: 0xe0a050,
 };
 
 const PROC_LAYOUT = {
   SCP: { size: [0.5, 1.2, 0.3], pos: [-1.8, 1, 0.5] },
   Lower_Frame_assy: { size: [3.5, 0.35, 0.5], pos: [0, 0.2, 0] },
+  '8bit_sensor': { size: [3.5, 0.35, 0.5], pos: [0, 0.2, 0] },
   Carriage_Assy: { size: [1.6, 0.4, 0.6], pos: [0, 2.5, 0.2] },
+  Lidar: { size: [1.6, 0.4, 0.6], pos: [0, 2.5, 0.2] },
 };
 
 function postToHost(payload) {
@@ -2392,6 +2421,55 @@ function getIoLampMarkerRadiusForKey(key) {
   return getIoLampMarkerRadiusFallback();
 }
 
+/**
+ * 마커 geometry — ASSY_IO_PROFILE.viewer.markerShape
+ * box: CAD Z-up [sx,sy,sz] mm → Three Y-up Box(sx, sz, sy)
+ * sphere(기본): radiusMm
+ */
+function getIoLampMarkerShape() {
+  const s = currentAssyIoProfile?.viewer?.markerShape;
+  return s === 'box' || s === 'box3' || s === 'cube' ? 'box' : 'sphere';
+}
+
+/** @returns {[number, number, number]|null} Three.js BoxGeometry (sx,sy,sz) Y-up mm */
+function getIoLampMarkerBoxSizeYUp(key) {
+  const pt = key ? ioManifestPoints[key] : null;
+  // manifest bboxSizeMm 는 CAD Z-up [sx,sy,sz]
+  const fromPt = pt?.bboxSizeMm;
+  const fromProfile = currentAssyIoProfile?.viewer?.markerBoxMm;
+  const zUp = Array.isArray(fromPt) && fromPt.length >= 3
+    ? fromPt
+    : Array.isArray(fromProfile) && fromProfile.length >= 3
+      ? fromProfile
+      : null;
+  if (!zUp) return null;
+  const sx = Math.max(Number(zUp[0]) || 0, 1);
+  const sy = Math.max(Number(zUp[1]) || 0, 1);
+  const sz = Math.max(Number(zUp[2]) || 0, 1);
+  // Z-up → Y-up: (x,y,z) → (x,z,-y) 이므로 박스 크기 (sx, sz, sy)
+  return [sx, sz, sy];
+}
+
+function createIoLampMarkerGeometry(key) {
+  if (getIoLampMarkerShape() === 'box') {
+    const box = getIoLampMarkerBoxSizeYUp(key);
+    if (box) {
+      return {
+        geometry: new THREE.BoxGeometry(box[0], box[1], box[2]),
+        radiusMm: Math.max(box[0], box[1], box[2]) / 2,
+        shape: 'box',
+        boxSizeYUp: box,
+      };
+    }
+  }
+  const r = getIoLampMarkerRadiusForKey(key);
+  return {
+    geometry: new THREE.SphereGeometry(r, 14, 14),
+    radiusMm: r,
+    shape: 'sphere',
+  };
+}
+
 function getIoLampMarkerRadiusFallback() {
   const modelRoot = getDetailModelRoot();
   const box = modelRoot ? getMeshesBox(modelRoot) : null;
@@ -2506,9 +2584,9 @@ function cadLayoutPointToLocal(x, y, z, modelRoot) {
 }
 
 function createIoLampLayoutMarker(key, position) {
-  const r = getIoLampMarkerRadiusForKey(key);
+  const { geometry, radiusMm, shape } = createIoLampMarkerGeometry(key);
   const mesh = new THREE.Mesh(
-    new THREE.SphereGeometry(r, 14, 14),
+    geometry,
     new THREE.MeshStandardMaterial({
       color: IO_LAMP_COLOR_OFF,
       transparent: true,
@@ -2524,6 +2602,8 @@ function createIoLampLayoutMarker(key, position) {
   mesh.userData.isIoLampMarker = true;
   mesh.userData.isIoLamp = true;
   mesh.userData.signalKey = key;
+  mesh.userData.ioLampRadiusMm = radiusMm;
+  mesh.userData.ioLampShape = shape;
   return mesh;
 }
 
@@ -2577,9 +2657,9 @@ function stpCadPointToPivot(x, y, z, modelRoot) {
 }
 
 function createIoStpOverlayLamp(key, position) {
-  const r = getIoLampMarkerRadiusForKey(key);
+  const { geometry, radiusMm, shape } = createIoLampMarkerGeometry(key);
   const mesh = new THREE.Mesh(
-    new THREE.SphereGeometry(r, 14, 14),
+    geometry,
     new THREE.MeshStandardMaterial({
       color: IO_LAMP_COLOR_OFF,
       transparent: true,
@@ -2596,7 +2676,8 @@ function createIoStpOverlayLamp(key, position) {
   mesh.userData.isIoLamp = true;
   mesh.userData.isStpOverlay = true;
   mesh.userData.signalKey = key;
-  mesh.userData.ioLampRadiusMm = r;
+  mesh.userData.ioLampRadiusMm = radiusMm;
+  mesh.userData.ioLampShape = shape;
   return mesh;
 }
 
@@ -3105,6 +3186,9 @@ async function enterAssyDetail(assyId) {
       setLoadStatus(`${label} Detail 표시 완료`, 100);
       resetLoadOverlayStyle();
       loadOverlay.style.display = 'none';
+      // 핏/보조맞춤 이후에도 ASSY 1번뷰·버튼 유지 (8bit/Lidar 포함)
+      refreshFixedViewToolbar();
+      if (!isDevFreeNav()) applyFixedView(0);
       return;
     } catch (e) {
       console.warn('detail model failed', e);

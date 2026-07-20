@@ -74,23 +74,7 @@
         "Travel2_Brake_MMS_FLT",
         "Travel_DEC",
         "Travel_Home_Position",
-        "Modem_Fault",
-        "Station_Ready_1",
-        "Station_Ready_2",
-        "Station_Ready_3",
-        "Station_Ready_4",
-        "Station_Ready_5",
-        "Station_Ready_6",
-        "Station_Ready_7",
-        "Station_Ready_8",
-        "Station_Stop_1",
-        "Station_Stop_2",
-        "Station_Stop_3",
-        "Station_Stop_4",
-        "Station_Stop_5",
-        "Station_Stop_6",
-        "Station_Stop_7",
-        "Station_Stop_8"
+        "Modem_Fault"
       ],
       "ioManifest": "assemblies/Lower_Frame_assy/io_manifest.json"
     },
@@ -197,7 +181,68 @@
         "O_DoubleStorage_Left2",
         "O_DoubleStorage_Right2",
         "Double_Storage_L_R2",
-        "Double_Storage_R_R2",
+        "Double_Storage_R_R2"
+      ]
+    },
+    {
+      "id": "8bit_sensor",
+      "label": "8bit_sensor",
+      "_parentAssy": "Lower_Frame_assy",
+      "detailModel": "assemblies/8bit_sensor/8bit_part_assy.stp",
+      "layout": "assemblies/8bit_sensor/io_layout.json",
+      "meshName": "8bit_part_assy",
+      "camera": {
+        "pos": [
+          4,
+          2,
+          4
+        ],
+        "target": [
+          0,
+          0.2,
+          0
+        ]
+      },
+      "signalKeys": [
+        "Station_Ready_1",
+        "Station_Ready_2",
+        "Station_Ready_3",
+        "Station_Ready_4",
+        "Station_Ready_5",
+        "Station_Ready_6",
+        "Station_Ready_7",
+        "Station_Ready_8",
+        "Station_Stop_1",
+        "Station_Stop_2",
+        "Station_Stop_3",
+        "Station_Stop_4",
+        "Station_Stop_5",
+        "Station_Stop_6",
+        "Station_Stop_7",
+        "Station_Stop_8"
+      ],
+      "ioManifest": "assemblies/8bit_sensor/io_manifest.json"
+    },
+    {
+      "id": "Lidar",
+      "label": "Lidar",
+      "_parentAssy": "Carriage_Assy",
+      "detailModel": "assemblies/Carriage_Assy/Carriage_Assy.stp",
+      "layout": "assemblies/Carriage_Assy/io_layout.json",
+      "meshName": "Carriage_Assy",
+      "camera": {
+        "pos": [
+          2,
+          2,
+          3
+        ],
+        "target": [
+          0,
+          0.2,
+          0
+        ]
+      },
+      "signalKeys": [
         "LiDAR1_Observe_Signal",
         "LiDAR1_Alert_Signal",
         "LiDAR1_Alarm_Signal",
@@ -230,7 +275,8 @@
         "LiDAR4_Zone02_Select",
         "LiDAR4_Zone03_Select",
         "LiDAR4_Zone04_Select"
-      ]
+      ],
+      "ioManifest": "assemblies/Carriage_Assy/io_manifest.json"
     }
   ]
 }
